@@ -1,0 +1,5 @@
+id,type,sentence,hasQuestion,question,answer
+100,1,Los estudiantes llegaron a la universidad antes de que cerrara.,True,Llegaron a la universidad cuando ya estaba cerrada.,NO
+100,1,La conferencia empezará con puntualidad a las diez y media.,False,,
+100,1,El ladrón escapó a toda prisa por la puerta trasera.,False,,
+100,1,Los niños corrieron a la plaza con sus amigos.,False,,

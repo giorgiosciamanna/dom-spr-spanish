@@ -1,0 +1,520 @@
+---
+API: 3
+OpenSesame: 4.0.24
+Platform: posix
+---
+set width 1024
+set title "Nuovo esperimento"
+set subject_parity even
+set subject_nr 0
+set start experiment
+set sound_sample_size -16
+set sound_freq 48000
+set sound_channels 2
+set sound_buf_size 1024
+set sampler_backend legacy
+set round_decimals 2
+set mouse_backend legacy
+set keyboard_backend legacy
+set height 768
+set fullscreen no
+set form_clicks no
+set foreground white
+set font_underline no
+set font_size 18
+set font_italic False
+set font_family mono
+set font_bold False
+set experiment_path "/Users/giorgiosciamanna/Desktop/Esperimento"
+set disable_garbage_collection False
+set description "A template containing a practice and an experimental phase"
+set color_backend legacy
+set clock_backend legacy
+set canvas_backend legacy
+set background "#3d3846"
+
+define inline_script acceptability_form
+	set description "Esegue codice Python"
+	___run__
+	def form_valid():
+	    return acceptability != None
+	
+	nodes = ["Escuchar esta frase<br />me parece inaceptable.", "", "Escuchar esta frase<br />no me parece muy extraño,<br />pero nunca la diría.", "", "Decir esta frase<br />me parece normal."]
+	
+	node2 = Label(text='Escuchar esta frase<br />me parece muy extraño.')
+	node4 = Label(text='Decir esta frase me<br />parece un poco extraño.')
+	
+	form = Form(validator=form_valid, cols=[1,1], rows=[1,1,1,1,1,1,1])
+	
+	off_sentence = Label(text=sentence, frame=True, center=True)
+	
+	ratingScale = RatingScale(
+	 var='acceptability',
+	 nodes=nodes)
+	
+	nextButton = Button(text='Siguiente')
+	
+	form.set_widget(node2, (0, 4))
+	form.set_widget(node4, (1, 4))
+	
+	form.set_widget(off_sentence, (0, 0),colspan=2)
+	
+	form.set_widget(ratingScale, (0,3),colspan=2)
+	
+	form.set_widget(nextButton, (0, 6),colspan=2)
+	
+	form._exec()
+	print(acceptability)
+	__end__
+	set _prepare ""
+
+define loop affectedness_loop
+	set source_file ""
+	set source table
+	set repeat 1
+	set order random
+	set description "Esegue ripetutamente un altro elemento"
+	set cycles 1
+	set continuous no
+	set break_if_on_first yes
+	set break_if never
+	setcycle 0 practice no
+	setcycle 0 offline yes
+	setcycle 0 affectedness yes
+	run offline_block_sequence
+
+define sketchpad affectedness_section
+	set duration keypress
+	set description "Mostra stimoli"
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=24 html=yes show_if=True text="¡Casi terminado! <br />En esta última parte, se te presentarán algunas de las frases que has leído, pero de forma diferente. <br />Tienes que evaluarlas como has hecho hasta ahora. <br />Pulsa un botón para continuar." x=0 y=0 z_index=0
+
+define loop block_loop
+	set source_file ""
+	set source table
+	set skip 0
+	set repeat 1
+	set order random
+	set offset no
+	set item trial_sequence
+	set description "A single block of trials"
+	set cycles 1
+	set continuous no
+	set column_order ""
+	set break_if_on_first yes
+	set break_if False
+	setcycle 0 empty_column ""
+	run trial_sequence
+
+define loop block_loop1
+	set source_file ""
+	set source table
+	set repeat 1
+	set order random
+	set description "Esegue ripetutamente un altro elemento"
+	set cycles 0
+	set continuous no
+	set break_if_on_first yes
+	set break_if False
+	run trial_sequence1
+
+define sequence block_sequence
+	set flush_keyboard yes
+	set description "A sequence containing a single block of trials followed by feedback to the participant"
+	run df_exp_setup True
+	run block_loop True
+
+define inline_script break_inline_script
+	set description "Esegue codice Python"
+	___run__
+	block_length = 25
+	if (count_trial_sequence+1) % block_length == 0:
+	    show_break = 1
+	else:
+	    show_break = 0
+	__end__
+	set _prepare ""
+
+define inline_script buttonbox_setup
+	set description "Esegue codice Python"
+	___run__
+	from rusocsci import buttonbox
+	
+	bb = buttonbox.Buttonbox()
+	__end__
+	set _prepare ""
+
+define inline_script comprehension_form_script
+	set description "Esegue codice Python"
+	___run__
+	form.render()
+	
+	b_input = bb.waitButtons(buttonList=['A','E'])
+	comprehension = b_input
+	
+	#comprehension,_ = compr_key.get_key()
+	__end__
+	___prepare__
+	form = Form(
+	    cols=[1,1], rows=[1,2,1],
+	    margins=(50,100,50,100), spacing=25
+	)
+	
+	labelTitle = Label(text=u'Pregunta')
+	labelQuestion = Label(
+	    text=var.question,
+	    center=False
+	)
+	buttonSI = Button(text=u'VERDADERO')
+	buttonNO = Button(text=u'FALSO')
+	
+	form.set_widget(labelTitle, (0,0), colspan=2)
+	form.set_widget(labelQuestion, (0,1), colspan=2)
+	form.set_widget(buttonSI, (0,2))
+	form.set_widget(buttonNO, (1,2))
+	
+	compr_key = Keyboard(timeout=100000)
+	__end__
+
+define inline_script df_exp_setup
+	set description "Esegue codice Python"
+	___run__
+	import pandas as pd
+	from datamatrix import convert
+	from random import shuffle
+	
+	if practice == 'yes':
+	    dataframe = convert.from_pandas(pract)
+	    
+	else:
+	    
+	    #randlist = [0,1,2,3,4,5] * 8 + [0,5]
+	    shuffle(randlist)
+	
+	    select_list = list(enumerate(randlist))
+	    
+	    #dom_df = dom_df[(dom_df['id'],dom_df['type']) in select_list]
+	    select_df = dom_df[dom_df[['id', 'type']].apply(tuple, axis=1).isin(select_list)]
+	    #dom_df = dom_df[dom_df['type'] == (dom_df['id'] + var.select_list) % 6]
+	    print(select_df['sentence'][0:6])
+	    
+	    pandas_df = pd.concat([select_df,distr],ignore_index=True)
+	    
+	    dataframe = convert.from_pandas(pandas_df)
+	    
+	
+	items['block_loop'].dm = dataframe
+	__end__
+	set _prepare ""
+
+define inline_script df_offline_setup
+	set description "Esegue codice Python"
+	___run__
+	from random import shuffle, sample
+	from datamatrix import convert
+	
+	if practice == 'yes':
+	    offline_df = convert.from_pandas(pract)
+	    #with open(pool['practice.csv'],'r') as h:
+	        #off = pd.read_csv(h).fillna(0)
+	
+	elif affectedness == 'yes':
+	    sel_aff = sample(range(25),10) + sample(range(25,50),10)
+	    df_aff = aff.iloc[sel_aff]
+	    offline_df = convert.from_pandas(df_aff)
+	
+	
+	else:
+	    
+	    shuffle(randlist)
+	    select_list = list(enumerate(randlist))
+	    
+	    #with open(pool['itemset_dom.txt'],'r') as h:
+	        #off = pd.read_csv(h).fillna(0)
+	    
+	    off = dom_df[dom_df[['id', 'type']].apply(tuple, axis=1).isin(select_list)]
+	
+	    print(off['sentence'][:6])
+	
+	    offline_df = convert.from_pandas(off)
+	
+	items['block_loop1'].dm = offline_df
+	
+	response = 0
+	comprehension = 0
+	__end__
+	set _prepare ""
+
+define sketchpad end_of_experiment
+	set start_response_interval no
+	set duration keypress
+	set description "A sketchpad notifying the participant that the experiment is finished"
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=25 html=yes show_if=True text="Fin del experimento. <br />¡Gracias por participar!" x=0 y=0 z_index=0
+
+define sketchpad end_of_practice
+	set start_response_interval no
+	set duration keypress
+	set description "A sketchpad notifying the participant that the practice phase is finished"
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=24 html=yes show_if=True text="Fin de la práctica. <br />Recuerde desplazarse por las frases con naturalidad. <br />Botón C = siguiente palabra <br />Botón A = Verdadero <br />Botón E = Falso<br /><br />Pulsa un botón para empezar el test real." x=0 y=0 z_index=0
+
+define sketchpad end_of_practice_offline
+	set duration keypress
+	set description "Mostra stimoli"
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=24 html=yes show_if=True text="Fin de la práctica. <br />Pulsa un botón para empezar el test real." x=0 y=0 z_index=0
+
+define sketchpad end_of_spr
+	set duration keypress
+	set description "Mostra stimoli"
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=24 html=yes show_if=True text="¡Excelente! Has terminado la primera parte del experimento. <br />Puedes tomarte un descanso mientras el experimentador te explica la segunda parte.<br />Pulsa un botón para continuar." x=0 y=0 z_index=0
+
+define sequence experiment
+	set flush_keyboard yes
+	set description "The main sequence of the experiment"
+	run buttonbox_setup True
+	run select_list True
+	run instructions True
+	run practice_loop True
+	run end_of_practice True
+	run experimental_loop True
+	run end_of_spr True
+	run start_offline True
+	run offline_practice_loop True
+	run end_of_practice_offline True
+	run offline_experimental_loop True
+	run affectedness_section True
+	run affectedness_loop True
+	run end_of_experiment True
+
+define loop experimental_loop
+	set source_file ""
+	set source table
+	set skip 0
+	set repeat 1
+	set order random
+	set offset no
+	set item block_sequence
+	set description "A loop containing one or more experimental blocks"
+	set cycles 1
+	set continuous no
+	set column_order practice
+	set break_if_on_first yes
+	set break_if False
+	setcycle 0 practice no
+	setcycle 0 offline no
+	setcycle 0 affectedness no
+	run block_sequence
+
+define sketchpad instructions
+	set start_response_interval no
+	set duration keypress
+	set description "A sketchpad containing the instructions for the participant"
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=23 html=yes show_if=True text="¡Hola! En esta primera parte del experimento se te pide que leas algunas frases (unas 110) en español. <br />Antes de cada frase, aparecerá una pantalla “Leer nueva frase”. Pulsando el botón situado en el centro de la botonera (botón “C”), aparecerá la primera palabra de la frase, mientras que el resto de la frase estará oculto. Cada vez que pulse el botón, se ocultará la palabra que está leyendo y se revelará la siguiente. <br />Cuando haya terminado de leer una frase, es posible que tenga que responder a una pregunta de comprensión (verdadero/falso). Para responder, utiliza el botón del extremo izquierdo (botón «A») para responder “Verdadero” y el botón del extremo derecho para responder «Falso» (botón «E»). <br />El experimento no está cronometrado, así que tómese su tiempo antes de empezar una nueva frase y responder a las preguntas. Cada 25 frases se le recordará que debe hacer una breve pausa. <br />Mientras lee la frase, le pedimos que lea con la mayor naturalidad posible, sin detenerse y sin ir demasiado rápido. " x=0 y=0 z_index=0
+	draw textline center=1 color=white font_bold=yes font_family=mono font_italic=no font_size=25 html=yes show_if=True text="Cuando esté preparado, pulse un botón para iniciar la práctica." x=0 y=256 z_index=0
+
+define logger logger
+	set description "Logs experimental data"
+	set auto_log no
+	log answer
+	log comprehension
+	log hasQuestion
+	log id
+	log offline
+	log practice
+	log question
+	log response
+	log sentence
+	log subject_nr
+	log type
+	log acceptability
+	log live_row
+	log affectedness
+	exclude "*_backend"
+	exclude PERSISTENT
+	exclude TEMPORARY
+	exclude acc
+	exclude accuracy
+	exclude average_response_time
+	exclude avg_rt
+	exclude background
+	exclude closed
+	exclude "count_*"
+	exclude credentialless
+	exclude crossOriginIsolated
+	exclude datetime
+	exclude description
+	exclude devicePixelRatio
+	exclude disable_garbage_collection
+	exclude experiment_file
+	exclude experiment_path
+	exclude "font_*"
+	exclude foreground
+	exclude form_clicks
+	exclude fullscreen
+	exclude height
+	exclude innerHeight
+	exclude innerWidth
+	exclude isSecureContext
+	exclude length
+	exclude logfile
+	exclude opensesame_codename
+	exclude origin
+	exclude originAgentCluster
+	exclude outerHeight
+	exclude outerWidth
+	exclude "page?Offset"
+	exclude round_decimals
+	exclude "screen*"
+	exclude "scroll?"
+	exclude "sound_*"
+	exclude start
+	exclude status
+	exclude "time_*"
+	exclude total_correct
+	exclude total_response_time
+	exclude total_responses
+	exclude width
+
+define sequence offline_block_sequence
+	set flush_keyboard yes
+	set description "Esegue una serie di elementi in sequenza"
+	run df_offline_setup True
+	run block_loop1 True
+
+define loop offline_experimental_loop
+	set source_file ""
+	set source table
+	set repeat 1
+	set order random
+	set description "Esegue ripetutamente un altro elemento"
+	set cycles 1
+	set continuous no
+	set break_if_on_first yes
+	set break_if never
+	setcycle 0 practice no
+	setcycle 0 offline yes
+	setcycle 0 affectedness no
+	run offline_block_sequence
+
+define loop offline_practice_loop
+	set source_file ""
+	set source table
+	set repeat 1
+	set order random
+	set description "Esegue ripetutamente un altro elemento"
+	set cycles 1
+	set continuous no
+	set break_if_on_first yes
+	set break_if False
+	setcycle 0 practice yes
+	setcycle 0 offline yes
+	setcycle 0 affectedness no
+	run offline_block_sequence
+
+define loop practice_loop
+	set source_file ""
+	set source table
+	set skip 0
+	set repeat 1
+	set order random
+	set offset no
+	set item block_sequence
+	set description "A loop containing one or more practice blocks"
+	set cycles 1
+	set continuous no
+	set column_order practice
+	set break_if_on_first yes
+	set break_if False
+	setcycle 0 practice yes
+	setcycle 0 offline no
+	setcycle 0 affectedness no
+	run block_sequence
+
+define inline_script select_list
+	set description "Esegue codice Python"
+	___run__
+	import pandas as pd
+	
+	randlist = [0,1,2,3,4,5] * 8 + [0,5]
+	
+	with open(pool['practice.txt'],'r') as g:
+	    pract = pd.read_csv(g).fillna(0)
+	    
+	with open(pool['distractors.txt'],'r') as g:
+	    distr = pd.read_csv(g).fillna(0)
+	    
+	with open(pool['itemset_dom.txt'],'r') as f:
+	    dom_df = pd.read_csv(f).fillna(0)
+	    
+	with open(pool['affected_test.txt'],'r') as f:
+	    aff = pd.read_csv(f)
+	    
+	comprehension = 0
+	acceptability = 0
+	__end__
+	set _prepare ""
+
+define sketchpad start_offline
+	set duration keypress
+	set description "Mostra stimoli"
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=24 html=yes show_if=True text="" x=-32 y=0 z_index=0
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=24 html=yes show_if=True text="En la segunda parte leerá una serie de frases muy parecidas (pero no iguales) a algunas de las que leyó en la primera parte. <br />Esta vez aparecerán todas a la vez, y tendrás que valorarlas en una escala de 1 a 5. <br />El significado de los valores es el siguiente: <br />1= Escuchar esta frase me parece inaceptable. <br />2= Escuchar esta frase me parece muy extraño. <br />3= Escuchar esta frase no me parece muy extraño, <br />pero nunca la diría. <br />4= Decir esta frase me parece un poco extraño. <br />5= Decir esta frase me parece normal. <br /><br />Se le pide que haga clic en una de estas opciones y, a continuación, en el botón «Siguiente».<br /><br />Pulsa un botón para iniciar la práctica." x=0 y=0 z_index=0
+
+define sketchpad take_a_break
+	set duration keypress
+	set description ""
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=32 html=yes show_if=True text="¡Te mereces un descanso! Tase todo el tiempo que quieras. <br />Pulsa un botón para reanudar el experimento." x=0 y=0 z_index=0
+
+define sequence trial_sequence
+	set flush_keyboard yes
+	set description "A single trial"
+	run word_looper True
+	run comprehension_form_script "[hasQuestion] = 1"
+	run logger True
+	run break_inline_script True
+	run take_a_break "[show_break] = 1"
+
+define sequence trial_sequence1
+	set flush_keyboard yes
+	set description "Esegue una serie di elementi in sequenza"
+	run acceptability_form True
+	run logger True
+
+define inline_script word_looper
+	set description "Esegue codice Python"
+	___run__
+	start_canv.show()
+	start_key.get_key(timeout=100000)
+	a = clock.time()
+	reading_times = []
+	for c,k in canv_seq:
+	    t0 = c.show()
+	    #_,t1 = k.get_key(timeout=100000)
+	    b_input = bb.waitButtons(buttonList=['C'],timeStamped=True)
+	    t1 = b_input[0][1]
+	    reading_times.append(t1-t0)
+	    
+	response=reading_times
+	    
+	#for absolute reaction times, subtract 8 ms
+	__end__
+	___prepare__
+	comprehension = 0
+	
+	word_seq = sentence.split()
+	print(word_seq)
+	canv_seq = []
+	for i,word in enumerate(word_seq):
+	    screen = []
+	    for j,elem in enumerate(word_seq):
+	        if elem == word and j==i:
+	            screen.append(elem)
+	        else:
+	            screen.append('_'*len(elem))
+	    c = Canvas()
+	    c.text(f'{" ".join(screen)}')
+	    k = Keyboard()
+	    canv_seq.append((c,k))
+	start_canv = Canvas()
+	start_canv.text('Leer nueva frase')
+	start_key = Keyboard()
+	__end__
+

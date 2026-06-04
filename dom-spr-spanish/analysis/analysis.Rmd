@@ -1,0 +1,2032 @@
+---
+title: "Analysis and comparison of experimental data and computational models for the identification of the factors underlying Differential Object Marking"
+subtitle: "Original title: Analisi e comparazione di dati sperimentali e modelli computazionali per l'identificazione dei fattori sottostanti alla Marca Differenziale di Oggetto"
+author: "Giorgio Sciamanna (Scuola Normale Superiore, Pisa)"
+date: "Version: 26-05-2026"
+output:
+  html_document:
+    df_print: paged
+  html_notebook: default
+  pdf_document: default
+  word_document: default
+---
+
+
+# Experiment
+
+The project was organised into the following steps:
+
+* Construction of a set of Spanish transitive sentences, based on prior literature on online-processing experiments and acceptability judgements on Differential Object Marking (DOM). The sentences were designed to cover all the relevant conditions that license or block DOM.
+* A self-paced reading (SPR) experiment with native Spanish speakers, collecting per-word reading times for each sentence.
+* Selection of a set of autoregressive language models and collection of per-word surprisal scores (a measure based on the probabilities the model assigns to each token) for each sentence.
+* Comparison of human and model performance, with the goal of assessing how well human reading times align with the models' surprisal scores on the task.
+
+## Objectives
+
+The project addresses two main questions.
+
+The literature widely reports that, in Spanish, Differential Object Marking (DOM) is conditioned mainly by animacy (although the exact boundary between "animate" and "inanimate" remains unclear) and specificity. There is substantial psycholinguistic experimental evidence on the role of animacy, but comparatively little on the role of specificity. Moreover, the only experimental evidence on human behaviour regarding the influence of verbal properties on DOM comes from an online forced-choice questionnaire. For this reason the project has a twofold aim:
+
+1. to build an item set that is as complete, controlled and balanced as possible, systematically crossing three main factors — animacy, specificity, and affectedness of the object (i.e. the degree to which the object is "affected" by the event, as classified through the verb);
+2. to collect experimental surprisal data (surprisal being a measure of how unexpected a word is given the preceding context) grounded in the behaviour of native speakers on this item set.
+
+In light of previous work, we select a range of Transformer-based models to probe their "understanding" of DOM. The hypothesis is that there is a positive correlation between mean human reading times and the surprisal scores produced by Transformer models for transitive sentences with and without DOM.
+
+The experiment is a self-paced reading (SPR) task run with 17 L1 speakers of modern standard Spanish. The description below follows the chronological order in which the study was carried out: (i) selection of the sentence set; (ii) participant recruitment and sociolinguistic composition; (iii) practical implementation of the experiment; (iv) selection of the Transformer models and statistical-analysis methods.
+
+## The sentence set
+
+The item set comprises 50 items. Each item has 6 possible variants of a sentence with the following structure (word length of each constituent in parentheses):
+
+* Subject (proper name): 1 word
+* Verb (third person singular, past tense): 1 word
+* DOM marker (the *a*-marker; optional): 1 word
+* Definite/indefinite article + human/inanimate object: 2 words
+* Locative prepositional phrase (PP1): 3 words
+* Temporal prepositional phrase (PP2): 3 words
+
+The sentences were freely adapted from:
+
+* Heredero & García (2023), for the alternation between verbs that make the object affected and verbs that leave it non-affected;
+* Hopp & León Arriaga (2016), for the sentence structure: being an eye-tracking study, it kept sentence length constant.
+
+The 6 variants of each item are built by crossing:
+
+* animacy: the object can be human or inanimate;
+* definiteness: the human object can be introduced by a definite (*la*) or indefinite (*una*) article, while the inanimate object is always definite (*la*);
+* marking: the sentence may or may not include the DOM preposition *a*.
+
+Each sentence is 10 words long, becoming 11 when DOM is inserted. To keep this length constant, singular masculine objects were avoided, because there the case marker would fuse with the definite article (*a + el = al*), making the word count impossible to control. As a result, all objects are singular feminine.
+
+The items are further split into two groups of 25, depending on whether the verb is classified as [+affected] or [−affected]. Object affectedness is determined mainly by the verb and was assessed with the acceptability test of Heredero & García (2023):
+
+a. *Luis destrozó un coche.* ('Luis destroyed a car.')
+
+b. *Lo que le ocurrió al coche fue que Luis lo destrozó.* ('What happened to the car was that Luis destroyed it.')
+→ [If acceptable, proceed to c.]
+
+c. *Lo que Luis le hizo al coche fue destrozarlo.* ('What Luis did to the car was destroy it.')
+→ [If acceptable, the object is considered affected.]
+
+In addition to the item set, 55 distractor sentences were created. One third were ditransitive sentences (e.g. *Juan envió la caja a su hermano* 'Juan sent the box to his brother'), one third used the preposition *a* with other grammatical functions, and one third had heterogeneous structures. One third of the distractors, regardless of type, contained errors — mostly agreement errors or the omission/insertion of prepositions.
+
+Because of the limited number of participants, several otherwise interesting cases were excluded, namely:
+
+* non-human animate objects: these would have required treating animacy as a gradient rather than binary factor;
+* abstract/collective nouns (e.g. *la empresa* 'the company', *la sociedad* 'the partnership', *la alianza* 'the alliance', *el comercio* 'trade'), which may or may not allow an animate reading;
+* indefinite pronouns (e.g. *nadie* 'nobody', *alguien* 'somebody', *¿quién?* 'who?'), which on the cited hypothesis always force the case marker despite being inherently non-specific;
+* inanimate objects with certain stative transitive verbs expressing locative relations between entities, which also force marking (e.g. *El verbo sigue al/\*el sujeto* 'the verb follows the subject'; *Su voluntad obedece a/\*Ø la razón* 'his will obeys reason');
+* bare plurals, which generally block DOM: excluded to keep sentence length consistent, which is crucial in self-paced reading.
+
+## Participants
+
+Recruitment began with a flyer distributed across the university (see Appendix). The flyer invited native Spanish speakers to scan a QR code to register interest and complete a short preliminary questionnaire collecting basic information on their linguistic background and assessing eligibility. Additional participants were then recruited by word of mouth and through Radboud University's SONA recruitment platform.
+
+Participation (estimated 40–60 minutes) was unpaid; participants received snacks, drinks, and university credits equivalent to one hour of study activity. All participants reported having no conditions that could impair reading ability (e.g. dyslexia, ADHD). They were aged 19–28 and were all students or affiliates of Radboud University. The study was approved by the Ethics Committee of the Faculty of Arts at Radboud University.
+
+Linguistic background was classified from a sociolinguistic survey administered immediately after the experiment (see Appendix), using the following criterion:
+
+* 3 of 17 participants reported native competence — through family transmission and/or schooling — in a Latin-American variety of Spanish (`origin = latin`);
+* 7 of 17 reported native competence in a variety of Catalan (standard, Majorcan, Valencian) (`origin = catalan`);
+* the remaining 7 of 17 were classified as speakers of standard European Spanish (`origin = standard`, the reference level).
+
+The two non-standard groups do not overlap. Apart from Catalan, no participant spoke another language with DOM.
+
+## Procedure
+
+The experiment took place in the Centre for Language Studies laboratory at Radboud University. Each participant sat in a small sound-attenuated booth in front of a monitor. The experiment was implemented in OpenSesame (Python-based) and run through a Pygame interface. The procedure had two parts.
+
+### Part 1: Self-paced reading (SPR)
+
+In the first part, participants used a button box to advance through the sentences. Sentences (items and distractors mixed) were each presented once, in random order. Each participant saw a different variant of each item, and across participants every variant of every item appeared at least twice. (The exact variant-to-participant assignment — randomisation and/or counterbalancing — is not specified in the original materials.)
+
+Each sentence was presented one word at a time, in a moving-window format such as:
+
+```
+Juan _ _ _ _ _ _ _ _ _ _
+_ escuchó _ _ _ _ _ _ _ _ _
+_ _ a _ _ _ _ _ _ _ _ _
+_ _ _ la _ _ _ _ _ _ _ _
+_ _ _ _ vecina _ _ _ _ _ _
+_ _ _ _ _ en _ _ _ _ _ _
+_ _ _ _ _ _ el _ _ _ _ _
+_ _ _ _ _ _ _ balcón _ _ _
+_ _ _ _ _ _ _ _ durante _ _
+_ _ _ _ _ _ _ _ _ una _
+_ _ _ _ _ _ _ _ _ _ noche.
+```
+
+After reading the displayed word, participants pressed a button to advance. Roughly once every three sentences a true/false comprehension question followed, to check that participants were attending to the content. Short breaks between sentences were occasionally suggested.
+
+### Part 2: Acceptability judgements
+
+The second part was an acceptability-judgement task: participants rated all item-set sentences on a 1–5 scale using the mouse, again seeing a different variant of each item. The scale was:
+
+1. This sentence is unacceptable to me.
+2. Hearing this sentence would sound strange.
+3. I would not say this sentence, but hearing it would not sound strange.
+4. Saying this sentence would sound strange.
+5. Saying this sentence would sound normal.
+
+After rating the 50 item-set sentences, participants rated 20 further sentences drawn at random from the item set, restructured as in the affectedness test of Heredero & García (2023). For example:
+
+*Daniel remolcó la motocicleta en la calle durante algunos minutos.* →
+*Lo que Daniel hizo a la motocicleta fue remolcarla.*
+
+## Methods
+
+Per-word reading times were recorded for each participant. Times below 50 ms were excluded (most likely experimental artefacts, e.g. premature button presses); times above 2500 ms were truncated to the 2500 ms threshold. Reading times for the target regions were then extracted and log-transformed for analysis on a logarithmic scale.
+
+Three target regions were defined as dependent variables:
+
+* the object;
+* PP1 (the locative prepositional phrase);
+* PP2 (the temporal prepositional phrase).
+
+(The thesis also discusses the word immediately after the object as a possible spillover region; it is not analysed in this notebook.)
+
+For each region a linear mixed-effects model (LMM) was fitted with the (log) reading time as dependent variable, including random intercepts and slopes for subjects and items.
+
+## General hypotheses
+
+The hypotheses are:
+
+* animate objects without DOM should show consistently higher mean reading times and lower acceptability than animate objects with DOM; for inanimate objects the opposite pattern is expected;
+* for animate indefinite objects, the presence/absence of DOM should have a weaker impact on reading times and acceptability than for definite objects, though unmarked objects are still expected to be read more slowly and rated lower;
+* this effect of DOM presence/absence should be further attenuated for non-affected, animate indefinite objects.
+
+## Language model selection and analysis
+
+A set of Transformer-based models was selected. The key requirement is that they be autoregressive — i.e. each token's probability is computed only from the preceding words, not the following ones (as in bidirectional models). The rationale is that autoregressive (generative; e.g. GPT-style) models are considered better suited to approximating human surprisal during reading, since human readers can also only use the already-read context, especially in self-paced reading. For comparison, n-gram models trained on a Spanish corpus were included as baselines.
+
+For each sentence the object-noun surprisal was computed from each model, entered into a regression as a predictor, and its interaction with the categorical variables above was examined when predicting reading time in each target region. Finally, each model's performance in predicting the behavioural measures was compared against the other models and against baseline predictors (word frequency and word length).
+
+## Analysis and results
+
+The following sections describe the full analysis pipeline step by step, specifying for each stage the preprocessing and analyses performed, the statistical model adopted (its main assumptions, the variables considered, and the parameterisation choices), and the intermediate and final outputs obtained.
+
+The next chunk loads the R packages used throughout the analysis.
+
+```{r message=FALSE, warning=FALSE, results='hide'}
+# linear mixed-effects models (LMM)
+library(lme4)
+library(lmerTest)
+
+# cumulative link mixed models (CLMM)
+library(ordinal)
+
+# estimated marginal means
+library(emmeans)
+
+# stepwise model selection
+library(buildmer)
+```
+
+```{r, echo=TRUE, message=FALSE}
+library(readr)
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(ggplot2)
+library(jsonlite)
+library(broom)
+library(tibble)
+library(stringr)
+library(scales)
+
+# model-diagnostic helpers
+library(performance)   # collinearity / VIF for (mixed) models
+library(influence.ME)  # case-influence diagnostics for lmer models
+
+```
+
+```{r, echo=TRUE, message=FALSE}
+# Helper: add a 'significance' stars column from a numeric p-value column, then
+# format that same column for display ("<0.001" or rounded to `digits`). The stars
+# are computed from the NUMERIC p-values BEFORE the column is turned into a string,
+# which avoids the string-vs-number comparison that silently broke several tables.
+# Works with any p-value column name, e.g. "Pr(>|z|)", "Pr(>|t|)", "p_val".
+add_significance <- function(df, p_col, digits = 3) {
+  p <- df[[p_col]]
+  df$significance <- dplyr::case_when(
+    p < 0.001 ~ "***",
+    p < 0.01  ~ "**",
+    p < 0.05  ~ "*",
+    TRUE      ~ " "
+  )
+  df[[p_col]] <- dplyr::if_else(p < 0.001, "<0.001", as.character(round(p, digits)))
+  df
+}
+
+# Crude mean reading time per design cell (type_explained x correct) for one target
+# region; returns a ready-to-render kable. Replaces the averages_object/pp1/pp2 blocks.
+region_means_table <- function(data, region, caption) {
+  data %>%
+    group_by(type_explained, correct) %>%
+    summarise(
+      n    = n(),
+      mean = mean(.data[[region]], na.rm = TRUE),
+      sd   = sd(.data[[region]], na.rm = TRUE),
+      se   = sd(.data[[region]], na.rm = TRUE) / sqrt(n),
+      .groups = "drop_last"
+    ) %>%
+    mutate(correct = factor(correct, levels = c(1, 0))) %>%
+    arrange(correct) %>%
+    knitr::kable(digits = 1, caption = caption)
+}
+
+# 'Correlation test' table: total log-likelihood gain from adding each model's
+# surprisal to the surface-effects baseline. Shared by all target regions.
+corr_table <- function(comp_table, caption, digits = getOption("digits")) {
+  comp_table %>%
+    dplyr::as_tibble() %>%
+    mutate(lm_type = factor(lm_type, levels = c("1", models_list))) %>%
+    group_by(lm_type, lm_gain_tot) %>%
+    summarise(.groups = "drop") %>%
+    arrange(lm_type) %>%
+    mutate(lm_type = models_labs) %>%
+    knitr::kable(caption = caption, digits = digits)
+}
+
+# 'Robustness test' table: extra log-likelihood gain from the experimental fixed
+# effects once each model's surprisal is already in the model. Shared by all regions.
+robust_table <- function(comp_table, caption, digits = getOption("digits")) {
+  comp_table %>%
+    dplyr::as_tibble() %>%
+    filter(step != "base") %>%
+    mutate(lm_type = factor(lm_type, levels = c("1", models_list))) %>%
+    group_by(lm_type) %>%
+    summarise(delta_tot = sum(delta), .groups = "drop") %>%
+    arrange(lm_type) %>%
+    mutate(lm_type = models_labs) %>%
+    knitr::kable(caption = caption, digits = digits)
+}
+
+# Common tail of the model-comparison loops: turns an anova() table into the per-step
+# log-likelihood gains (lm_gain_tot / delta / step) used by the comparison figures.
+# `final_model` is the fullest nested model; `step_values`/`step_levels` are passed
+# verbatim so the existing row-to-label mapping is preserved exactly.
+# emmeans + regrid in one step (back-transform to the response scale): the idiom
+# used before every marginal-means contrast in the analysis.
+emm_rg <- function(object, specs, ...) regrid(emmeans(object, specs, ...))
+
+loglik_table <- function(anova_table, model, mod_base, mod_noLM, final_model,
+                         step_values, step_levels) {
+  anova_table %>%
+    mutate(
+      lm_gain_tot = if_else(
+        model != "1",
+        as.numeric(logLik(mod_base) - logLik(mod_noLM)),
+        as.numeric(logLik(final_model) - logLik(mod_base))
+      ),
+      delta   = lead(logLik) - logLik,
+      lm_type = model,
+      step    = factor(step_values, levels = step_levels)
+    )
+}
+```
+
+
+
+## Attention check (comprehension questions)
+
+About one third of the sentences — both experimental items and distractors — were followed by a true/false comprehension question, answered immediately after reading via one of two buttons on the button box. These checked that participants were attending to the content.
+
+Example:
+*Isabel vió la estudiante desde su ventana durante una mañana.* ('Isabel saw the student from her window during a morning.')
+Question: *Isabel miraba por la ventana.* — TRUE/FALSE ('Isabel was looking out of the window.')
+
+One question (see Appendix) was dropped from the accuracy computation because, in hindsight, it was judged misleading.
+
+```{r, echo=TRUE, message=FALSE}
+comprehension_data <- read_csv("comprehension_data.csv")
+
+# Recover a 0/1 `correct` column: the expected answer is coded in `comprehension`
+# ("A" = afirmativo / true, "E" = error / false) and the participant's answer in
+# `answer` ("SI"/"NO"). A trial is correct when answer SI matches "A" or answer NO
+# matches "E". subject_nr is shifted to 1..17 (raw subject IDs start at 10).
+comprehension_data <- comprehension_data %>%
+  mutate(correct = case_when(
+    (answer == "NO" | answer == "No") & comprehension == "E" ~ 1,
+    answer == "SI" & comprehension == "A" ~ 1,
+    TRUE ~ 0
+  )) %>%
+  mutate(subject_nr = subject_nr - 9)
+```
+
+For each participant we computed the percentage of correct answers. The threshold for keeping a participant's data was 90% accuracy (see Appendix for the reference).
+
+```{r message=FALSE}
+compr_sum <- comprehension_data %>% 
+  filter(question != "Felipe es presentador de teatro.") %>% 
+  group_by(subject_nr) %>% 
+  summarise(
+    correctedness = sum(correct), 
+    corr_perc = mean(correct==1) * 100
+    )
+```
+
+```{r echo=TRUE, message=FALSE}
+
+knitr::kable(compr_sum,
+             col.names = c("Subject", "Correct answers", "Correct %"),
+             digits = 1,
+  caption = "Table NUMBER. Number and percentage of correct comprehension answers per participant"
+)
+```
+
+Once the misleading question is excluded, all participants scored above 90% accuracy, so all of them were retained in the study.
+
+## Affectedness
+
+The next step was to test whether the a-priori classification of items into [+affected] / [−affected] aligns well with the empirical selection criterion of Heredero & García (2023). We first computed the mean acceptability scores for [+affected] and [−affected] sentences, both overall and per subject. Note that one subject could not, for reasons external to the experiment, complete the offline-judgement part; that subject is therefore excluded from this section and the next.
+
+```{r, echo=TRUE, message=FALSE}
+affectedness_data <- read_csv("affectedness_data.csv")
+affectedness_data <- affectedness_data %>% 
+  mutate(across(c(id,affected), as.factor)) %>% 
+  mutate(subject_nr = subject_nr - 9)
+```
+
+```{r message=FALSE}
+averages <- affectedness_data %>% 
+  group_by(affected) %>% 
+  summarise(
+    n = n(),
+    mean = mean(acceptability),
+    sd = sd(acceptability),
+    se = sd(acceptability) / sqrt(n))
+```
+
+```{r, echo=TRUE, message=FALSE}
+
+knitr::kable(averages,
+  caption = "Table NUMBER. Mean acceptability scores for [+affected] (1) and [-affected] (0) verbs in the Heredero & García (2023) test",
+  digits = 2
+)
+```
+
+```{r, echo=TRUE, message=FALSE}
+affectedness_data %>% 
+  ggplot(aes(x = affected, y = acceptability, fill = affected)) +
+    geom_boxplot(staplewidth = 0.5) +
+  xlab("Affected") +
+  ylab("Acceptability") +
+  theme_minimal()
+```
+
+
+
+
+```{r, echo=TRUE, message=FALSE}
+affectedness_data %>% 
+  ggplot(aes(affected, acceptability)) +
+  facet_wrap("~subject_nr") +
+  geom_boxplot(staplewidth = 0.5) +
+  xlab("Affectedness") +
+  ylab("Acceptability") +
+  theme_minimal()
+```
+
+Overall, [+affected] verbs received higher mean scores than [−affected] verbs, and for every subject the [+affected] mean is greater than or equal to the [−affected] mean.
+
+To test whether the [+affected] mean is significantly higher, we fitted a Cumulative Link Mixed Model (CLMM) to the test data, with the acceptability score as dependent variable, the binary [+affected]/[−affected] classification as predictor, the sentence's position in the experiment (`live_row`) as a covariate, a by-subject random slope for `affected`, and random intercepts for subjects and items.
+
+```{r message=FALSE, warning=FALSE}
+formula <- factor(acceptability) ~ 1 + affected + live_row + (1 + affected + live_row | subject_nr) +  (1 | id)
+
+mod_aff <- clmm(formula, data = affectedness_data, Hess = T)
+```
+
+```{r, echo=TRUE, message=FALSE}
+coefs <- as.data.frame(summary(mod_aff)$coefficients)
+
+aff_mod_sum <- coefs[!grepl("\\|", rownames(coefs)), , drop = FALSE] %>%
+  add_significance("Pr(>|z|)")
+
+knitr::kable(
+  aff_mod_sum,
+  caption = "Table NUMBER. CLMM effect of the verb's [affected] feature on acceptability in the Heredero & García (2023) test",
+  digits = 3
+)
+```
+
+
+We then assessed the significance of the difference between means by computing the estimated marginal means (EMMs) with Bonferroni correction, using the `emmeans` package.
+
+```{r message=FALSE}
+emm <- emm_rg(mod_aff, ~ affected, adjust = "bonferroni")
+pairs <- contrast(emm, method = "trt.vs.ctrl")
+```
+
+```{r, echo=TRUE, message=FALSE}
+pairs_table <- summary(pairs, c(T,F))
+
+knitr::kable(
+ pairs_table %>% 
+   select(!df),
+ digits = 2,
+ caption = "Table NUMBER. Difference between the EMMs of [+affected] and [-affected] verbs",
+ col.names = c("contrast", "estimate", "SE", "lower.CL", "upper.CL")
+)
+```
+
+```{r, echo=TRUE, message=FALSE}
+df_em <- as.data.frame(emm)
+ggplot(df_em, aes(x = affected, y = response)) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = asymp.LCL, ymax = asymp.UCL), width = 0.15) +
+  labs(y = "Acceptability", x = "Affected") +
+  theme_minimal()
+```
+
+
+
+The CLMM shows a negative, statistically significant effect of `live_row` (β = −0.079, p = 0.001): as the experiment progresses, the response distribution shifts towards lower scores across the whole scale. The `affected` variable instead has a positive, significant effect (β = 1.597, p = 0.017), indicating that participants are more likely to assign higher scores to sentences with [+affected] verbs.
+
+# Offline test: acceptability judgements on sentences with and without DOM
+
+
+
+```{r, echo=TRUE, message=FALSE}
+offline_data <- read_csv("offline_data.csv")
+
+test_data <- offline_data %>% 
+  mutate(type = as.factor(type)) %>% 
+  mutate(type_explained = case_when(
+                                     type==5 ~ "inanimate (definite) unmarked",
+                                     type==2 ~ "*inanimate (definite) marked",
+                                     type==1 ~ "animate indefinite marked",
+                                     type==4 ~ "*animate indefinite unmarked",
+                                     type==0 ~ "animate definite marked",
+                                     type==3 ~ "*animate definite unmarked")) %>% 
+  mutate(type_explained = as.factor(type_explained))
+```
+
+```{r message=FALSE}
+averages_offline <- test_data %>% 
+  group_by(type_explained) %>% 
+  summarise(n = n(),
+    mean = mean(acceptability, na.rm = T),
+            sd = sd(acceptability, na.rm = T),
+            se = sd(acceptability, na.rm = T) / sqrt(n))
+```
+
+```{r, echo=TRUE, message=FALSE}
+knitr::kable(
+  averages_offline,
+  caption = "Table NUMBER. Mean acceptability per [animate]/[definite]/[marked] sentence type",
+  digits = 2
+)
+```
+```{r, echo=TRUE, message=FALSE}
+test_data %>%
+  ggplot(aes(y = type_explained, x = acceptability, fill = type_explained)) +
+    geom_boxplot(staplewidth = 0.5) +
+  ylab("Sentence type") +
+  xlab("Acceptability") +
+  guides(fill = "none") +
+  theme_minimal()
+```
+
+
+## Offline acceptability
+
+We analyse the offline data with a CLMM. First we drop every sentence whose opposite version (correct/incorrect) was never shown in the test, so that each item-condition contributes a matched correct/incorrect pair. We then search over fixed-effect structures with the *buildmer* package until the best-supported model is reached, and finally extract the estimated marginal means with the *emmeans* package.
+
+```{r, echo=TRUE, message=FALSE}
+# Derive the experimental factors from `type` (0-5 encodes the 6 variants):
+#   origin    -> sociolinguistic background (from the catalan/latin dummies)
+#   condition -> animacy x definiteness; type %% 3 collapses each correct/incorrect
+#                pair into an_def (0/3), an_ind (1/4), inan_def (2/5)
+#   correct   -> 1 when marking matches the prescriptive norm (animate marked: types
+#                0, 1; inanimate unmarked: type 5), 0 otherwise
+offline_data <- offline_data %>%
+  mutate(
+    origin = case_when(
+      latin == 1 ~ "latin",
+      catalan == 1 ~ "catalan",
+      TRUE ~ "standard"
+    ),
+    condition = case_when(
+      type%%3 == 0 ~ "an_def",
+      type%%3 == 1 ~ "an_ind",
+      type%%3 == 2 ~ "inan_def"
+    ),
+    correct = if_else(
+      type %in% c(0,1,5), 1, 0
+    )
+  )
+```
+```{r, echo=TRUE, message=FALSE}
+itemset_ngram <- read_csv("itemset_ngram.csv")
+LLM_scores_Llama_3_1_8B <- read.csv("LLM_scores_Llama-3.1-8B.csv")
+LLM_scores_oscarGPT2 <- read.csv("LLM_scores_oscarGPT2.csv")
+Qwen3_8B_1_ <- read.csv("Qwen3-8B.csv")
+surprisal_baseline <- read.csv("baseline_models.csv")
+# Normalise the OOV flag to a real logical (the CSV stores Python-style "True"/"False").
+surprisal_baseline$oov <- surprisal_baseline$oov %in% c(TRUE, "True", "TRUE", "true")
+llama3_8b_spanish <- read.csv("llama3-8b-spanish.csv")
+
+# Lexical-frequency predictors (verb and object) from itemset_logprob.
+# We use neg_log_prob (the word's negative log-probability in the OSCAR-ES corpus)
+# directly as a lexical-cost / frequency predictor, so NO further log() is applied
+# downstream. In every sentence the verb is the 2nd word; the object is the 5th word
+# in marked sentences (type < 3, which contain the extra 'a' marker) and the 4th word
+# in unmarked sentences (type > 2).
+itemset_logprob <- read_csv("itemset_logprob.csv")
+
+freq_lookup <- itemset_ngram %>%
+  select(id, type, sentence) %>%
+  mutate(
+    .tokens   = str_split(gsub("[[:punct:]]", "", tolower(sentence)), "\\s+"),
+    verb_word = map_chr(.tokens, ~ .x[2]),
+    obj_word  = map2_chr(.tokens, type, ~ if (.y < 3) .x[5] else .x[4])
+  ) %>%
+  select(-.tokens) %>%
+  left_join(itemset_logprob %>% select(word, verb_freq = neg_log_prob),
+            by = c("verb_word" = "word")) %>%
+  left_join(itemset_logprob %>% select(word, obj_freq = neg_log_prob),
+            by = c("obj_word" = "word")) %>%
+  select(id, type, verb_freq, obj_freq)
+
+offline_data <- offline_data %>%
+  left_join(itemset_ngram %>%
+              select(
+                c("id", "type","kenlm_object", "kenlm_pp1", "kenlm_pp2")),
+            by = c("id","type")) %>% 
+  # OOV items (17, 22) excluded from the from-scratch baselines only: filtering the
+  # right table NA-es gru_obj/tf_obj for these items, so they drop out of every GRU/
+  # Transformer analysis (coherence, correlation, human comparison) while all other
+  # models and the behavioural analyses keep the full item set.
+  left_join(surprisal_baseline %>%
+              filter(!oov) %>%
+              select(
+                c("id","type","gru_obj","tf_obj")),
+            by = c("id","type")) %>% 
+  left_join(LLM_scores_oscarGPT2 %>% 
+              rename(gpt2 = surprisal_obj) %>% 
+              select(
+                c("id","type","gpt2")),
+            by = c("id","type")) %>% 
+  left_join(LLM_scores_Llama_3_1_8B %>% 
+              rename(llama_base = surprisal_obj) %>% 
+              select(
+                c("id","type","llama_base")),
+            by = c("id","type")) %>% 
+  left_join(Qwen3_8B_1_ %>% 
+              rename(qwen = surprisal_obj) %>% 
+              select(
+                c("id","type","qwen")),
+            by = c("id","type")) %>% 
+  left_join(llama3_8b_spanish %>%
+              rename(llama_spanish = surprisal_obj) %>%
+              select(
+                c("id","type","llama_spanish")),
+            by = c("id","type")) %>%
+  left_join(freq_lookup, by = c("id","type"))
+
+# Normalise the KenLM sentence scores by the number of words (11 if DOM-marked, 10 if not).
+offline_data <- offline_data %>%
+  mutate(kenlm_object = if_else(type < 3, kenlm_object / 11, kenlm_object / 10),
+         kenlm_pp1 = if_else(type < 3, kenlm_pp1 / 11, kenlm_pp1 / 10),
+         kenlm_pp2 = if_else(type < 3, kenlm_pp2 / 11, kenlm_pp2 / 10)
+         )
+
+offline_data <- offline_data %>% 
+  mutate(across(
+    c("subject_nr","id","origin","condition","animate","correct","affected"),
+    as.factor
+  ))
+
+offline_data$origin <- relevel(offline_data$origin, ref = "standard")
+```
+
+```{r message=FALSE}
+# Keep only item-conditions for which BOTH the correct and the incorrect variant were
+# presented, so every cell contributes a matched pair (mirrors the design exclusions).
+offline_data_filt <- offline_data %>%
+  group_by(id,condition) %>%
+  filter(n_distinct(correct) == 2) %>%
+  ungroup()
+
+rows_off <- nrow(offline_data)
+rows_off_filt <- nrow(offline_data_filt)
+sum_df <- data.frame(
+  rows_off = rows_off,
+  rows_off_filt = rows_off_filt,
+  rows_perc = (rows_off - rows_off_filt) * 100 / rows_off)
+```
+
+```{r, echo=TRUE, message=FALSE}
+
+knitr::kable(
+  sum_df,
+  col.names = c("N. sentences (total)", "N. sentences (filtered)", "% rows removed"),
+  digits = 1,
+  caption = "Table NUMBER. Percentage of sentences removed from the acceptability dataset"
+)
+```
+
+Starting from a maximal fixed-effect structure, the model is reduced by stepwise selection (`buildmer` / `buildclmm`). The search is shown below for documentation but is **not** re-run on knit (it is slow and its outcome is fixed); the selected structure is refitted explicitly in the next chunk.
+
+```
+general_form <- factor(acceptability) ~ live_row + correct/(condition*affected*origin) +
+  obj_freq + verb_freq +
+  (1 | id) + (1 | subject_nr)
+
+
+offline_mod <- buildclmm(general_form, offline_data_filt)
+```
+
+The structure selected by `buildclmm` is refitted here and used for everything that follows.
+
+```{r message=FALSE}
+offline_form <- factor(acceptability) ~ 1 + correct + correct:condition + correct:origin + obj_freq + verb_freq + correct:affected + 
+  (1 | subject_nr) + (1 | id)
+
+offline_mod <- clmm(offline_form, offline_data_filt)
+```
+
+```{r, echo=TRUE, message=FALSE}
+coefs <- as.data.frame(summary(offline_mod)$coefficients)
+offline_mod_sum <- coefs[!grepl("\\|", rownames(coefs)), , drop = FALSE]
+
+offline_mod_sum <- offline_mod_sum %>%
+  add_significance("Pr(>|z|)")
+
+knitr::kable(
+  offline_mod_sum,
+  caption = "Table NUMBER. Significant CLMM effects on item acceptability judgements",
+  digits = 3
+)
+```
+
+From the fitted model we compute estimated marginal means (EMMs) on the response scale and contrast correct vs. incorrect sentences: first overall, then split by `condition` (animacy × definiteness) and by `origin` (participants' background).
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+emm <- emm_rg(offline_mod, ~ correct, adjust = "bonferroni", nesting = NULL)
+
+eff_correct <- contrast(
+  emm,
+  method = "pairwise"
+)
+
+pairs_table <- summary(eff_correct, c(T,F)) %>% 
+  select(!df)
+
+knitr::kable(
+ pairs_table,
+ digits = 2,
+ caption = "Table NUMBER. Difference between EMMs of acceptability for correct vs. incorrect sentences",
+ col.names = c("contrast", "estimate", "SE", "lower.CL", "upper.CL")
+)
+```
+
+
+```{r, echo=TRUE, message=FALSE}
+emm <- emm_rg(offline_mod, ~ correct * condition, adjust = "bonferroni", nesting = NULL)
+
+eff_correct <- contrast(
+  emm,
+  method = "pairwise",
+  by = "condition"
+)
+
+pairs <- contrast(eff_correct, method = "trt.vs.ctrl", by = NULL, adjust = 'bonferroni')
+knitr::kable(
+  summary(eff_correct, infer = c(T,F)) %>% 
+    select(!df),
+  digits = 2,
+  caption = "Table NUMBER. a. Difference between EMMs of acceptability by object [animate]/[definite] features. b. Comparison of the differences",
+  col.names = c("contrast", "condition", "estimate", "SE", "lower.CL", "upper.CL")
+)
+
+knitr::kable(
+  summary(pairs, infer = c(T,F)) %>% 
+    select(!df),
+  digits = 2,
+  col.names = c("contrast", "estimate", "SE", "lower.CL", "upper.CL")
+)
+
+```
+```{r, echo=TRUE, message=FALSE}
+df_em <- as.data.frame(emm)
+pd = position_dodge(width = 0.4)
+ggplot(df_em, aes(x = correct, y = response, color = condition)) +
+  geom_point(size = 3, position = pd) +
+  geom_errorbar(aes(ymin = asymp.LCL, ymax = asymp.UCL), 
+                width = 0.15,
+                position = pd) +
+  labs(y = "Acceptability", x = "Correct", color = "Condition") +
+  theme_minimal()
+```
+
+
+```{r, echo=TRUE, message=FALSE}
+emm <- emm_rg(offline_mod, ~ correct * origin, adjust = "bonferroni", nesting = NULL)
+
+eff_correct <- contrast(
+  emm,
+  method = "pairwise",
+  by = c("origin")
+)
+
+pairs <- contrast(eff_correct, method = "trt.vs.ctrl", by = NULL, adjust = 'bonferroni')
+
+knitr::kable(
+  summary(eff_correct, infer = c(T,F)) %>% 
+    select(!df),
+  digits = 2,
+  caption = "Table NUMBER. a. Difference between EMMs of acceptability by participant background. b. Comparison of the differences",
+  col.names = c("contrast", "origin", "estimate", "SE", "lower.CL", "upper.CL")
+)
+
+knitr::kable(
+  summary(pairs, infer = c(T,F)) %>% 
+    select(!df),
+  digits = 2,
+  col.names = c("contrast", "estimate", "SE", "lower.CL", "upper.CL")
+)
+
+```
+```{r, echo=TRUE, message=FALSE}
+df_em <- as.data.frame(emm)
+pd = position_dodge(width = 0.4)
+ggplot(df_em, aes(x = correct, y = response, color = origin)) +
+  geom_point(size = 3, position = pd) +
+  geom_errorbar(aes(ymin = asymp.LCL, ymax = asymp.UCL), 
+                width = 0.15,
+                position = pd) +
+  labs(y = "Acceptability", x = "Correct", color = "Origin") +
+  theme_minimal()
+```
+
+```{r, echo=TRUE, message=FALSE}
+emm <- emm_rg(offline_mod, ~ correct * affected, adjust = "bonferroni", nesting = NULL)
+
+eff_correct <- contrast(
+  emm,
+  method = "pairwise",
+  by = c("affected")
+)
+
+pairs <- contrast(eff_correct, method = "trt.vs.ctrl", by = NULL, adjust = 'bonferroni')
+
+knitr::kable(
+  summary(eff_correct, infer = c(T,F)) %>% 
+    select(!df),
+  digits = 2,
+  caption = "Table NUMBER. a. Difference between EMMs of acceptability by affectedness of the object. b. Comparison of the differences",
+  col.names = c("contrast", "origin", "estimate", "SE", "lower.CL", "upper.CL")
+)
+
+knitr::kable(
+  summary(pairs, infer = c(T,F)) %>% 
+    select(!df),
+  digits = 2,
+  col.names = c("contrast", "estimate", "SE", "lower.CL", "upper.CL")
+)
+
+```
+```{r, echo=TRUE, message=FALSE}
+df_em <- as.data.frame(emm)
+pd = position_dodge(width = 0.4)
+ggplot(df_em, aes(x = correct, y = response, color = affected)) +
+  geom_point(size = 3, position = pd) +
+  geom_errorbar(aes(ymin = asymp.LCL, ymax = asymp.UCL), 
+                width = 0.15,
+                position = pd) +
+  labs(y = "Acceptability", x = "Correct", color = "Affected") +
+  theme_minimal()
+```
+
+
+
+## Reading times — building the data frame
+
+The reading-time data are rebuilt from the raw OpenSesame output (`combined_data.csv`). We keep the experimental items (`offline == 'no'`, `id < 100`) and parse the per-word reading times stored as a JSON array in `response`. Because marked sentences contain the extra *a* token, the object sits one position later than in unmarked sentences (index 5+i vs 4+i). Times are retained only if between 0.05 s and 2.5 s, then converted to milliseconds; values outside that window become NA.
+
+```{r, echo=TRUE, message=FALSE}
+combined_data <- read_csv("combined_data.csv")
+
+# Parse the JSON list of per-word reading times (seconds) for each experimental trial.
+extract_data <- combined_data %>%
+  filter(offline=='no', id<100) %>%
+  rowwise() %>%
+  mutate(response_json = list(fromJSON(response)))
+
+# Per-word reading times (ms), aligned by sentence type; out-of-range times -> NA.
+for (i in 0:6) {
+  extract_data <- extract_data %>%
+    mutate(single_word = case_when(
+      type<3 & response_json[5+i] > 0.05 & response_json[5+i] < 2.5 ~ response_json[5+i] * 1000,
+      type>2 & response_json[4+i] > 0.05 & response_json[4+i] < 2.5 ~ response_json[4+i] * 1000
+    ))
+  extract_data[[paste0("word_",i)]] <- extract_data$single_word
+}
+
+
+# Word length (characters) of each target word, aligned by sentence type.
+
+extract_data <- extract_data %>% 
+  rowwise() %>% 
+  mutate(string_list = strsplit(gsub("[[:punct:]]", "", sentence), "\\s")
+  )
+
+for (i in 0:6) {
+  extract_data <- extract_data %>% 
+    mutate(single_word = case_when(
+      type<3 ~ nchar(string_list[5+i]),
+      type>2 ~ nchar(string_list[4+i]))
+    )
+  extract_data[[paste0("word_",i,"_len")]] <- extract_data$single_word
+}
+
+# Target-region reading times (object, PP1, PP2) and their log transform.
+
+extract_data <- extract_data %>% 
+  mutate(
+    object = word_0,
+    pp1 = word_1 + word_2 + word_3,
+    pp2 = word_4 + word_5 + word_6
+  ) %>% 
+  mutate(
+    object_len = word_0_len,
+    pp1_len = word_1_len + word_2_len + word_3_len,
+    pp2_len = word_4_len + word_5_len + word_6_len
+  ) %>% 
+mutate(
+  object_log = log(object),
+  pp1_log = log(pp1),
+  pp2_log = log(pp2))
+
+# Assemble the analysis data frame and derive the experimental factors.
+reading_data <- extract_data %>%
+  select(c("id","live_row","subject_nr","type","catalan","latin",
+           "object","pp1","pp2","object_len","pp1_len","pp2_len",
+           "object_log","pp1_log","pp2_log")) %>% 
+  mutate(
+    origin = case_when(
+      latin == 1 ~ "latin",
+      catalan == 1 ~ "catalan",
+      TRUE ~ "standard"
+    ),
+    condition = case_when(
+      type%%3 == 0 ~ "an_def",
+      type%%3 == 1 ~ "an_ind",
+      type%%3 == 2 ~ "inan_def"
+    ),
+    animate = if_else(
+      type%%3 == 2, 0, 1
+    ),
+    affected = if_else(
+      id < 25, 1, 0
+    ),
+    correct = if_else(
+      type %in% c(0,1,5), 1, 0
+    )
+  )
+
+reading_data <- reading_data %>% 
+  left_join(itemset_ngram %>% 
+              select(
+                c("id", "type","kenlm_object", "kenlm_pp1", "kenlm_pp2")),
+            by = c("id","type")) %>% 
+  # OOV items (17, 22) excluded from the from-scratch baselines only: filtering the
+  # right table NA-es gru_obj/tf_obj for these items, so they drop out of every GRU/
+  # Transformer analysis (coherence, correlation, human comparison) while all other
+  # models and the behavioural analyses keep the full item set.
+  left_join(surprisal_baseline %>%
+              filter(!oov) %>%
+              select(
+                c("id","type","gru_obj","tf_obj")),
+            by = c("id","type")) %>% 
+  left_join(LLM_scores_oscarGPT2 %>% 
+              rename(gpt2 = surprisal_obj) %>% 
+              select(
+                c("id","type","gpt2")),
+            by = c("id","type")) %>% 
+  left_join(LLM_scores_Llama_3_1_8B %>% 
+              rename(llama_base = surprisal_obj) %>% 
+              select(
+                c("id","type","llama_base")),
+            by = c("id","type")) %>% 
+  left_join(Qwen3_8B_1_ %>% 
+              rename(qwen = surprisal_obj) %>% 
+              select(
+                c("id","type","qwen")),
+            by = c("id","type")) %>% 
+  left_join(llama3_8b_spanish %>%
+              rename(llama_spanish = surprisal_obj) %>%
+              select(
+                c("id","type","llama_spanish")),
+            by = c("id","type")) %>%
+  left_join(freq_lookup, by = c("id","type"))
+
+# Normalise the KenLM sentence scores by the number of words (11 if DOM-marked, 10 if not).
+reading_data <- reading_data %>%
+  mutate(kenlm_object = if_else(type < 3, kenlm_object / 11, kenlm_object / 10),
+         kenlm_pp1 = if_else(type < 3, kenlm_pp1 / 11, kenlm_pp1 / 10),
+         kenlm_pp2 = if_else(type < 3, kenlm_pp2 / 11, kenlm_pp2 / 10)
+         )
+```
+
+```{r, echo=TRUE, message=FALSE}
+# Cast the experimental variables to factors and add a readable label per sentence type.
+reading_data <- reading_data %>%
+  mutate(across(
+    c("subject_nr","id","origin","condition","animate","correct","affected"),
+    as.factor
+  ))
+
+reading_data <- reading_data %>% 
+  mutate(type_explained = case_when(
+                                     type==5 ~ "inanimate (definite) unmarked",
+                                     type==2 ~ "*inanimate (definite) marked",
+                                     type==1 ~ "animate indefinite marked",
+                                     type==4 ~ "*animate indefinite unmarked",
+                                     type==0 ~ "animate definite marked",
+                                     type==3 ~ "*animate definite unmarked"))
+```
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+region_means_table(
+  reading_data, "object",
+  caption = "Table NUMBER. Mean object reading times by [animate]/[definite] features"
+)
+
+```
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+region_means_table(
+  reading_data, "pp1",
+  caption = "Table NUMBER. Mean PP1 reading times by [animate]/[definite] features"
+)
+
+```
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+region_means_table(
+  reading_data, "pp2",
+  caption = "Table NUMBER. Mean PP2 reading times by [animate]/[definite] features"
+)
+
+```
+
+
+We now quantify how much data each filtering step removes. `filter_df` drops trials whose target reading time is NA (out of the 50–2500 ms window), then keeps only item-conditions that retain both the correct and the incorrect variant, returning the filtered data plus the percentage lost at each step.
+
+```{r, echo=TRUE, message=FALSE}
+filter_df <- function(target, reading_data) {
+  total_rows <- nrow(reading_data)
+  return_data <- reading_data %>% 
+    filter(!is.na(.data[[target]]))
+  lost_rows0 <- (total_rows - nrow(return_data)) * 100 / total_rows
+  return_data_filt <- return_data %>% 
+    group_by(id,condition) %>% 
+    filter(n_distinct(correct)==2) %>% 
+    ungroup()
+  lost_rows1 <- (nrow(return_data) - nrow(return_data_filt)) * 100 / nrow(return_data)
+  list(
+    data = return_data_filt,
+    lost0 = lost_rows0,
+    lost1 = lost_rows1
+  )
+}
+
+filter_res_obj <- filter_df("object", reading_data)
+object_data <- filter_res_obj$data
+
+filter_res_pp1 <- filter_df("pp1", reading_data)
+pp1_data <- filter_res_pp1$data
+
+filter_res_pp2 <- filter_df("pp2", reading_data)
+pp2_data <- filter_res_pp2$data
+```
+
+```{r, echo=TRUE, message=FALSE}
+filter_summary <- data.frame(
+  target = c("object","pp1","pp2"),
+  lost_first_step = c(filter_res_obj$lost0, filter_res_pp1$lost0, filter_res_pp2$lost0),
+  lost_second_step = c(filter_res_obj$lost1, filter_res_pp1$lost1, filter_res_pp2$lost1)
+)
+
+knitr::kable(
+  filter_summary,
+  digits = 1,
+  caption = "Table NUMBER. Percentage of rows dropped from each model due to: 1. reading time <50 ms or >2500 ms; 2. missing matching correct/incorrect counterpart in the dataset"
+)
+```
+
+Each target region's model is selected with `buildmer`, starting from the maximal predictor set below. As with the offline model, the selection is shown for documentation but not re-run on knit; the selected models are refitted explicitly in the following chunks. By-item random intercepts were dropped from the reading-time models because they prevented convergence; only by-subject random effects are retained.
+```{r message=FALSE}
+general_predictors <- c("live_row", "verb_freq", "obj_freq", "object_len", "correct/(condition*affected*origin)",
+    "(live_row + correct | subject_nr)", "(1 | id)")
+```
+```
+object_mod_search <- buildmer(
+  reformulate(general_predictors, response = "object_log"),
+  data = object_data,
+  buildmerControl = buildmerControl(args = list(control = lmerControl(optimizer = "bobyqa")))
+)
+```
+
+```{r message=FALSE, warning=FALSE}
+object_form <- object_log ~ 1 + live_row + object_len + correct + correct:origin + correct:condition + correct:origin:condition + correct:affected +  
+    correct:condition:affected + (1 + live_row | subject_nr)
+
+object_mod <- lmer(object_form, object_data, control = lmerControl(optimizer = "bobyqa"))
+```
+
+```{r, echo=TRUE, message=FALSE}
+knitr::kable(
+  add_significance(as.data.frame(summary(object_mod)$coefficients), "Pr(>|t|)"),
+  digits = 3,
+  caption = "Table NUMBER. LMM effects of [animate], [definite], [marked], affectedness, and participant background on object reading times"
+)
+
+```
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+emm <- emm_rg(object_mod, ~ correct * condition, nesting = NULL)
+
+eff_correct <- contrast(
+  emm,
+  method = "pairwise",
+  by = "condition"
+)
+
+pairs <- contrast(eff_correct, method = "trt.vs.ctrl", by = NULL, adjust = 'bonferroni')
+
+knitr::kable(summary(eff_correct, infer = c(T,F)),
+             digits = 2,
+             caption = "Table NUMBER. a. Difference between EMMs of object reading times for correct vs. incorrect sentences, by [animate]/[definite] features. b. Comparison of the differences")
+knitr::kable(summary(pairs, infer = c(T,F)),
+             digits = 2)
+```
+```{r, echo=TRUE, message=FALSE}
+emm <- emm_rg(object_mod, ~ correct * condition * affected, nesting = NULL)
+
+eff_correct <- contrast(
+  emm,
+  method = "trt.vs.ctrl",
+  by = c("condition","affected")
+)
+
+pairs <- contrast(eff_correct, method = "trt.vs.ctrl", by = "condition", adjust = 'bonferroni')
+
+knitr::kable(summary(eff_correct, infer = c(T,F)),
+             digits = 2,
+             caption = "Table NUMBER. a. Difference between EMMs of object reading times for correct vs. incorrect sentences, by [animate]/[definite] and [affected]. b. Comparison of the differences")
+knitr::kable(summary(pairs, infer = c(T,F)),
+             digits = 2)
+```
+
+```
+pp1_mod_search <- buildmer(
+  reformulate(general_predictors, response = "pp1_log"),
+  data = object_data,
+  buildmerControl = buildmerControl(args = list(control = lmerControl(optimizer = "bobyqa")))
+)
+```
+```{r message=FALSE}
+pp1_form <- pp1_log ~ 1 + live_row + correct + obj_freq + (1 + live_row | subject_nr)
+pp1_mod <- lmer(pp1_form, pp1_data, control = lmerControl(optimizer = "bobyqa"))
+```
+
+```{r, echo=TRUE, message=FALSE}
+knitr::kable(
+  add_significance(as.data.frame(summary(pp1_mod)$coefficients), "Pr(>|t|)"),
+  digits = 3,
+  caption = "Table NUMBER. LMM effect of [marked] on PP1 reading times"
+)
+```
+
+
+```{r, echo=TRUE, message=FALSE}
+emm <- emm_rg(pp1_mod, ~ correct, adjust = "bonferroni", nesting = NULL)
+
+eff_correct <- contrast(
+  emm,
+  method = "trt.vs.ctrl"
+)
+
+knitr::kable(summary(eff_correct, infer = c(T,F)),
+             digits = 2,
+  caption = "Table NUMBER. a. Difference between EMMs of PP1 reading times for correct vs. incorrect sentences"
+)
+
+df_em <- as.data.frame(emm)
+ggplot(df_em, aes(x = correct, y = emmean)) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = lower.CL, ymax = upper.CL), 
+                width = 0.15,
+                ) +
+  labs(y = "Reading time", x = "Correct") +
+  theme_minimal()
+```
+```
+pp2_mod_search <- buildmer(
+  reformulate(general_predictors, response = "pp2_log"),
+  data = object_data,
+  buildmerControl = buildmerControl(args = list(control = lmerControl(optimizer = "bobyqa")))
+)
+```
+
+```{r message=FALSE}
+pp2_form <- pp2_log ~ 1 + live_row + correct + correct:condition + correct:affected + correct:condition:affected + (1 + live_row | subject_nr)
+pp2_mod <- lmer(pp2_form, pp2_data, control = lmerControl(optimizer = "bobyqa"))
+```
+
+```{r, echo=TRUE, message=FALSE}
+knitr::kable(
+  add_significance(as.data.frame(summary(pp2_mod)$coefficients), "Pr(>|t|)"),
+  digits = 3,
+  caption = "Table NUMBER. LMM effects of [marked] and [animate] on PP2 reading times"
+)
+```
+
+
+```{r message=FALSE}
+emm <- emm_rg(pp2_mod, ~ correct * affected, nesting = NULL)
+
+eff_correct <- contrast(
+  emm,
+  method = "trt.vs.ctrl",
+  by = "affected"
+)
+
+pairs <- contrast(eff_correct, method = "trt.vs.ctrl", by = NULL, adjust = 'bonferroni')
+
+knitr::kable(
+  summary(eff_correct, infer = c(T,F)),
+  digits = 2,
+  caption = "Table NUMBER. a. Difference between EMMs of PP2 reading times for correct vs. incorrect sentences, by [affected] features. b. Comparison of the differences"
+)
+
+knitr::kable(
+ summary(pairs, infer = c(T,F)),
+ digits = 2
+)
+```
+```{r, echo=TRUE, message=FALSE}
+emm <- emm_rg(pp2_mod, ~ correct * condition * affected, nesting = NULL)
+
+eff_correct <- contrast(
+  emm,
+  method = "trt.vs.ctrl",
+  by = c("condition","affected")
+)
+
+pairs <- contrast(eff_correct, method = "trt.vs.ctrl", by = "condition", adjust = 'bonferroni')
+
+knitr::kable(summary(eff_correct, infer = c(T,F)),
+             digits = 2,
+             caption = "Table NUMBER. a. Difference between EMMs of PP2 reading times for correct vs. incorrect sentences, by [animate]/[definite] and [affected]. b. Comparison of the differences")
+knitr::kable(summary(pairs, infer = c(T,F)),
+             digits = 2)
+```
+
+## Model diagnostics: collinearity and influence
+
+Two robustness checks before interpreting the models. **Collinearity**: variance inflation factors (VIF) among the fixed-effect predictors — high values are expected and harmless for interaction terms, so the concern is only high VIF among the main continuous predictors (word length, frequency, `live_row`). **Influence**: whether single subjects disproportionately drive the fixed effects, which matters here given the small sample (16–17 subjects). We refit each reading-time model leaving out one subject at a time and flag subjects whose Cook's distance exceeds the conventional 4/n threshold. (Case-influence diagnostics via `influence.ME` apply to the `lmer` reading-time models; they are not available for the `clmm` acceptability models, so only VIF is reported for those.)
+
+```{r message=FALSE, warning=FALSE}
+# Collinearity (VIF). tryCatch so an unsupported model type returns a message, not an error.
+diag_models <- list(object = object_mod, pp1 = pp1_mod, pp2 = pp2_mod)
+
+collinearity_checks <- lapply(diag_models, function(m)
+  tryCatch(performance::check_collinearity(m), error = function(e) conditionMessage(e)))
+
+collinearity_checks
+```
+
+```{r message=FALSE, warning=FALSE}
+# Case influence: Cook's distance per subject for the lmer reading-time models.
+# influence.ME refits the model dropping one subject at a time (slow but fine for ~17 subjects).
+
+object_mod_l4 <- lme4::lmer(object_form, data = object_data, control = lmerControl(optimizer = "bobyqa"))
+pp1_mod_l4    <- lme4::lmer(pp1_form,    data = pp1_data,    control = lmerControl(optimizer = "bobyqa"))
+pp2_mod_l4    <- lme4::lmer(pp2_form,    data = pp2_data,    control = lmerControl(optimizer = "bobyqa"))
+
+influence_by_subject <- function(model) {          # <-- nessun argomento 'data'
+  inf <- influence.ME::influence(model, group = "subject_nr")
+  cd  <- cooks.distance(inf)
+  data.frame(subject = rownames(cd), cooks_distance = as.numeric(cd)) %>%
+    mutate(flagged = cooks_distance > 4 / n()) %>%
+    arrange(desc(cooks_distance))
+}
+
+influence_object <- influence_by_subject(object_mod_l4)
+influence_pp1    <- influence_by_subject(pp1_mod_l4)
+influence_pp2    <- influence_by_subject(pp2_mod_l4)
+
+knitr::kable(influence_object, digits = 3,
+  caption = "Table NUMBER. Object model: subject-level Cook's distance (flagged if > 4/n)")
+knitr::kable(influence_pp1, digits = 3,
+  caption = "Table NUMBER. PP1 model: subject-level Cook's distance (flagged if > 4/n)")
+knitr::kable(influence_pp2, digits = 3,
+  caption = "Table NUMBER. PP2 model: subject-level Cook's distance (flagged if > 4/n)")
+```
+```{r message=FALSE}
+# --- Sensitivity analysis: drop the most influential subject (S23) -------------
+# For the two models where S23 was flagged by Cook's distance, refit without that
+# subject and compare the fixed-effect estimates with the full-sample model.
+# The reduced model is refit with lme4::lmer (not lmerTest) and subject_nr is
+# droplevels-ed so no empty subject level is left behind.
+sensitivity_drop <- function(fitted_full, formula, data, subj) {
+  reduced_data <- droplevels(dplyr::filter(data, subject_nr != subj))
+  reduced <- lme4::lmer(formula, reduced_data,
+                        control = lmerControl(optimizer = "bobyqa"))
+  as.data.frame(round(cbind(full   = fixef(fitted_full),
+                            no_s23 = fixef(reduced)), 3))
+}
+
+object_sens <- sensitivity_drop(object_mod, object_form, object_data, 23)
+pp1_sens    <- sensitivity_drop(pp1_mod,    pp1_form,    pp1_data,    23)
+
+knitr::kable(
+  object_sens,
+  caption = "Table NUMBER. Object reading-time model: fixed-effect estimates for the full sample vs. with the most influential subject (S23) removed. Comparable estimates indicate the model's conclusions are robust to that participant."
+)
+
+knitr::kable(
+  pp1_sens,
+  caption = "Table NUMBER. PP1 reading-time model: fixed-effect estimates for the full sample vs. with the most influential subject (S23) removed. Comparable estimates indicate the model's conclusions are robust to that participant."
+)
+
+```
+
+## Validating the comparison method on simulated data
+
+Before applying the log-likelihood comparison to the real models, we validate the procedure on synthetic data with a known structure. We simulate reading times that depend on a violation × animacy interaction, together with seven artificial "surprisal" predictors (m0–m6) whose relationship to the design is deliberately varied — from unrelated (m0) to fully matching the effect and the item structure (m6). A good comparison method should recover these known differences.
+
+```{r message=FALSE}
+set.seed(42)
+
+# Subjects and items
+n_subjects <- 20
+n_items <- 50
+
+subjects <- paste0("S", sprintf("%02d", 1:n_subjects))
+items <- paste0("I", sprintf("%02d", 1:n_items))
+
+# Reading-time parameters
+rt_baseline <- 500
+rt_incorrect_effect <- 100 # extra ms on incorrect sentences
+subj_sd <- 60 # SD of the by-subject random effect
+item_sd <- 40 # SD of the by-item random effect
+residual_sd <- 80 # residual-noise SD
+
+# Surprisal parameters
+surp_baseline <- 5
+surp_incorrect_effect <- 0.5 # extra surprisal on incorrect sentences
+item_surp_sd <- 0.2 # SD of the per-item random effect on surprisal
+surp_residual_sd <- 0.1 # residual-noise SD
+
+# Random intercepts for items and subjects
+subj_intercepts <- rnorm(n_subjects, mean = 0, sd = subj_sd)
+item_intercepts <- rnorm(n_items, mean = 0, sd = item_sd)
+names(subj_intercepts) <- subjects
+names(item_intercepts) <- items
+
+# Random item offsets (surprisal only)
+item_offsets <- rnorm(n_items, mean = 0, sd = item_surp_sd)
+names(item_offsets) <- items
+
+# Build the dataset
+rows <- list()
+
+for (it in items) {
+  
+  # Counterbalancing: half the subjects see the item in its incorrect form
+  incorrect_subj <- sample(subjects, size = n_subjects / 2, replace = FALSE)
+  
+  # half see it as inanimate
+  inanim_subj <- sample(subjects, size = n_subjects / 2, replace = FALSE)
+  
+  for (s in subjects) {
+    
+    condition <- ifelse(s %in% incorrect_subj, "incorrect", "correct")
+    incorrect_flag <- ifelse(condition == "incorrect", 1, 0)
+    
+    animacy <- ifelse(s %in% inanim_subj, "inanimate", "animate")
+    # the [-animate] feature halves the violation effect
+    inanimate_flag <- ifelse(animacy == "inanimate", 0.5, 1)
+    
+    # Surprisal (does not vary by subject)
+    # model 0: correlated with nothing
+    surprisal0 <- surp_baseline + item_offsets[it] + 
+      rnorm(1, 0, surp_residual_sd)
+    
+    # model 1: correlated only with the item intercepts
+    surprisal1 <- surp_baseline + item_intercepts[it] / 100 +
+      rnorm(1, 0, surp_residual_sd)
+    
+    # model 2: correlated only with the main (violation) effect
+    surprisal2 <- surp_baseline + item_offsets[it] +
+      surp_incorrect_effect * incorrect_flag +
+      rnorm(1, 0, surp_residual_sd)
+    
+    # model 3: main effect plus the animacy interaction
+    surprisal3 <- surp_baseline + item_offsets[it] +
+      surp_incorrect_effect * incorrect_flag * inanimate_flag +
+      rnorm(1, 0, surp_residual_sd)
+    
+    # model 4: item intercepts plus the main effect
+    surprisal4 <- surp_baseline + item_intercepts[it] / 100 +
+      surp_incorrect_effect * incorrect_flag +
+      rnorm(1, 0, surp_residual_sd)
+    
+    # model 5: all effects plus the item intercepts
+    surprisal5 <- surp_baseline + item_intercepts[it] / 100 +
+      surp_incorrect_effect * incorrect_flag * inanimate_flag +
+      rnorm(1, 0, surp_residual_sd)
+    
+    # model 6: everything, plus its own per-item random offsets
+    surprisal6 <- surp_baseline + item_intercepts[it] / 100 + item_offsets[it] +
+      surp_incorrect_effect * incorrect_flag * inanimate_flag +
+      rnorm(1, 0, surp_residual_sd)
+    
+    # Reading time (varies by subject and item, plus residual noise)
+    rt <- rt_baseline +
+      rt_incorrect_effect * incorrect_flag * inanimate_flag +
+      subj_intercepts[s] + item_intercepts[it] +
+      rnorm(1, 0, residual_sd)
+    
+    rows[[length(rows) + 1]] <- data.frame(
+      subject = s,
+      item = it,
+      condition = condition,
+      animacy = animacy,
+      incorrect = incorrect_flag,
+      reading_time_ms = rt,
+      m0 = surprisal0,
+      m1 = surprisal1,
+      m2 = surprisal2,
+      m3 = surprisal3,
+      m4 = surprisal4,
+      m5 = surprisal5,
+      m6 = surprisal6
+    )
+  }
+}
+
+df <- do.call(rbind, rows)
+```
+
+We now look for the best way to tell the models apart: for each artificial model we measure how much its surprisal improves a reading-time model, and how much the experimental fixed and random effects still add on top.
+```{r message=FALSE}
+get_loglik <- function(model, df, mod_noLM) {
+  # Baseline LMM: surface effects + this model's surprisal as predictors
+  form <- reformulate(c(model,"(1|subject)"), response = "reading_time_ms")
+  mod_base <- lmer(form, df, REML = F)
+  # Add the experimental and random effects one at a time
+  mod_eff <- update(mod_base, . ~ . + condition)
+  mod_int <- update(mod_eff, . ~ . + condition:animacy) 
+  mod_rand <- update(mod_int, . ~ . + (1|item))
+  
+  anova_table <- as.data.frame(anova(mod_base, mod_rand, mod_eff, mod_int))
+  anova_table %>% 
+  mutate(
+    # Gain from adding this model's surprisal to the no-LM baseline
+    lm_gain_tot = as.numeric(logLik(mod_base) - logLik(mod_noLM)),
+    
+    # Step-by-step gain from adding the experimental effects
+    delta = lead(logLik) - logLik,
+    lm_type = model,
+    step = factor(c("main_eff","interaction","rand_eff","base"), levels = c("base","rand_eff", "interaction", "main_eff")),
+    delta_tot = sum(delta, na.rm = T)
+  )
+}
+
+mod_noLM <- lmer(reading_time_ms ~ 1 + (1|subject), df)
+
+total_table <- bind_rows(
+  map(paste0("m",0:6), get_loglik, df = df, mod_noLM = mod_noLM)
+) %>% 
+  filter(!is.na(delta))
+
+```
+
+
+Correlation test: how large the log-likelihood gain is from adding each model's surprisal, relative to the gain from adding the experimental parameters.
+```{r fig.height=4, fig.width=15, message=FALSE, warning=FALSE, echo=TRUE}
+ggplot(total_table %>% 
+         group_by(lm_gain_tot, lm_type) %>% 
+         summarise(n = n()), 
+       aes(y = lm_type, x = lm_gain_tot, fill = lm_type)) +
+  geom_col() +
+  labs(
+    y = "Model",
+    x = "Delta log-likelihood",
+    fill = "Model"
+  ) +
+  theme_minimal()
+```
+
+Robustness test: how much the experimental effects still improve the model once the model's surprisal is included.
+```{r, fig.width=15, fig.height=4, echo=TRUE, message=FALSE}
+ggplot(total_table, aes(y = lm_type, x = delta, group = step, fill = step)) +
+  geom_col() +
+  labs(
+    y = "Model",
+    x = "Delta log-likelihood",
+    fill = "Effect added"
+  ) +
+  theme_minimal()
+```
+
+
+## Extracting surprisal scores from the language models
+
+The object surprisal was extracted with a Python script (run separately, on GPU). For each sentence it aggregates the per-token surprisals belonging to each word; the object surprisal is then read from a fixed position in the resulting list. The scores are saved to the CSV files loaded earlier. 
+
+For the training of the from-scratch baseline models we refer to Merkx & Frank; for the n-gram perplexity scores we refer to the Hugging Face repo edugp/kenlm. Two sentences (items 17 and 22) contain words outside the 100,000 most frequent (purely alphabetic) words of the Spanish OSCAR corpus on which the from-scratch GRU and Transformer were trained; they are flagged by the `oov` column. Their GRU/Transformer scores are set to NA when the baseline scores are merged in, so these two items are excluded from every analysis that uses the baseline surprisal — the coherence/correlation tests against the semantic factors and the comparison with the human measures — while all other models and the behavioural analyses keep the full item set.
+
+
+## Effects in the language models' surprisal
+
+First we check how much data is missing for each model (percentage of NA values across the merged surprisal columns).
+
+```{r, echo=TRUE, message=FALSE}
+models_list <- c("kenlm_pp2","gru_obj", "tf_obj", "gpt2", "llama_base", "qwen", "llama_spanish")
+
+na_stats <- data.frame(
+  models  = models_list,
+  NA_perc = map_dbl(models_list, \(x) mean(is.na(reading_data[[x]])) * 100)
+)
+
+knitr::kable(
+  na_stats,
+  digits = 1,
+  caption = "Table NUMBER. Percentage of missing items per model"
+)
+```
+
+
+Coherence test. For each model we reshape the data so that, for every item-condition, we have the surprisal of the incorrect and of the correct variant, and take their difference (incorrect - correct). A one-sample t-test on this difference tests whether the model systematically assigns higher surprisal to DOM violations — overall and split by condition.
+
+
+```{r message=FALSE, warning=FALSE, echo=TRUE}
+wide_table <- reading_data %>% 
+  pivot_longer(
+    cols = models_list,
+    names_to = "model",
+    values_to = "surprisal"
+  ) %>% 
+  pivot_wider(
+    id_cols = c("id","condition","affected","model"),
+    names_from = "correct",
+    names_prefix = "correct",
+    values_from = "surprisal",
+    values_fn = function(x) {x[1]}
+  ) %>% 
+  mutate(diff = correct0 - correct1)
+
+wide_table$model <- factor(wide_table$model, levels = models_list)
+wide_table$condition <- factor(wide_table$condition, levels = c("an_def", "an_ind", "inan_def"))
+wide_table$affected <- factor(wide_table$affected, levels = c(0,1))
+
+```
+Despite deviations from normality, we used a one-sample t-test, which is robust for large samples.
+
+```{r echo=TRUE, warning=FALSE, message=FALSE}
+ttest_sum <- wide_table %>% 
+  group_by(model) %>% 
+  summarise(
+    mean_diff = mean(diff, na.rm = TRUE),
+    shapiro = shapiro.test(diff)$p.value,
+    t_stat = t.test(diff)$statistic,
+    p_val = t.test(diff)$p.value,
+    .groups = "drop"
+  ) %>% 
+  add_significance("p_val", digits = 3) %>%
+  mutate(shapiro = if_else(shapiro >= 0.001,
+                           as.character(round(shapiro, 3)),
+                           "<0.001"))
+
+knitr::kable(
+  ttest_sum,
+  digits = 2,
+  caption = "Table NUMBER. Mean surprisal difference (incorrect - correct) per model"
+)
+
+wide_table %>% 
+  ggplot(aes(x = model, y = diff, fill = model)) +
+  geom_boxplot(outliers = FALSE, staplewidth = 0.5) +
+  theme_minimal() +
+  guides(fill = "none") +
+  labs(
+    x = "Language model",
+    y = "Surprisal difference (incorrect - correct)"
+  )
+```
+```{r, echo=TRUE, warning=FALSE, fig.height = 7, fig.width = 10, message=FALSE}
+ttest_sum <- wide_table %>% 
+  group_by(model, condition) %>% 
+  summarise(
+    mean_diff = mean(diff, na.rm = TRUE),
+    shapiro = shapiro.test(diff)$p.value,
+    t_stat = t.test(diff)$statistic,
+    p_val = t.test(diff)$p.value,
+    .groups = "drop"
+  ) %>% 
+  add_significance("p_val", digits = 3) %>%
+  mutate(shapiro = if_else(shapiro >= 0.001,
+                           as.character(round(shapiro, 3)),
+                           "<0.001"))
+
+knitr::kable(
+  ttest_sum,
+  digits = 4,
+  caption = "Table NUMBER. Mean surprisal difference (incorrect - correct) per model, by [animate]/[definite] features"
+)
+
+ggplot(wide_table, aes(x = model, y = diff, fill = condition)) +
+  geom_boxplot(outlier.alpha = 0.4, position = position_dodge(width = 0.8), 
+               outliers = FALSE, staplewidth = 0.5) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(
+    x = "Language model",
+    y = "Surprisal difference (incorrect - correct)"
+  )
+```
+
+
+
+```{r, echo=TRUE, message=FALSE}
+summary_coefs <- map_dfr(models_list, function(m) {
+  dat_m <- wide_table %>%
+    filter(model == m) %>%
+    mutate(
+      condition = factor(condition),
+      affected  = factor(affected)
+    )
+
+  # 1) Linear model with condition only
+  fit1 <- lm(diff ~ condition, data = dat_m)
+  
+  t1 <- as.data.frame(summary(fit1)$coefficients) %>%
+    add_significance("Pr(>|t|)") %>%
+    mutate(model = m) %>%
+    rownames_to_column("fixed_effect") %>%
+    filter(startsWith(fixed_effect, "condition"))
+
+  # 2) Linear model with condition/affected (= condition + condition:affected)
+  fit2 <- lm(diff ~ condition/affected, data = dat_m)
+  
+  t2 <- as.data.frame(summary(fit2)$coefficients) %>%
+    add_significance("Pr(>|t|)") %>%
+    mutate(model = m) %>%
+    rownames_to_column("fixed_effect") %>%
+    filter(grepl(":", fixed_effect))
+
+  bind_rows(t1, t2)
+})
+
+knitr::kable(
+  summary_coefs,
+  digits = 2,
+  caption = "Table NUMBER. Coherence test: effect of [animate]/[definite], and of the main features in interaction with [affected], on each model's surprisal"
+)
+```
+
+```{r, echo=TRUE, message=FALSE}
+plot_df <- summary_coefs %>%
+  mutate(model = factor(model, levels = models_list)) %>%
+  mutate(
+    ci_low  = Estimate - 1.96 * `Std. Error`,
+    ci_high = Estimate + 1.96 * `Std. Error`,
+
+    # Convert "0.362" and "<0.001" back to numeric.
+    p_num = suppressWarnings(as.numeric(str_replace(`Pr(>|t|)`, "^<\\s*", ""))),
+    p_num = if_else(str_detect(`Pr(>|t|)`, "^<"), 0.001, p_num),
+
+    # Extract the condition label (text after "condition" up to ":" or end of string)
+    cond_label = str_match(fixed_effect, "^condition([^:]+)")[,2],
+
+    # Extract affected (only if present, otherwise empty string)
+    aff_label = if_else(
+      str_detect(fixed_effect, ":affected"),
+      str_match(fixed_effect, ":affected(.+)$")[,2],
+      ""
+    )
+  ) %>%
+  filter(!is.na(p_num)) %>% 
+  mutate(
+    aff_label = if_else(aff_label == "", "main effect", paste0("affected = ", aff_label))
+  ) %>% 
+  mutate(aff_label = factor(aff_label, levels = c("main effect", "affected = 1")))
+
+ggplot(plot_df, aes(x = Estimate, y = model)) +
+  geom_vline(xintercept = 0, linetype = "dashed", alpha = 0.6) +
+  geom_errorbarh(aes(xmin = ci_low, xmax = ci_high), height = 0.2, alpha = 0.5) +
+  geom_point(aes(color = p_num), size = 3) +
+  facet_grid(aff_label ~ cond_label, scales = "free_x") +
+  scale_y_discrete(limits = models_list, drop = FALSE) +
+  scale_color_continuous(
+    trans = "log10",
+    breaks = c(0.001, 0.01, 0.05, 0.1, 1),
+    labels = c("0.001", "0.01", "0.05", "0.1", "1"),
+    guide = guide_colorbar(title = "p-value (log scale)")
+  ) +
+  theme_minimal() +
+  labs(
+    x = "Estimate (± 95% CI)",
+    y = "Model",
+    color = "p-value"
+  )
+
+```
+
+
+## Comparing language-model performance
+
+We compare the models with two nested-model tests, run for each behavioural measure (offline acceptability, then the object, PP1 and PP2 reading times):
+
+* **Correlation test** — how much each model's object surprisal improves a surface-effects-only baseline (the `lm_gain_tot` column);
+* **Robustness test** — how much the experimental fixed effects still improve the model *after* the surprisal is already included (the per-step `delta`). A model whose surprisal already absorbs the grammatical structure leaves little for the experimental effects to add.
+
+The two helper functions below (`stack_table`, `cols_table`) render these quantities as bar charts.
+
+```{r, echo=TRUE, message=FALSE}
+stack_table <- function(table, title = "Delta log-likelihood across model complexity") {
+  
+  models_labs = c("base", "n-gram", "RNN", "Transformer", "GPT-2", "LLaMa_base", "Qwen3", "LLaMa_ft")
+  
+  table <- table %>% 
+    mutate(lm_type = case_match(
+      lm_type,
+    "1" ~ "base",
+    "kenlm_pp2" ~ "n-gram",
+    "gru_obj" ~ "RNN",
+    "tf_obj" ~ "Transformer",
+    "gpt2" ~ "GPT-2",
+    "llama_base" ~ "LLaMa_base",
+    "qwen" ~ "Qwen3",
+    "llama_spanish" ~ "LLaMa_ft"
+  ))
+  
+  ggplot(table %>% 
+           filter(step != "base"), aes(y = lm_type, x = delta, fill = step)) +
+    geom_col() +
+    labs(
+      y = "Model",
+      x = "Delta log-likelihood",
+      fill = "Step"
+    ) +
+    scale_y_discrete(limits = models_labs, drop = FALSE) +
+    theme_minimal()
+}
+
+cols_table <- function(table, norm = F, title = "Delta log-likelihood across model complexity") {
+  
+  models_labs = c("base", "n-gram", "RNN", "Transformer", "GPT-2", "LLaMa_base", "Qwen3", "LLaMa_ft")
+  
+  table <- table %>% 
+    mutate(lm_type = case_match(
+      lm_type,
+    "1" ~ "base",
+    "kenlm_pp2" ~ "n-gram",
+    "gru_obj" ~ "RNN",
+    "tf_obj" ~ "Transformer",
+    "gpt2" ~ "GPT-2",
+    "llama_base" ~ "LLaMa_base",
+    "qwen" ~ "Qwen3",
+    "llama_spanish" ~ "LLaMa_ft"
+  ))
+  
+  if (norm == T) {
+    table = table %>% 
+      group_by(lm_type, lm_gain_re) %>% 
+           summarise(n = n())
+    vars = aes(x = lm_gain_re, y = lm_type, fill = lm_type)
+  } else {
+    table = table %>% 
+      group_by(lm_type, lm_gain_tot) %>% 
+           summarise(n = n())
+    vars = aes(x = lm_gain_tot, y = lm_type, fill = lm_type)
+  }
+  
+  ggplot(table, 
+         vars) +
+  geom_col() +
+  labs(
+    y = "Model",
+    x = "Delta log-likelihood",
+    fill = "Model"
+  ) +
+    scale_y_discrete(limits = c("1", models_labs), drop = FALSE) +
+  theme_minimal()
+  
+}
+```
+
+
+### Acceptability (offline)
+
+```{r, echo=TRUE, message=FALSE}
+models_labs = c("base", "n-gram", "RNN", "Transformer", "GPT-2", "LLaMa_base", "Qwen3", "LLaMa_ft")
+
+get_loglik_offline <- function(model, df, mod_noLM) {
+  #factor(acceptability) ~ 1 + model + correct + verb_freq + correct:condition + correct:origin + (1 | subject_nr) + (1 | id)
+  form <- reformulate(c(model, "verb_freq","(1|subject_nr)"), response = "factor(acceptability)")
+  mod_base <- clmm(form, df)
+  mod_eff <- update(mod_base, . ~ . + correct + correct:origin)
+  mod_int <- update(mod_eff, . ~ . + correct:condition)
+  mod_rand <- update(mod_int, . ~ . + (1|id))
+  
+  fixed_anova.clmm <- function(object, ...) {
+    mc <- match.call()
+    arg.list <- as.list(mc)
+    arg.list[[1]] <- NULL
+    return(do.call(ordinal:::anova.clm, arg.list, envir = environment(formula(object))))
+  }
+  
+  anova_table <- as.data.frame(fixed_anova.clmm(mod_base, mod_eff, mod_int, mod_rand))
+  loglik_table(anova_table, model, mod_base, mod_noLM, final_model = mod_rand,
+               step_values = c("main_eff", "interaction", "rand_eff", "base"),
+               step_levels = c("base", "rand_eff", "interaction", "main_eff"))
+}
+
+mod_noLM <- clmm(factor(acceptability) ~ 1 + verb_freq + (1|subject_nr), offline_data_filt)
+
+offline_comp_table <- bind_rows(
+  models_list %>% 
+  map(get_loglik_offline, df = offline_data_filt, mod_noLM = mod_noLM)
+)
+
+offline_comp_table <- bind_rows(get_loglik_offline("1", offline_data_filt, mod_noLM = mod_noLM),
+          offline_comp_table)
+
+offline_comp_table[is.na(offline_comp_table)] <- 0
+
+```
+
+```{r echo=TRUE, message=FALSE}
+corr_table(
+  offline_comp_table,
+  caption = "Table NUMBER. Correlation test: improvement in predicting acceptability from surface effects by adding each model's surprisal",
+  digits = 5
+)
+```
+
+
+```{r, echo=TRUE, message=FALSE}
+robust_table(
+  offline_comp_table,
+  caption = "Table NUMBER. Robustness test: improvement in predicting acceptability from surface effects + each model's surprisal by adding the experimental fixed effects"
+)
+```
+
+```{r echo=TRUE, fig.height=4, fig.width=15, message=FALSE}
+cols_table(offline_comp_table, norm = F, title = "Figure NUMBER. Correlation test: improvement in predicting acceptability from surface effects \nby adding each model's surprisal")
+```
+
+
+```{r, fig.width=15, fig.height=4, echo=TRUE, message=FALSE}
+stack_table(offline_comp_table, title = "Figure NUMBER. Robustness test: improvement in predicting acceptability from surface effects + each model's surprisal \nby adding the experimental fixed effects")
+
+```
+
+
+
+
+### Reading times: object
+
+```{r warning=FALSE, echo=TRUE, message=FALSE}
+
+get_loglik_obj <- function(model, df, mod_noLM) {
+
+  form <- reformulate(c(model, "live_row","object_len","(live_row|subject_nr)"), response = "log(object)")
+  print(c(model,form))
+  mod_base <- lmer(form, df, control = lmerControl(optimizer = "bobyqa"), REML = F)
+  mod_eff <- update(mod_base, . ~ . + correct + correct:origin)
+  mod_int <- update(mod_eff, . ~ . + correct:condition/(affected + origin))
+  #mod_rand <- update(mod_int, . ~ . + (1|id))
+  
+  anova_table <- as.data.frame(anova(mod_base, mod_eff, mod_int))
+  loglik_table(anova_table, model, mod_base, mod_noLM, final_model = mod_int,
+               step_values = c("main_eff", "interaction", "base"),
+               step_levels = c("base", "interaction", "main_eff"))
+}
+
+mod_noLM = lmer(log(object) ~ live_row + object_len + (live_row | subject_nr),
+                object_data, control = lmerControl(optimizer = "bobyqa"), REML = FALSE)
+
+object_comp_table <- bind_rows(
+  models_list %>% 
+    map(get_loglik_obj, df = object_data, mod_noLM = mod_noLM)
+)
+
+object_comp_table <- bind_rows(object_comp_table,
+                               get_loglik_obj("1", df = object_data, mod_noLM = mod_noLM))
+object_comp_table[is.na(object_comp_table)] <- 0
+```
+
+```{r echo=TRUE, message=FALSE}
+corr_table(
+  object_comp_table,
+  caption = "Table NUMBER. Correlation test: improvement in predicting object reading times from surface effects by adding each model's surprisal"
+)
+```
+
+```{r echo=TRUE, message=FALSE}
+robust_table(
+  object_comp_table,
+  caption = "Table NUMBER. Robustness test: improvement in predicting object reading times from surface effects + each model's surprisal by adding the experimental fixed effects"
+)
+```
+
+
+```{r fig.height=4, fig.width=15, message=FALSE, echo=TRUE}
+cols_table(object_comp_table, norm=F, title = "Figure NUMBER. Correlation test: improvement in predicting object reading times from surface effects \nby adding each model's surprisal")
+```
+
+```{r echo=TRUE, fig.height=4, fig.width=15, message=FALSE}
+stack_table(object_comp_table, title = "Figure NUMBER. Robustness test: improvement in predicting object reading times from surface effects + each model's surprisal \nby adding the experimental fixed effects")
+```
+
+
+
+### Reading times: PP1
+
+```{r, echo=TRUE, message=FALSE}
+get_loglik_pp1 <- function(model, df, mod_noLM) {
+  # log(pp1) ~ live_row + correct + obj_freq + (1 | subject_nr)
+  form <- reformulate(c(model, "live_row","obj_freq","(1|subject_nr)"), response = "log(pp1)")
+  mod_base <- lmer(form, df, control = lmerControl(optimizer = "bobyqa"), REML = F)
+  #mod_rand <- update(mod_base, . ~ . + (1|id))
+  mod_eff <- update(mod_base, . ~ . + correct)
+  #mod_int <- update(mod_eff, . ~ . + correct:condition/(affected + origin))
+  
+  anova_table <- as.data.frame(anova(mod_base, mod_eff))
+  loglik_table(anova_table, model, mod_base, mod_noLM, final_model = mod_eff,
+               step_values = c("main_eff", "base"),
+               step_levels = c("base", "main_eff"))
+}
+
+mod_noLM = lmer(log(pp1) ~ live_row + obj_freq + (1 | subject_nr),
+                pp1_data, control = lmerControl(optimizer = "bobyqa"), REML = F)
+
+pp1_comp_table <- bind_rows(
+  models_list %>% 
+    map(get_loglik_pp1, df = pp1_data, mod_noLM = mod_noLM)
+)
+pp1_comp_table <- bind_rows(pp1_comp_table,
+                            get_loglik_pp1("1", pp1_data, mod_noLM = mod_noLM))
+pp1_comp_table[is.na(pp1_comp_table)] <- 0
+
+```
+
+```{r echo=TRUE, message=FALSE}
+corr_table(
+  pp1_comp_table,
+  caption = "Table NUMBER. Correlation test: improvement in predicting PP1 reading times from surface effects by adding each model's surprisal"
+)
+```
+
+```{r echo=TRUE, message=FALSE}
+robust_table(
+  pp1_comp_table,
+  caption = "Table NUMBER. Robustness test: improvement in predicting PP1 reading times from surface effects + each model's surprisal by adding the experimental fixed effects"
+)
+```
+
+```{r fig.height=4, fig.width=15, message=FALSE, echo=TRUE}
+cols_table(pp1_comp_table, norm=F, title = "Figure NUMBER. Correlation test: improvement in predicting PP1 reading times from surface effects \nby adding each model's surprisal")
+```
+
+```{r echo=TRUE, fig.height=4, fig.width=15, message=FALSE}
+stack_table(pp1_comp_table, title = "Figure NUMBER. Robustness test: improvement in predicting PP1 reading times from surface effects + each model's surprisal \nby adding the experimental fixed effects")
+```
+
+
+### Reading times: PP2
+
+```{r, echo=TRUE, message=FALSE}
+
+get_loglik_pp2 <- function(model, df, mod_noLM) {
+  # log(pp2) ~ live_row + correct + (1 + live_row | subject_nr) + correct:condition
+  form <- reformulate(c(model, "live_row","(live_row|subject_nr)"), response = "log(pp2)")
+  mod_base <- lmer(form, df, control = lmerControl(optimizer = "bobyqa"), REML = F)
+  mod_eff <- update(mod_base, . ~ . + correct)
+  mod_int <- update(mod_eff, . ~ . + correct:condition)
+  
+  anova_table <- as.data.frame(anova(mod_base, mod_eff, mod_int))
+  loglik_table(anova_table, model, mod_base, mod_noLM, final_model = mod_int,
+               step_values = c("main_eff", "interaction", "base"),
+               step_levels = c("base", "interaction", "main_eff"))
+}
+
+# log(pp2) ~ live_row + correct + (1 + live_row | subject_nr) + correct:condition
+mod_noLM = lmer(log(pp2) ~ live_row + (1 + live_row | subject_nr),
+                pp2_data, control = lmerControl(optimizer = "bobyqa"), REML = F)
+
+pp2_comp_table <- bind_rows(
+  models_list %>% 
+    map(get_loglik_pp2, df = pp2_data, mod_noLM = mod_noLM)
+)
+pp2_comp_table <- bind_rows(pp2_comp_table,
+                            get_loglik_pp2("1", pp2_data, mod_noLM = mod_noLM))
+pp2_comp_table[is.na(pp2_comp_table)] <- 0
+
+
+```
+
+
+```{r echo=TRUE, message=FALSE}
+corr_table(
+  pp2_comp_table,
+  caption = "Table NUMBER. Correlation test: improvement in predicting PP2 reading times from surface effects by adding each model's surprisal"
+)
+```
+
+```{r echo=TRUE, message=FALSE}
+robust_table(
+  pp2_comp_table,
+  caption = "Table NUMBER. Robustness test: improvement in predicting PP2 reading times from surface effects + each model's surprisal by adding the experimental fixed effects"
+)
+```
+
+```{r fig.height=4, fig.width=15, message=FALSE, echo=TRUE}
+cols_table(pp2_comp_table, norm=F, title = "Figure NUMBER. Correlation test: improvement in predicting PP2 reading times from surface effects \nby adding each model's surprisal")
+```
+
+```{r echo=TRUE, fig.height=4, fig.width=15, message=FALSE}
+stack_table(pp2_comp_table, title = "Figure NUMBER. Robustness test: improvement in predicting PP2 reading times from surface effects + each model's surprisal \nby adding the experimental fixed effects")
+```
+
+## Post-hoc: lexical frequency and model surprisal
+
+Finally, we check whether each model's object surprisal is partly driven by plain lexical frequency. For every model we regress its object surprisal on the verb and object frequencies (`neg_log_prob`); a strong frequency effect would suggest the model is tracking word frequency rather than the DOM manipulation specifically.
+
+```{r message=FALSE}
+llm_cols <- c("llama_spanish","qwen","llama_base","gpt2","tf_obj","gru_obj") 
+
+fit_one <- function(model, data) {
+  f <- as.formula(paste0(model, " ~ obj_freq + verb_freq"))
+  m <- lm(f, data = data)
+
+  as.data.frame(summary(m)$coefficients) %>% 
+    mutate(model = model) %>% 
+    rownames_to_column("term") %>% 
+    filter(!startsWith(term, "(")) %>% 
+    rename(p_val = `Pr(>|t|)`) %>% 
+    mutate(term = case_match(
+  term, "obj_freq" ~ "object_freq", "verb_freq" ~ "verb_freq"))
+}
+
+results <- map_dfr(llm_cols, fit_one, data = reading_data)
+
+knitr::kable(
+  results %>%
+    add_significance("p_val", digits = 4),
+  digits = 2
+)
+
+results %>%
+  mutate(
+    # Calcolo CI 95% da estimate e SD
+    conf.low  = Estimate - 1.96 * `Std. Error`,
+    conf.high = Estimate + 1.96 * `Std. Error`,
+  ) %>%
+  ggplot(aes(x = Estimate, y = model)) +
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  geom_errorbarh(
+    aes(xmin = conf.low, xmax = conf.high),
+    height = 0.18
+  ) +
+  geom_point(
+    aes(color = p_val),
+    size = 3
+  ) +
+  facet_wrap(~ term, nrow = 1, scales = "free_x") +
+  scale_color_continuous(
+    trans = "log10",
+    breaks = c(0.001, 0.05),
+    labels = c("0.001", "0.05"),
+    guide = guide_colorbar(title = "p-value (log scale)")
+  ) +
+  labs(
+    x = "Estimate (± 95% CI)",
+    y = "Model"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    panel.grid.minor = element_blank(),
+    strip.text = element_text(face = "bold")
+  )
+
+```
+
+## Reproducibility
+
+The chunk below records the R version and the exact package versions used to produce this analysis.
+
+```{r message=FALSE}
+sessionInfo()
+```
