@@ -1,0 +1,817 @@
+answer,comprehension,question,sentence,subject_nr
+NO,A,El profesor y los alumnos estaban fuera del aula.,El profesor explicó la lección los alumnos en clase.,10
+SI,A,Ayer estudiaron matemáticas.,Nos sentamos juntos para estudiando matemáticas toda la tarde ayer.,10
+SI,A,Martin estaba en el hospital.,Martín buscó a la médica en el hospital durante dos horas.,10
+NO,E,Miguel tuvo que esperar una semana.,Miguel recibió la invitada en la casa en un día.,10
+SI,A,Isabel miraba por la ventana.,Isabel vió la estudiante desde su ventana durante una mañana.,10
+NO,E,El combate duró varias horas.,Paula abatió una contrincante en el ring en pocos minutos.,10
+NO,E,La acción tuvo lugar en el parque.,Simón pateó a la pelota en la cancha en un instante.,10
+NO,E,El dueño fue reconocido por su gato.,El perro corrió felizmente a su dueño cuando le reconoció.,10
+SI,A,Ellos corren en el centro.,Ellos corren todas las mañanas por el parque del centro.,10
+SI,A,Clara fue a la farmacia con su hermana.,Clara fue con su hermanas a la farmacia después del desayuno.,10
+SI,A,Emma pasó semanas investigando.,Emma investigó a la empresaria en la ciudad durante varias semanas.,10
+SI,A,La acción tuvo lugar en la calle.,Juan golpeó la piedra en la calle en diez segundos.,10
+SI,A,Valeria fue a un concierto.,Valeria admiró la escenografía en el teatro durante el concierto.,10
+SI,A,Anna estaba en la escuela.,Anna comprendió a la tarea en la escuela en dos minutos.,10
+SI,A,Maria y su hermana estaban en la biblioteca.,María dio el libro su hermana en la biblioteca.,10
+NO,E,La guerra duró más de dos años.,Valentina venció una adversaria en la guerra en dos años.,10
+NO,E,María iba en bicicleta.,María transportó la guitarra en la furgoneta durante un día.,10
+SI,E,Lo que Pedro hizo fue un secuestro.,Pablo secuestró la camioneta en el aeropuerto durante una hora.,10
+SI,A,El camarero sonrió.,El camarero trajo el cuenta a los clientes con una sonrisa.,10
+NO,E,Andrés contó una historia,Andrés cantó una canción a su hija antes de acostarla.,10
+SI,A,Lucia estuvo en una pelea de bar.,Lucía destrozó a una oponente en el bar en diez minutos.,10
+SI,A,El bebé sonrió a su madre.,El bebé sonreí dulcemente a su madre desde la cuna.,10
+NO,E,Viajan a Argentina cada invierno.,Mis padres viajan en avión a Argentina cada verano.,10
+NO,E,LLegaron a casa después del aconecher.,Los campesinos llegaron cansado a casa justo antes del anochecer.,10
+SI,A,Helena estaba jugando un partido de fútbol.,Helena derribó la futbolista en el campo durante el partido.,10
+NO,E,Ayer fueron al teatro.,Ayer fueron al cine a ver una película divertida.,10
+NO,E,El coche era azul.,El coche rojo aparcó frente a la casa de Marta.,10
+NO,E,El niño juega solo en el parque.,El niño juega en el parque con su mejor amigo.,10
+No,E,El bebé dormía plácidamente.,El bebé lloraba constantemente durante la noche sin razón aparente.,10
+SI,A,Ana escribió la carta desde la playa.,Ana escribió una carta a su abuela desde la playa.,10
+SI,E,Había fuego en la plaza.,Carlos quemó a la página en la plaza en pocos minutos.,10
+NO,E,El beso tuvo lugar en un museo.,Francisco besó a la cruz en la iglesia durante unos segundos.,10
+NO,E,El tren llegó con retraso.,El tren llegó puntual a la estación bajo la lluvia.,10
+NO,E,Carlos tardó mucho en hacer el asalto.,Carlos asaltó la camioneta en el barrio en pocos instantes.,10
+NO,E,Carmen vio una representación teatral.,Carmen odió a la vendedora en el cine durante la película.,10
+NO,E,El autobus llegó puntual.,El autobús llegó con retraso a la parada equivocada del centro.,10
+NO,E,Pedro observó durante unos minutos.,Pedro observó una secretaria en la oficina durante una hora.,10
+SI,A,Felipe es presentador de teatro.,Felipe anunció a una cantante en el escenario en cinco minutos.,10
+NO,E,El avión despegó con retraso.,El avión despegó puntualmente a la siete de la mañana.,10
+SI,A,La cena se preparó en casa.,Mi madre preparó la cena a toda la familia en casa.,10
+SI,A,Laura se fue a Inglaterra.,Laura se fue de vacaciones a Londres la semana pasada.,10
+SI,A,El gato está sobre la manta cerca del sofá.,El gato duerme tranquilo sobre la manta cerca del sofá.,10
+NO,E,Lucía y su compañero estaban en el salón.,Lucía ofreció un café a su compañero en la cocina.,10
+SI,A,Hubo un asedio en la región.,Carla asedió a una contrincante en la región durante bastante tiempo.,10
+SI,A,Helena estaba en el patio.,Helena colgó a la criminal en el patio en cinco minutos.,10
+NO,E,Alejandro estaba en el centro comercial.,Alejandro identificó la amenaza en el aeropuerto en dos horas.,10
+NO,A,Luis envió un paquete a su hermano.,Luis envíe un paquete a su primo en Alemania.,10
+SI,A,Ana estaba en la biblioteca.,Nos encontramos con Ana después de clase en la biblioteca.,10
+SI,A,Ana estaba en la biblioteca.,Nos encontramos con Ana después de clase en la biblioteca.,11
+NO,E,El avión despegó con retraso.,El avión despegó puntualmente a la siete de la mañana.,11
+SI,A,Ellos corren en el centro.,Ellos corren todas las mañanas por el parque del centro.,11
+SI,A,Ayer estudiaron matemáticas.,Nos sentamos juntos para estudiando matemáticas toda la tarde ayer.,11
+NO,E,Lucía y su compañero estaban en el salón.,Lucía ofreció un café a su compañero en la cocina.,11
+SI,A,El camarero sonrió.,El camarero trajo el cuenta a los clientes con una sonrisa.,11
+SI,A,Lucia estuvo en una pelea de bar.,Lucía destrozó a una oponente en el bar en diez minutos.,11
+NO,E,LLegaron a casa después del aconecher.,Los campesinos llegaron cansado a casa justo antes del anochecer.,11
+NO,E,Ayer fueron al teatro.,Ayer fueron al cine a ver una película divertida.,11
+NO,E,El beso tuvo lugar en un museo.,Francisco besó a la cruz en la iglesia durante unos segundos.,11
+SI,A,Helena estaba jugando un partido de fútbol.,Helena derribó a una futbolista en el campo durante el partido.,11
+SI,A,Laura se fue a Inglaterra.,Laura se fue de vacaciones a Londres la semana pasada.,11
+SI,E,Felipe es presentador de teatro.,Felipe anunció la cantante en el escenario en cinco minutos.,11
+NO,E,Carlos tardó mucho en hacer el asalto.,Carlos asaltó la camioneta en el barrio en pocos instantes.,11
+NO,E,María iba en bicicleta.,María transportó la guitarra en la furgoneta durante un día.,11
+NO,E,Viajan a Argentina cada invierno.,Mis padres viajan en avión a Argentina cada verano.,11
+SI,A,El gato está sobre la manta cerca del sofá.,El gato duerme tranquilo sobre la manta cerca del sofá.,11
+SI,A,El bebé sonrió a su madre.,El bebé sonreí dulcemente a su madre desde la cuna.,11
+NO,E,El tren llegó con retraso.,El tren llegó puntual a la estación bajo la lluvia.,11
+SI,A,Había fuego en la plaza.,Carlos quemó la bruja en la plaza en pocos minutos.,11
+NO,E,Carmen vio una representación teatral.,Carmen odió la música en el cine durante la película.,11
+NO,E,El combate duró varias horas.,Paula abatió la resistencia en el ring en pocos minutos.,11
+SI,A,Maria y su hermana estaban en la biblioteca.,María dio el libro su hermana en la biblioteca.,11
+NO,E,La guerra duró más de dos años.,Valentina venció a una adversaria en la guerra en dos años.,11
+NO,E,El autobus llegó puntual.,El autobús llegó con retraso a la parada equivocada del centro.,11
+NO,E,La acción tuvo lugar en el parque.,Simón pateó a la pelota en la cancha en un instante.,11
+SI,A,Hubo un asedio en la región.,Carla asedió la ciudad en la región durante bastante tiempo.,11
+NO,E,Alejandro estaba en el centro comercial.,Alejandro identificó a una agresora en el aeropuerto en dos horas.,11
+NO,E,Andrés contó una historia,Andrés cantó una canción a su hija antes de acostarla.,11
+NO,E,El coche era azul.,El coche rojo aparcó frente a la casa de Marta.,11
+SI,A,Ana escribió la carta desde la playa.,Ana escribió una carta a su abuela desde la playa.,11
+NO,E,Miguel tuvo que esperar una semana.,Miguel recibió a la invitada en la casa en un día.,11
+NO,E,El niño juega solo en el parque.,El niño juega en el parque con su mejor amigo.,11
+NO,E,El profesor y los alumnos estaban fuera del aula.,El profesor explicó la lección los alumnos en clase.,11
+SI,A,Clara fue a la farmacia con su hermana.,Clara fue con su hermanas a la farmacia después del desayuno.,11
+SI,A,Helena estaba en el patio.,Helena colgó una criminal en el patio en cinco minutos.,11
+No,E,El bebé dormía plácidamente.,El bebé lloraba constantemente durante la noche sin razón aparente.,11
+SI,A,Anna estaba en la escuela.,Anna comprendió a la tarea en la escuela en dos minutos.,11
+SI,A,Emma pasó semanas investigando.,Emma investigó a la epidemia en la ciudad durante varias semanas.,11
+NO,E,Pedro observó durante unos minutos.,Pedro observó una secretaria en la oficina durante una hora.,11
+SI,A,Isabel miraba por la ventana.,Isabel vió una estudiante desde su ventana durante una mañana.,11
+SI,A,La cena se preparó en casa.,Mi madre preparó la cena a toda la familia en casa.,11
+SI,E,Lo que Pedro hizo fue un secuestro.,Pablo secuestró a la turista en el aeropuerto durante una hora.,11
+NO,E,Luis envió un paquete a su hermano.,Luis envíe un paquete a su primo en Alemania.,11
+SI,A,La acción tuvo lugar en la calle.,Juan golpeó a la actriz en la calle en diez segundos.,11
+NO,E,El dueño fue reconocido por su gato.,El perro corrió felizmente a su dueño cuando le reconoció.,11
+SI,A,Martin estaba en el hospital.,Martín buscó a la escalera en el hospital durante dos horas.,11
+SI,A,Valeria fue a un concierto.,Valeria admiró una cantante en el teatro durante el concierto.,11
+NO,E,El autobus llegó puntual.,El autobús llegó con retraso a la parada equivocada del centro.,12
+SI,A,El bebé sonrió a su madre.,El bebé sonreí dulcemente a su madre desde la cuna.,12
+SI,A,Maria y su hermana estaban en la biblioteca.,María dio el libro su hermana en la biblioteca.,12
+SI,E,Clara fue a la farmacia con su hermana.,Clara fue con su hermanas a la farmacia después del desayuno.,12
+SI,A,Emma pasó semanas investigando.,Emma investigó la empresaria en la ciudad durante varias semanas.,12
+NO,E,Miguel tuvo que esperar una semana.,Miguel recibió una invitada en la casa en un día.,12
+NO,E,Carlos tardó mucho en hacer el asalto.,Carlos asaltó la conductora en el barrio en pocos instantes.,12
+NO,E,El coche era azul.,El coche rojo aparcó frente a la casa de Marta.,12
+SI,A,El camarero sonrió.,El camarero trajo el cuenta a los clientes con una sonrisa.,12
+SI,A,Anna estaba en la escuela.,Anna comprendió a la maestra en la escuela en dos minutos.,12
+NO,E,El avión despegó con retraso.,El avión despegó puntualmente a la siete de la mañana.,12
+SI,E,Felipe es presentador de teatro.,Felipe anunció la cantante en el escenario en cinco minutos.,12
+SI,A,Había fuego en la plaza.,Carlos quemó la página en la plaza en pocos minutos.,12
+SI,E,Ana estaba en la biblioteca.,Nos encontramos con Ana después de clase en la biblioteca.,12
+NO,E,El niño juega solo en el parque.,El niño juega en el parque con su mejor amigo.,12
+SI,A,Ayer estudiaron matemáticas.,Nos sentamos juntos para estudiando matemáticas toda la tarde ayer.,12
+SI,A,Helena estaba en el patio.,Helena colgó a una criminal en el patio en cinco minutos.,12
+NO,E,El combate duró varias horas.,Paula abatió una contrincante en el ring en pocos minutos.,12
+NO,E,La acción tuvo lugar en el parque.,Simón pateó una jugadora en la cancha en un instante.,12
+NO,E,Ayer fueron al teatro.,Ayer fueron al cine a ver una película divertida.,12
+NO,E,El dueño fue reconocido por su gato.,El perro corrió felizmente a su dueño cuando le reconoció.,12
+SI,E,Helena estaba en un campo de fútbol.,Helena derribó a la barrera en el campo durante el partido.,12
+NO,E,Luis envió un paquete a su hermano.,Luis envíe un paquete a su primo en Alemania.,12
+NO,E,Andrés contó una historia,Andrés cantó una canción a su hija antes de acostarla.,12
+No,E,El bebé dormía plácidamente.,El bebé lloraba constantemente durante la noche sin razón aparente.,12
+SI,A,Martin estaba en el hospital.,Martín buscó la escalera en el hospital durante dos horas.,12
+NO,E,Carmen vio una representación teatral.,Carmen odió una vendedora en el cine durante la película.,12
+NO,E,La guerra duró más de dos años.,Valentina venció la resistencia en la guerra en dos años.,12
+SI,E,Hubo un asedio en la región.,Carla asedió a la ciudad en la región durante bastante tiempo.,12
+NO,E,Viajan a Argentina cada invierno.,Mis padres viajan en avión a Argentina cada verano.,12
+NO,E,María iba en bicicleta.,María transportó a la mochilera en la furgoneta durante un día.,12
+SI,A,Laura se fue a Inglaterra.,Laura se fue de vacaciones a Londres la semana pasada.,12
+NO,E,Lucía y su compañero estaban en el salón.,Lucía ofreció un café a su compañero en la cocina.,12
+NO,E,El tren llegó con retraso.,El tren llegó puntual a la estación bajo la lluvia.,12
+SI,A,La cena se preparó en casa.,Mi madre preparó la cena a toda la familia en casa.,12
+SI,A,Ellos corren en el centro.,Ellos corren todas las mañanas por el parque del centro.,12
+NO,E,Pedro observó durante unos minutos.,Pedro observó a la secretaria en la oficina durante una hora.,12
+NO,E,El beso tuvo lugar en un museo.,Francisco besó a una novia en la iglesia durante unos segundos.,12
+NO,E,Alejandro estaba en el centro comercial.,Alejandro identificó a una agresora en el aeropuerto en dos horas.,12
+SI,A,Valeria fue a un concierto.,Valeria admiró una cantante en el teatro durante el concierto.,12
+SI,A,Isabel miraba por la ventana.,Isabel vió la tormenta desde su ventana durante una mañana.,12
+NO,E,LLegaron a casa después del aconecher.,Los campesinos llegaron cansado a casa justo antes del anochecer.,12
+SI,A,Lo que Pedro hizo fue un secuestro.,Pablo secuestró a una turista en el aeropuerto durante una hora.,12
+SI,A,Lucia estaba en un bar.,Lucía destrozó la mesa en el bar en diez minutos.,12
+SI,A,La acción tuvo lugar en la calle.,Juan golpeó a la piedra en la calle en diez segundos.,12
+SI,A,El gato está sobre la manta cerca del sofá.,El gato duerme tranquilo sobre la manta cerca del sofá.,12
+NO,E,El profesor y los alumnos estaban fuera del aula.,El profesor explicó la lección los alumnos en clase.,12
+SI,A,Ana escribió la carta desde la playa.,Ana escribió una carta a su abuela desde la playa.,12
+NO,E,Miguel tuvo que esperar una semana.,Miguel recibió la caja en la casa en un día.,13
+SI,A,El bebé sonrió a su madre.,El bebé sonreí dulcemente a su madre desde la cuna.,13
+NO,E,El profesor y los alumnos estaban fuera del aula.,El profesor explicó la lección los alumnos en clase.,13
+NO,E,Carmen vio una representación teatral.,Carmen odió a la vendedora en el cine durante la película.,13
+SI,E,Lo que Pedro hizo fue un secuestro.,Pablo secuestró la turista en el aeropuerto durante una hora.,13
+NO,E,LLegaron a casa después del aconecher.,Los campesinos llegaron cansado a casa justo antes del anochecer.,13
+NO,E,María iba en bicicleta.,María transportó una mochilera en la furgoneta durante un día.,13
+SI,A,Isabel miraba por la ventana.,Isabel vió la estudiante desde su ventana durante una mañana.,13
+NO,E,Lucía y su compañero estaban en el salón.,Lucía ofreció un café a su compañero en la cocina.,13
+NO,E,Alejandro estaba en el centro comercial.,Alejandro identificó una agresora en el aeropuerto en dos horas.,13
+NO,E,El coche era azul.,El coche rojo aparcó frente a la casa de Marta.,13
+SI,A,Felipe es presentador de teatro.,Felipe anunció a la actuación en el escenario en cinco minutos.,13
+NO,E,El avión despegó con retraso.,El avión despegó puntualmente a la siete de la mañana.,13
+NO,E,Andrés contó una historia,Andrés cantó una canción a su hija antes de acostarla.,13
+SI,A,La cena se preparó en casa.,Mi madre preparó la cena a toda la familia en casa.,13
+NO,E,El combate duró varias horas.,Paula abatió la resistencia en el ring en pocos minutos.,13
+SI,A,Había fuego en la plaza.,Carlos quemó a la página en la plaza en pocos minutos.,13
+NO,E,El dueño fue reconocido por su gato.,El perro corrió felizmente a su dueño cuando le reconoció.,13
+SI,A,Laura se fue a Inglaterra.,Laura se fue de vacaciones a Londres la semana pasada.,13
+NO,E,Carlos tardó mucho en hacer el asalto.,Carlos asaltó a la conductora en el barrio en pocos instantes.,13
+NO,E,El beso tuvo lugar en un museo.,Francisco besó la novia en la iglesia durante unos segundos.,13
+SI,A,Anna estaba en la escuela.,Anna comprendió una maestra en la escuela en dos minutos.,13
+SI,A,Helena estaba jugando un partido de fútbol.,Helena derribó una futbolista en el campo durante el partido.,13
+SI,A,Ayer estudiaron matemáticas.,Nos sentamos juntos para estudiando matemáticas toda la tarde ayer.,13
+NO,E,Viajan a Argentina cada invierno.,Mis padres viajan en avión a Argentina cada verano.,13
+SI,E,Clara fue a la farmacia con su hermana.,Clara fue con su hermanas a la farmacia después del desayuno.,13
+SI,A,El gato está sobre la manta cerca del sofá.,El gato duerme tranquilo sobre la manta cerca del sofá.,13
+SI,A,Hubo un asedio en la región.,Carla asedió a la contrincante en la región durante bastante tiempo.,13
+NO,E,El autobus llegó puntual.,El autobús llegó con retraso a la parada equivocada del centro.,13
+SI,A,Martin estaba en el hospital.,Martín buscó a una médica en el hospital durante dos horas.,13
+SI,A,Emma pasó semanas investigando.,Emma investigó una empresaria en la ciudad durante varias semanas.,13
+NO,E,Luis envió un paquete a su hermano.,Luis envíe un paquete a su primo en Alemania.,13
+SI,A,Ellos corren en el centro.,Ellos corren todas las mañanas por el parque del centro.,13
+NO,E,La acción tuvo lugar en el parque.,Simón pateó la jugadora en la cancha en un instante.,13
+NO,E,El tren llegó con retraso.,El tren llegó puntual a la estación bajo la lluvia.,13
+No,E,El bebé dormía plácidamente.,El bebé lloraba constantemente durante la noche sin razón aparente.,13
+SI,A,Ana estaba en la biblioteca.,Nos encontramos con Ana después de clase en la biblioteca.,13
+SI,A,Maria y su hermana estaban en la biblioteca.,María dio el libro su hermana en la biblioteca.,13
+SI,A,Lucia estaba en un bar.,Lucía destrozó a la mesa en el bar en diez minutos.,13
+SI,A,El camarero sonrió.,El camarero trajo el cuenta a los clientes con una sonrisa.,13
+NO,E,El niño juega solo en el parque.,El niño juega en el parque con su mejor amigo.,13
+NO,E,La guerra duró más de dos años.,Valentina venció a una adversaria en la guerra en dos años.,13
+SI,A,Ana escribió la carta desde la playa.,Ana escribió una carta a su abuela desde la playa.,13
+NO,E,Pedro observó durante unos minutos.,Pedro observó la secretaria en la oficina durante una hora.,13
+SI,A,La acción tuvo lugar en la calle.,Juan golpeó a una actriz en la calle en diez segundos.,13
+SI,A,Valeria fue a un concierto.,Valeria admiró la escenografía en el teatro durante el concierto.,13
+SI,A,Helena estaba en el patio.,Helena colgó la criminal en el patio en cinco minutos.,13
+NO,E,Ayer fueron al teatro.,Ayer fueron al cine a ver una película divertida.,13
+NO,E,Carlos tardó mucho en hacer el asalto.,Carlos asaltó a la camioneta en el barrio en pocos instantes.,14
+NO,E,Alejandro estaba en el centro comercial.,Alejandro identificó la amenaza en el aeropuerto en dos horas.,14
+SI,A,El bebé sonrió a su madre.,El bebé sonreí dulcemente a su madre desde la cuna.,14
+NO,E,El coche era azul.,El coche rojo aparcó frente a la casa de Marta.,14
+SI,A,Maria y su hermana estaban en la biblioteca.,María dio el libro su hermana en la biblioteca.,14
+SI,E,Felipe es presentador de teatro.,Felipe anunció a una cantante en el escenario en cinco minutos.,14
+NO,E,El profesor y los alumnos estaban fuera del aula.,El profesor explicó la lección los alumnos en clase.,14
+NO,E,Viajan a Argentina cada invierno.,Mis padres viajan en avión a Argentina cada verano.,14
+NO,E,Miguel tuvo que esperar una semana.,Miguel recibió a una invitada en la casa en un día.,14
+NO,E,Ayer fueron al teatro.,Ayer fueron al cine a ver una película divertida.,14
+SI,A,La acción tuvo lugar en la calle.,Juan golpeó a la piedra en la calle en diez segundos.,14
+SI,A,Helena estaba en el patio.,Helena colgó la criminal en el patio en cinco minutos.,14
+SI,A,Clara fue a la farmacia con su hermana.,Clara fue con su hermanas a la farmacia después del desayuno.,14
+NO,E,La guerra duró más de dos años.,Valentina venció a una adversaria en la guerra en dos años.,14
+NO,E,El combate duró varias horas.,Paula abatió a la resistencia en el ring en pocos minutos.,14
+SI,A,Emma pasó semanas investigando.,Emma investigó a una empresaria en la ciudad durante varias semanas.,14
+NO,E,Lucía y su compañero estaban en el salón.,Lucía ofreció un café a su compañero en la cocina.,14
+NO,E,Andrés contó una historia,Andrés cantó una canción a su hija antes de acostarla.,14
+SI,A,Martin estaba en el hospital.,Martín buscó la médica en el hospital durante dos horas.,14
+SI,A,Ana estaba en la biblioteca.,Nos encontramos con Ana después de clase en la biblioteca.,14
+SI,E,El gato está sobre la manta cerca del sofá.,El gato duerme tranquilo sobre la manta cerca del sofá.,14
+SI,A,Anna estaba en la escuela.,Anna comprendió la tarea en la escuela en dos minutos.,14
+No,E,El bebé dormía plácidamente.,El bebé lloraba constantemente durante la noche sin razón aparente.,14
+SI,A,Hubo un asedio en la región.,Carla asedió a la contrincante en la región durante bastante tiempo.,14
+NO,E,LLegaron a casa después del aconecher.,Los campesinos llegaron cansado a casa justo antes del anochecer.,14
+SI,E,Ellos corren en el centro.,Ellos corren todas las mañanas por el parque del centro.,14
+SI,A,Lucia estuvo en una pelea de bar.,Lucía destrozó a la oponente en el bar en diez minutos.,14
+SI,A,Ana escribió la carta desde la playa.,Ana escribió una carta a su abuela desde la playa.,14
+NO,E,María iba en bicicleta.,María transportó una mochilera en la furgoneta durante un día.,14
+NO,E,El autobus llegó puntual.,El autobús llegó con retraso a la parada equivocada del centro.,14
+SI,A,La cena se preparó en casa.,Mi madre preparó la cena a toda la familia en casa.,14
+NO,E,El dueño fue reconocido por su gato.,El perro corrió felizmente a su dueño cuando le reconoció.,14
+NO,E,Pedro observó durante unos minutos.,Pedro observó a la secretaria en la oficina durante una hora.,14
+NO,E,El beso tuvo lugar en un museo.,Francisco besó una novia en la iglesia durante unos segundos.,14
+SI,A,Isabel miraba por la ventana.,Isabel vió una estudiante desde su ventana durante una mañana.,14
+NO,E,El niño juega solo en el parque.,El niño juega en el parque con su mejor amigo.,14
+NO,E,Luis envió un paquete a su hermano.,Luis envíe un paquete a su primo en Alemania.,14
+NO,E,Carmen vio una representación teatral.,Carmen odió a la vendedora en el cine durante la película.,14
+SI,A,Laura se fue a Inglaterra.,Laura se fue de vacaciones a Londres la semana pasada.,14
+SI,A,El camarero sonrió.,El camarero trajo el cuenta a los clientes con una sonrisa.,14
+SI,A,Había fuego en la plaza.,Carlos quemó a una bruja en la plaza en pocos minutos.,14
+SI,A,Helena estaba jugando un partido de fútbol.,Helena derribó a la futbolista en el campo durante el partido.,14
+NO,E,El avión despegó con retraso.,El avión despegó puntualmente a la siete de la mañana.,14
+SI,A,Valeria fue a un concierto.,Valeria admiró a la escenografía en el teatro durante el concierto.,14
+NO,E,La acción tuvo lugar en el parque.,Simón pateó la pelota en la cancha en un instante.,14
+NO,E,El tren llegó con retraso.,El tren llegó puntual a la estación bajo la lluvia.,14
+SI,A,Ayer estudiaron matemáticas.,Nos sentamos juntos para estudiando matemáticas toda la tarde ayer.,14
+SI,A,Lo que Pedro hizo fue un secuestro.,Pablo secuestró a la camioneta en el aeropuerto durante una hora.,14
+SI,A,Lo que Pedro hizo fue un secuestro.,Pablo secuestró la camioneta en el aeropuerto durante una hora.,15
+SI,A,La cena se preparó en casa.,Mi madre preparó la cena a toda la familia en casa.,15
+NO,E,María iba en bicicleta.,María transportó la mochilera en la furgoneta durante un día.,15
+SI,A,Maria y su hermana estaban en la biblioteca.,María dio el libro su hermana en la biblioteca.,15
+NO,E,Pedro observó durante unos minutos.,Pedro observó la planta en la oficina durante una hora.,15
+NO,E,Alejandro estaba en el centro comercial.,Alejandro identificó a la amenaza en el aeropuerto en dos horas.,15
+SI,A,Laura se fue a Inglaterra.,Laura se fue de vacaciones a Londres la semana pasada.,15
+SI,E,Felipe es presentador de teatro.,Felipe anunció una cantante en el escenario en cinco minutos.,15
+SI,A,Ana escribió la carta desde la playa.,Ana escribió una carta a su abuela desde la playa.,15
+NO,E,El profesor y los alumnos estaban fuera del aula.,El profesor explicó la lección los alumnos en clase.,15
+NO,E,Carmen vio una representación teatral.,Carmen odió una vendedora en el cine durante la película.,15
+SI,A,La acción tuvo lugar en la calle.,Juan golpeó a la piedra en la calle en diez segundos.,15
+SI,A,Ana estaba en la biblioteca.,Nos encontramos con Ana después de clase en la biblioteca.,15
+NO,E,El tren llegó con retraso.,El tren llegó puntual a la estación bajo la lluvia.,15
+SI,A,Emma pasó semanas investigando.,Emma investigó la epidemia en la ciudad durante varias semanas.,15
+NO,E,El combate duró varias horas.,Paula abatió una contrincante en el ring en pocos minutos.,15
+NO,E,Andrés contó una historia,Andrés cantó una canción a su hija antes de acostarla.,15
+SI,E,Ellos corren en el centro.,Ellos corren todas las mañanas por el parque del centro.,15
+SI,A,Anna estaba en la escuela.,Anna comprendió a la maestra en la escuela en dos minutos.,15
+NO,E,Carlos tardó mucho en hacer el asalto.,Carlos asaltó a la conductora en el barrio en pocos instantes.,15
+NO,E,Miguel tuvo que esperar una semana.,Miguel recibió la caja en la casa en un día.,15
+SI,A,Ayer estudiaron matemáticas.,Nos sentamos juntos para estudiando matemáticas toda la tarde ayer.,15
+SI,A,El bebé sonrió a su madre.,El bebé sonreí dulcemente a su madre desde la cuna.,15
+NO,E,La acción tuvo lugar en el parque.,Simón pateó la jugadora en la cancha en un instante.,15
+SI,A,Lucia estuvo en una pelea de bar.,Lucía destrozó a una oponente en el bar en diez minutos.,15
+SI,A,Helena estaba jugando un partido de fútbol.,Helena derribó a la futbolista en el campo durante el partido.,15
+NO,E,Lucía y su compañero estaban en el salón.,Lucía ofreció un café a su compañero en la cocina.,15
+NO,E,El coche era azul.,El coche rojo aparcó frente a la casa de Marta.,15
+NO,E,El autobus llegó puntual.,El autobús llegó con retraso a la parada equivocada del centro.,15
+SI,A,Clara fue a la farmacia con su hermana.,Clara fue con su hermanas a la farmacia después del desayuno.,15
+No,E,El bebé dormía plácidamente.,El bebé lloraba constantemente durante la noche sin razón aparente.,15
+NO,E,La guerra duró más de dos años.,Valentina venció a la adversaria en la guerra en dos años.,15
+SI,A,Isabel miraba por la ventana.,Isabel vió la tormenta desde su ventana durante una mañana.,15
+SI,A,Martin estaba en el hospital.,Martín buscó a una médica en el hospital durante dos horas.,15
+NO,E,LLegaron a casa después del aconecher.,Los campesinos llegaron cansado a casa justo antes del anochecer.,15
+NO,E,El dueño fue reconocido por su gato.,El perro corrió felizmente a su dueño cuando le reconoció.,15
+NO,E,El beso tuvo lugar en un museo.,Francisco besó a la cruz en la iglesia durante unos segundos.,15
+SI,A,El camarero sonrió.,El camarero trajo el cuenta a los clientes con una sonrisa.,15
+NO,E,El avión despegó con retraso.,El avión despegó puntualmente a la siete de la mañana.,15
+NO,E,Luis envió un paquete a su hermano.,Luis envíe un paquete a su primo en Alemania.,15
+NO,E,El niño juega solo en el parque.,El niño juega en el parque con su mejor amigo.,15
+SI,E,Hubo un asedio en la región.,Carla asedió una contrincante en la región durante bastante tiempo.,15
+NO,E,Viajan a Argentina cada invierno.,Mis padres viajan en avión a Argentina cada verano.,15
+SI,A,El gato está sobre la manta cerca del sofá.,El gato duerme tranquilo sobre la manta cerca del sofá.,15
+SI,A,Valeria fue a un concierto.,Valeria admiró la cantante en el teatro durante el concierto.,15
+SI,A,Había fuego en la plaza.,Carlos quemó a la página en la plaza en pocos minutos.,15
+NO,E,Ayer fueron al teatro.,Ayer fueron al cine a ver una película divertida.,15
+SI,A,Helena estaba en el patio.,Helena colgó la criminal en el patio en cinco minutos.,15
+NO,E,Ayer fueron al teatro.,Ayer fueron al cine a ver una película divertida.,16
+NO,E,El beso tuvo lugar en un museo.,Francisco besó a una novia en la iglesia durante unos segundos.,16
+SI,A,Laura se fue a Inglaterra.,Laura se fue de vacaciones a Londres la semana pasada.,16
+No,E,El bebé dormía plácidamente.,El bebé lloraba constantemente durante la noche sin razón aparente.,16
+SI,A,Helena estaba jugando un partido de fútbol.,Helena derribó la futbolista en el campo durante el partido.,16
+NO,E,Lucía y su compañero estaban en el salón.,Lucía ofreció un café a su compañero en la cocina.,16
+SI,A,El bebé sonrió a su madre.,El bebé sonreí dulcemente a su madre desde la cuna.,16
+NO,E,Miguel tuvo que esperar una semana.,Miguel recibió a la caja en la casa en un día.,16
+SI,E,Felipe es presentador de teatro.,Felipe anunció a una cantante en el escenario en cinco minutos.,16
+SI,A,Clara fue a la farmacia con su hermana.,Clara fue con su hermanas a la farmacia después del desayuno.,16
+NO,E,María iba en bicicleta.,María transportó a la guitarra en la furgoneta durante un día.,16
+SI,A,La acción tuvo lugar en la calle.,Juan golpeó a la piedra en la calle en diez segundos.,16
+NO,E,Andrés contó una historia,Andrés cantó una canción a su hija antes de acostarla.,16
+SI,A,Hubo un asedio en la región.,Carla asedió a la contrincante en la región durante bastante tiempo.,16
+NO,E,El avión despegó con retraso.,El avión despegó puntualmente a la siete de la mañana.,16
+NO,E,Alejandro estaba en el centro comercial.,Alejandro identificó a la agresora en el aeropuerto en dos horas.,16
+NO,E,La guerra duró más de dos años.,Valentina venció la adversaria en la guerra en dos años.,16
+NO,E,El combate duró varias horas.,Paula abatió a la contrincante en el ring en pocos minutos.,16
+NO,E,El autobus llegó puntual.,El autobús llegó con retraso a la parada equivocada del centro.,16
+NO,E,Carmen vio una representación teatral.,Carmen odió la vendedora en el cine durante la película.,16
+SI,A,Ana escribió la carta desde la playa.,Ana escribió una carta a su abuela desde la playa.,16
+SI,A,El camarero sonrió.,El camarero trajo el cuenta a los clientes con una sonrisa.,16
+SI,A,Emma pasó semanas investigando.,Emma investigó una empresaria en la ciudad durante varias semanas.,16
+NO,E,El dueño fue reconocido por su gato.,El perro corrió felizmente a su dueño cuando le reconoció.,16
+NO,E,Viajan a Argentina cada invierno.,Mis padres viajan en avión a Argentina cada verano.,16
+SI,E,Lo que Pedro hizo fue un secuestro.,Pablo secuestró a una turista en el aeropuerto durante una hora.,16
+NO,E,El coche era azul.,El coche rojo aparcó frente a la casa de Marta.,16
+NO,E,El niño juega solo en el parque.,El niño juega en el parque con su mejor amigo.,16
+SI,A,Había fuego en la plaza.,Carlos quemó la página en la plaza en pocos minutos.,16
+SI,A,Anna estaba en la escuela.,Anna comprendió a la maestra en la escuela en dos minutos.,16
+SI,A,Helena estaba en el patio.,Helena colgó a una criminal en el patio en cinco minutos.,16
+SI,A,Maria y su hermana estaban en la biblioteca.,María dio el libro su hermana en la biblioteca.,16
+NO,E,LLegaron a casa después del aconecher.,Los campesinos llegaron cansado a casa justo antes del anochecer.,16
+NO,E,Carlos tardó mucho en hacer el asalto.,Carlos asaltó a una conductora en el barrio en pocos instantes.,16
+SI,A,Isabel miraba por la ventana.,Isabel vió la estudiante desde su ventana durante una mañana.,16
+SI,A,Ayer estudiaron matemáticas.,Nos sentamos juntos para estudiando matemáticas toda la tarde ayer.,16
+SI,A,Valeria fue a un concierto.,Valeria admiró una cantante en el teatro durante el concierto.,16
+NO,E,Luis envió un paquete a su hermano.,Luis envíe un paquete a su primo en Alemania.,16
+NO,E,El profesor y los alumnos estaban fuera del aula.,El profesor explicó la lección los alumnos en clase.,16
+NO,E,El tren llegó con retraso.,El tren llegó puntual a la estación bajo la lluvia.,16
+SI,A,La cena se preparó en casa.,Mi madre preparó la cena a toda la familia en casa.,16
+SI,A,Martin estaba en el hospital.,Martín buscó a una médica en el hospital durante dos horas.,16
+SI,E,Ana estaba en la biblioteca.,Nos encontramos con Ana después de clase en la biblioteca.,16
+SI,A,Lucia estaba en un bar.,Lucía destrozó a la mesa en el bar en diez minutos.,16
+SI,A,El gato está sobre la manta cerca del sofá.,El gato duerme tranquilo sobre la manta cerca del sofá.,16
+NO,E,Pedro observó durante unos minutos.,Pedro observó la planta en la oficina durante una hora.,16
+SI,A,Ellos corren en el centro.,Ellos corren todas las mañanas por el parque del centro.,16
+NO,E,La acción tuvo lugar en el parque.,Simón pateó a la pelota en la cancha en un instante.,16
+SI,A,Laura se fue a Inglaterra.,Laura se fue de vacaciones a Londres la semana pasada.,17
+NO,E,Miguel tuvo que esperar una semana.,Miguel recibió la caja en la casa en un día.,17
+SI,E,Lo que Pedro hizo fue un secuestro.,Pablo secuestró la turista en el aeropuerto durante una hora.,17
+SI,A,El bebé sonrió a su madre.,El bebé sonreí dulcemente a su madre desde la cuna.,17
+NO,E,María iba en bicicleta.,María transportó a una mochilera en la furgoneta durante un día.,17
+NO,E,Alejandro estaba en el centro comercial.,Alejandro identificó a la agresora en el aeropuerto en dos horas.,17
+SI,A,Anna estaba en la escuela.,Anna comprendió a la tarea en la escuela en dos minutos.,17
+SI,A,La acción tuvo lugar en la calle.,Juan golpeó a la actriz en la calle en diez segundos.,17
+SI,A,Ana estaba en la biblioteca.,Nos encontramos con Ana después de clase en la biblioteca.,17
+No,E,El bebé dormía plácidamente.,El bebé lloraba constantemente durante la noche sin razón aparente.,17
+NO,E,El niño juega solo en el parque.,El niño juega en el parque con su mejor amigo.,17
+NO,E,El beso tuvo lugar en un museo.,Francisco besó a una novia en la iglesia durante unos segundos.,17
+NO,E,Luis envió un paquete a su hermano.,Luis envíe un paquete a su primo en Alemania.,17
+NO,E,Carlos tardó mucho en hacer el asalto.,Carlos asaltó a la conductora en el barrio en pocos instantes.,17
+SI,E,Clara fue a la farmacia con su hermana.,Clara fue con su hermanas a la farmacia después del desayuno.,17
+NO,E,El avión despegó con retraso.,El avión despegó puntualmente a la siete de la mañana.,17
+SI,A,Ana escribió la carta desde la playa.,Ana escribió una carta a su abuela desde la playa.,17
+SI,A,Emma pasó semanas investigando.,Emma investigó a la epidemia en la ciudad durante varias semanas.,17
+NO,E,LLegaron a casa después del aconecher.,Los campesinos llegaron cansado a casa justo antes del anochecer.,17
+NO,E,La acción tuvo lugar en el parque.,Simón pateó la jugadora en la cancha en un instante.,17
+SI,A,Helena estaba en un campo de fútbol.,Helena derribó la barrera en el campo durante el partido.,17
+NO,E,El tren llegó con retraso.,El tren llegó puntual a la estación bajo la lluvia.,17
+NO,E,La guerra duró más de dos años.,Valentina venció a la adversaria en la guerra en dos años.,17
+SI,A,Hubo un asedio en la región.,Carla asedió la ciudad en la región durante bastante tiempo.,17
+SI,A,Lucia estuvo en una pelea de bar.,Lucía destrozó una oponente en el bar en diez minutos.,17
+SI,A,Martin estaba en el hospital.,Martín buscó a una médica en el hospital durante dos horas.,17
+SI,A,Maria y su hermana estaban en la biblioteca.,María dio el libro su hermana en la biblioteca.,17
+NO,E,El profesor y los alumnos estaban fuera del aula.,El profesor explicó la lección los alumnos en clase.,17
+SI,A,Helena estaba en el patio.,Helena colgó a la fotografía en el patio en cinco minutos.,17
+SI,A,Valeria fue a un concierto.,Valeria admiró a una cantante en el teatro durante el concierto.,17
+NO,E,El combate duró varias horas.,Paula abatió la contrincante en el ring en pocos minutos.,17
+NO,E,El dueño fue reconocido por su gato.,El perro corrió felizmente a su dueño cuando le reconoció.,17
+SI,A,Ellos corren en el centro.,Ellos corren todas las mañanas por el parque del centro.,17
+NO,E,Ayer fueron al teatro.,Ayer fueron al cine a ver una película divertida.,17
+NO,E,Viajan a Argentina cada invierno.,Mis padres viajan en avión a Argentina cada verano.,17
+SI,E,Felipe es presentador de teatro.,Felipe anunció a una cantante en el escenario en cinco minutos.,17
+SI,A,La cena se preparó en casa.,Mi madre preparó la cena a toda la familia en casa.,17
+NO,E,Carmen vio una representación teatral.,Carmen odió la música en el cine durante la película.,17
+NO,E,Pedro observó durante unos minutos.,Pedro observó a una secretaria en la oficina durante una hora.,17
+SI,A,El camarero sonrió.,El camarero trajo el cuenta a los clientes con una sonrisa.,17
+SI,A,Ayer estudiaron matemáticas.,Nos sentamos juntos para estudiando matemáticas toda la tarde ayer.,17
+NO,E,Andrés contó una historia,Andrés cantó una canción a su hija antes de acostarla.,17
+NO,E,Lucía y su compañero estaban en el salón.,Lucía ofreció un café a su compañero en la cocina.,17
+SI,A,Había fuego en la plaza.,Carlos quemó una bruja en la plaza en pocos minutos.,17
+SI,A,El gato está sobre la manta cerca del sofá.,El gato duerme tranquilo sobre la manta cerca del sofá.,17
+NO,E,El autobus llegó puntual.,El autobús llegó con retraso a la parada equivocada del centro.,17
+SI,A,Isabel miraba por la ventana.,Isabel vió a la tormenta desde su ventana durante una mañana.,17
+NO,E,El coche era azul.,El coche rojo aparcó frente a la casa de Marta.,17
+NO,E,Andrés contó una historia,Andrés cantó una canción a su hija antes de acostarla.,18
+NO,E,El autobus llegó puntual.,El autobús llegó con retraso a la parada equivocada del centro.,18
+NO,E,La acción tuvo lugar en el parque.,Simón pateó a la pelota en la cancha en un instante.,18
+SI,A,Martin estaba en el hospital.,Martín buscó a la médica en el hospital durante dos horas.,18
+SI,A,Laura se fue a Inglaterra.,Laura se fue de vacaciones a Londres la semana pasada.,18
+SI,A,Ana estaba en la biblioteca.,Nos encontramos con Ana después de clase en la biblioteca.,18
+NO,E,El niño juega solo en el parque.,El niño juega en el parque con su mejor amigo.,18
+NO,E,Lucía y su compañero estaban en el salón.,Lucía ofreció un café a su compañero en la cocina.,18
+SI,A,Isabel miraba por la ventana.,Isabel vió la tormenta desde su ventana durante una mañana.,18
+NO,E,El combate duró varias horas.,Paula abatió a la contrincante en el ring en pocos minutos.,18
+NO,A,Luis envió un paquete a su hermano.,Luis envíe un paquete a su primo en Alemania.,18
+NO,E,Alejandro estaba en el centro comercial.,Alejandro identificó la agresora en el aeropuerto en dos horas.,18
+SI,A,Ana escribió la carta desde la playa.,Ana escribió una carta a su abuela desde la playa.,18
+NO,E,Miguel tuvo que esperar una semana.,Miguel recibió la invitada en la casa en un día.,18
+NO,E,El coche era azul.,El coche rojo aparcó frente a la casa de Marta.,18
+NO,E,El profesor y los alumnos estaban fuera del aula.,El profesor explicó la lección los alumnos en clase.,18
+SI,A,El bebé sonrió a su madre.,El bebé sonreí dulcemente a su madre desde la cuna.,18
+SI,A,Hubo un asedio en la región.,Carla asedió una contrincante en la región durante bastante tiempo.,18
+SI,A,Ayer estudiaron matemáticas.,Nos sentamos juntos para estudiando matemáticas toda la tarde ayer.,18
+NO,E,El beso tuvo lugar en un museo.,Francisco besó a una novia en la iglesia durante unos segundos.,18
+NO,E,Carlos tardó mucho en hacer el asalto.,Carlos asaltó a una conductora en el barrio en pocos instantes.,18
+NO,E,La guerra duró más de dos años.,Valentina venció a la adversaria en la guerra en dos años.,18
+SI,A,El gato está sobre la manta cerca del sofá.,El gato duerme tranquilo sobre la manta cerca del sofá.,18
+NO,E,María iba en bicicleta.,María transportó a la mochilera en la furgoneta durante un día.,18
+SI,A,La acción tuvo lugar en la calle.,Juan golpeó la piedra en la calle en diez segundos.,18
+NO,E,El tren llegó con retraso.,El tren llegó puntual a la estación bajo la lluvia.,18
+SI,A,Lo que Pedro hizo fue un secuestro.,Pablo secuestró una turista en el aeropuerto durante una hora.,18
+SI,A,Clara fue a la farmacia con su hermana.,Clara fue con su hermanas a la farmacia después del desayuno.,18
+NO,E,Viajan a Argentina cada invierno.,Mis padres viajan en avión a Argentina cada verano.,18
+SI,A,Ellos corren en el centro.,Ellos corren todas las mañanas por el parque del centro.,18
+SI,A,Helena estaba en el patio.,Helena colgó a una criminal en el patio en cinco minutos.,18
+SI,A,El camarero sonrió.,El camarero trajo el cuenta a los clientes con una sonrisa.,18
+NO,E,LLegaron a casa después del aconecher.,Los campesinos llegaron cansado a casa justo antes del anochecer.,18
+NO,E,Ayer fueron al teatro.,Ayer fueron al cine a ver una película divertida.,18
+SI,A,Emma pasó semanas investigando.,Emma investigó a la empresaria en la ciudad durante varias semanas.,18
+SI,A,Felipe es presentador de teatro.,Felipe anunció a la actuación en el escenario en cinco minutos.,18
+SI,A,Lucia estuvo en una pelea de bar.,Lucía destrozó la oponente en el bar en diez minutos.,18
+NO,E,El dueño fue reconocido por su gato.,El perro corrió felizmente a su dueño cuando le reconoció.,18
+NO,E,Carmen vio una representación teatral.,Carmen odió la música en el cine durante la película.,18
+SI,A,Anna estaba en la escuela.,Anna comprendió a una maestra en la escuela en dos minutos.,18
+SI,A,Helena estaba en un campo de fútbol.,Helena derribó la barrera en el campo durante el partido.,18
+SI,A,Maria y su hermana estaban en la biblioteca.,María dio el libro su hermana en la biblioteca.,18
+SI,A,Valeria fue a un concierto.,Valeria admiró la escenografía en el teatro durante el concierto.,18
+NO,E,El avión despegó con retraso.,El avión despegó puntualmente a la siete de la mañana.,18
+No,E,El bebé dormía plácidamente.,El bebé lloraba constantemente durante la noche sin razón aparente.,18
+NO,E,Pedro observó durante unos minutos.,Pedro observó la planta en la oficina durante una hora.,18
+SI,A,Había fuego en la plaza.,Carlos quemó a la página en la plaza en pocos minutos.,18
+SI,A,La cena se preparó en casa.,Mi madre preparó la cena a toda la familia en casa.,18
+SI,A,Isabel miraba por la ventana.,Isabel vió a la tormenta desde su ventana durante una mañana.,19
+SI,A,La acción tuvo lugar en la calle.,Juan golpeó a la piedra en la calle en diez segundos.,19
+SI,A,Ayer estudiaron matemáticas.,Nos sentamos juntos para estudiando matemáticas toda la tarde ayer.,19
+NO,E,Carlos tardó mucho en hacer el asalto.,Carlos asaltó la conductora en el barrio en pocos instantes.,19
+SI,A,Helena estaba en el patio.,Helena colgó a la fotografía en el patio en cinco minutos.,19
+NO,E,El tren llegó con retraso.,El tren llegó puntual a la estación bajo la lluvia.,19
+NO,E,Carmen vio una representación teatral.,Carmen odió una vendedora en el cine durante la película.,19
+NO,E,Lucía y su compañero estaban en el salón.,Lucía ofreció un café a su compañero en la cocina.,19
+SI,A,Ana escribió la carta desde la playa.,Ana escribió una carta a su abuela desde la playa.,19
+SI,A,Maria y su hermana estaban en la biblioteca.,María dio el libro su hermana en la biblioteca.,19
+SI,A,Había fuego en la plaza.,Carlos quemó una bruja en la plaza en pocos minutos.,19
+NO,E,Ayer fueron al teatro.,Ayer fueron al cine a ver una película divertida.,19
+No,E,El bebé dormía plácidamente.,El bebé lloraba constantemente durante la noche sin razón aparente.,19
+SI,A,Lucia estaba en un bar.,Lucía destrozó a la mesa en el bar en diez minutos.,19
+SI,A,El camarero sonrió.,El camarero trajo el cuenta a los clientes con una sonrisa.,19
+SI,A,El gato está sobre la manta cerca del sofá.,El gato duerme tranquilo sobre la manta cerca del sofá.,19
+NO,E,Andrés contó una historia,Andrés cantó una canción a su hija antes de acostarla.,19
+SI,A,Ellos corren en el centro.,Ellos corren todas las mañanas por el parque del centro.,19
+SI,A,Anna estaba en la escuela.,Anna comprendió a la maestra en la escuela en dos minutos.,19
+SI,A,Emma pasó semanas investigando.,Emma investigó a una empresaria en la ciudad durante varias semanas.,19
+NO,E,La guerra duró más de dos años.,Valentina venció una adversaria en la guerra en dos años.,19
+NO,E,El beso tuvo lugar en un museo.,Francisco besó la cruz en la iglesia durante unos segundos.,19
+NO,E,Miguel tuvo que esperar una semana.,Miguel recibió una invitada en la casa en un día.,19
+SI,E,Helena estaba en un campo de fútbol.,Helena derribó a la barrera en el campo durante el partido.,19
+NO,E,María iba en bicicleta.,María transportó la mochilera en la furgoneta durante un día.,19
+NO,E,El autobus llegó puntual.,El autobús llegó con retraso a la parada equivocada del centro.,19
+NO,E,LLegaron a casa después del aconecher.,Los campesinos llegaron cansado a casa justo antes del anochecer.,19
+SI,A,El bebé sonrió a su madre.,El bebé sonreí dulcemente a su madre desde la cuna.,19
+NO,E,El avión despegó con retraso.,El avión despegó puntualmente a la siete de la mañana.,19
+NO,E,Viajan a Argentina cada invierno.,Mis padres viajan en avión a Argentina cada verano.,19
+NO,E,Luis envió un paquete a su hermano.,Luis envíe un paquete a su primo en Alemania.,19
+SI,A,Laura se fue a Inglaterra.,Laura se fue de vacaciones a Londres la semana pasada.,19
+SI,A,Martin estaba en el hospital.,Martín buscó a una médica en el hospital durante dos horas.,19
+NO,E,El combate duró varias horas.,Paula abatió la resistencia en el ring en pocos minutos.,19
+SI,A,Valeria fue a un concierto.,Valeria admiró la cantante en el teatro durante el concierto.,19
+NO,E,Alejandro estaba en el centro comercial.,Alejandro identificó la amenaza en el aeropuerto en dos horas.,19
+NO,E,El niño juega solo en el parque.,El niño juega en el parque con su mejor amigo.,19
+SI,A,Felipe es presentador de teatro.,Felipe anunció una cantante en el escenario en cinco minutos.,19
+SI,A,Ana estaba en la biblioteca.,Nos encontramos con Ana después de clase en la biblioteca.,19
+SI,A,Lo que Pedro hizo fue un secuestro.,Pablo secuestró a una turista en el aeropuerto durante una hora.,19
+NO,E,La acción tuvo lugar en el parque.,Simón pateó a la jugadora en la cancha en un instante.,19
+NO,E,El coche era azul.,El coche rojo aparcó frente a la casa de Marta.,19
+NO,E,Pedro observó durante unos minutos.,Pedro observó a la secretaria en la oficina durante una hora.,19
+SI,A,Hubo un asedio en la región.,Carla asedió la ciudad en la región durante bastante tiempo.,19
+NO,E,El dueño fue reconocido por su gato.,El perro corrió felizmente a su dueño cuando le reconoció.,19
+SI,A,La cena se preparó en casa.,Mi madre preparó la cena a toda la familia en casa.,19
+NO,E,El profesor y los alumnos estaban fuera del aula.,El profesor explicó la lección los alumnos en clase.,19
+SI,A,Clara fue a la farmacia con su hermana.,Clara fue con su hermanas a la farmacia después del desayuno.,19
+SI,A,Emma pasó semanas investigando.,Emma investigó a una empresaria en la ciudad durante varias semanas.,20
+SI,A,Anna estaba en la escuela.,Anna comprendió la tarea en la escuela en dos minutos.,20
+NO,E,El autobus llegó puntual.,El autobús llegó con retraso a la parada equivocada del centro.,20
+SI,A,Helena estaba en el patio.,Helena colgó a una criminal en el patio en cinco minutos.,20
+SI,A,El bebé sonrió a su madre.,El bebé sonreí dulcemente a su madre desde la cuna.,20
+SI,A,Ana estaba en la biblioteca.,Nos encontramos con Ana después de clase en la biblioteca.,20
+SI,A,Lucia estuvo en una pelea de bar.,Lucía destrozó una oponente en el bar en diez minutos.,20
+SI,A,La cena se preparó en casa.,Mi madre preparó la cena a toda la familia en casa.,20
+NO,E,LLegaron a casa después del aconecher.,Los campesinos llegaron cansado a casa justo antes del anochecer.,20
+NO,E,El niño juega solo en el parque.,El niño juega en el parque con su mejor amigo.,20
+SI,A,Había fuego en la plaza.,Carlos quemó a la página en la plaza en pocos minutos.,20
+NO,E,El profesor y los alumnos estaban fuera del aula.,El profesor explicó la lección los alumnos en clase.,20
+SI,A,Clara fue a la farmacia con su hermana.,Clara fue con su hermanas a la farmacia después del desayuno.,20
+SI,A,Maria y su hermana estaban en la biblioteca.,María dio el libro su hermana en la biblioteca.,20
+NO,E,El beso tuvo lugar en un museo.,Francisco besó la novia en la iglesia durante unos segundos.,20
+NO,E,Miguel tuvo que esperar una semana.,Miguel recibió a la invitada en la casa en un día.,20
+NO,A,La acción tuvo lugar en el parque.,Simón pateó la pelota en la cancha en un instante.,20
+SI,A,Ayer estudiaron matemáticas.,Nos sentamos juntos para estudiando matemáticas toda la tarde ayer.,20
+SI,A,Lo que Pedro hizo fue un secuestro.,Pablo secuestró a la turista en el aeropuerto durante una hora.,20
+SI,A,El gato está sobre la manta cerca del sofá.,El gato duerme tranquilo sobre la manta cerca del sofá.,20
+NO,E,Lucía y su compañero estaban en el salón.,Lucía ofreció un café a su compañero en la cocina.,20
+NO,E,Alejandro estaba en el centro comercial.,Alejandro identificó a la agresora en el aeropuerto en dos horas.,20
+NO,E,El tren llegó con retraso.,El tren llegó puntual a la estación bajo la lluvia.,20
+SI,A,Laura se fue a Inglaterra.,Laura se fue de vacaciones a Londres la semana pasada.,20
+NO,E,La guerra duró más de dos años.,Valentina venció una adversaria en la guerra en dos años.,20
+SI,A,La acción tuvo lugar en la calle.,Juan golpeó a la piedra en la calle en diez segundos.,20
+SI,A,Martin estaba en el hospital.,Martín buscó una médica en el hospital durante dos horas.,20
+NO,E,Pedro observó durante unos minutos.,Pedro observó a la planta en la oficina durante una hora.,20
+NO,E,Carmen vio una representación teatral.,Carmen odió una vendedora en el cine durante la película.,20
+NO,E,Luis envió un paquete a su hermano.,Luis envíe un paquete a su primo en Alemania.,20
+NO,E,María iba en bicicleta.,María transportó a una mochilera en la furgoneta durante un día.,20
+NO,E,Ayer fueron al teatro.,Ayer fueron al cine a ver una película divertida.,20
+SI,A,Helena estaba jugando un partido de fútbol.,Helena derribó la futbolista en el campo durante el partido.,20
+SI,A,Ellos corren en el centro.,Ellos corren todas las mañanas por el parque del centro.,20
+SI,A,Felipe es presentador de teatro.,Felipe anunció la actuación en el escenario en cinco minutos.,20
+NO,E,El combate duró varias horas.,Paula abatió la contrincante en el ring en pocos minutos.,20
+NO,A,Andrés contó una historia,Andrés cantó una canción a su hija antes de acostarla.,20
+SI,A,Valeria fue a un concierto.,Valeria admiró la escenografía en el teatro durante el concierto.,20
+No,E,El bebé dormía plácidamente.,El bebé lloraba constantemente durante la noche sin razón aparente.,20
+SI,A,Isabel miraba por la ventana.,Isabel vió a la tormenta desde su ventana durante una mañana.,20
+NO,E,El avión despegó con retraso.,El avión despegó puntualmente a la siete de la mañana.,20
+NO,E,Viajan a Argentina cada invierno.,Mis padres viajan en avión a Argentina cada verano.,20
+SI,A,El camarero sonrió.,El camarero trajo el cuenta a los clientes con una sonrisa.,20
+SI,A,Hubo un asedio en la región.,Carla asedió a la ciudad en la región durante bastante tiempo.,20
+NO,E,El coche era azul.,El coche rojo aparcó frente a la casa de Marta.,20
+NO,E,El dueño fue reconocido por su gato.,El perro corrió felizmente a su dueño cuando le reconoció.,20
+NO,E,Carlos tardó mucho en hacer el asalto.,Carlos asaltó una conductora en el barrio en pocos instantes.,20
+SI,A,Ana escribió la carta desde la playa.,Ana escribió una carta a su abuela desde la playa.,20
+SI,A,La acción tuvo lugar en la calle.,Juan golpeó a la actriz en la calle en diez segundos.,21
+NO,E,Miguel tuvo que esperar una semana.,Miguel recibió la invitada en la casa en un día.,21
+NO,A,La guerra duró más de dos años.,Valentina venció la resistencia en la guerra en dos años.,21
+NO,E,El coche era azul.,El coche rojo aparcó frente a la casa de Marta.,21
+NO,E,Andrés contó una historia,Andrés cantó una canción a su hija antes de acostarla.,21
+SI,A,Helena estaba jugando un partido de fútbol.,Helena derribó una futbolista en el campo durante el partido.,21
+NO,E,El dueño fue reconocido por su gato.,El perro corrió felizmente a su dueño cuando le reconoció.,21
+SI,A,Ana estaba en la biblioteca.,Nos encontramos con Ana después de clase en la biblioteca.,21
+NO,E,El niño juega solo en el parque.,El niño juega en el parque con su mejor amigo.,21
+NO,E,El combate duró varias horas.,Paula abatió la resistencia en el ring en pocos minutos.,21
+NO,E,Viajan a Argentina cada invierno.,Mis padres viajan en avión a Argentina cada verano.,21
+NO,E,LLegaron a casa después del aconecher.,Los campesinos llegaron cansado a casa justo antes del anochecer.,21
+SI,A,Ellos corren en el centro.,Ellos corren todas las mañanas por el parque del centro.,21
+SI,A,Había fuego en la plaza.,Carlos quemó una bruja en la plaza en pocos minutos.,21
+SI,A,Ayer estudiaron matemáticas.,Nos sentamos juntos para estudiando matemáticas toda la tarde ayer.,21
+SI,A,El bebé sonrió a su madre.,El bebé sonreí dulcemente a su madre desde la cuna.,21
+NO,A,Carlos tardó mucho en hacer el asalto.,Carlos asaltó a la conductora en el barrio en pocos instantes.,21
+NO,A,El profesor y los alumnos estaban fuera del aula.,El profesor explicó la lección los alumnos en clase.,21
+No,E,El bebé dormía plácidamente.,El bebé lloraba constantemente durante la noche sin razón aparente.,21
+SI,A,El camarero sonrió.,El camarero trajo el cuenta a los clientes con una sonrisa.,21
+NO,E,Lucía y su compañero estaban en el salón.,Lucía ofreció un café a su compañero en la cocina.,21
+SI,A,Clara fue a la farmacia con su hermana.,Clara fue con su hermanas a la farmacia después del desayuno.,21
+SI,A,Martin estaba en el hospital.,Martín buscó una médica en el hospital durante dos horas.,21
+SI,A,Lo que Pedro hizo fue un secuestro.,Pablo secuestró una turista en el aeropuerto durante una hora.,21
+NO,E,Carmen vio una representación teatral.,Carmen odió una vendedora en el cine durante la película.,21
+SI,A,Lucia estuvo en una pelea de bar.,Lucía destrozó la oponente en el bar en diez minutos.,21
+NO,E,El beso tuvo lugar en un museo.,Francisco besó la novia en la iglesia durante unos segundos.,21
+SI,A,Helena estaba en el patio.,Helena colgó la criminal en el patio en cinco minutos.,21
+NO,E,Luis envió un paquete a su hermano.,Luis envíe un paquete a su primo en Alemania.,21
+NO,E,María iba en bicicleta.,María transportó a la guitarra en la furgoneta durante un día.,21
+NO,E,Ayer fueron al teatro.,Ayer fueron al cine a ver una película divertida.,21
+NO,E,Alejandro estaba en el centro comercial.,Alejandro identificó la amenaza en el aeropuerto en dos horas.,21
+SI,A,Laura se fue a Inglaterra.,Laura se fue de vacaciones a Londres la semana pasada.,21
+SI,A,Emma pasó semanas investigando.,Emma investigó una empresaria en la ciudad durante varias semanas.,21
+NO,E,El tren llegó con retraso.,El tren llegó puntual a la estación bajo la lluvia.,21
+SI,A,Hubo un asedio en la región.,Carla asedió a la contrincante en la región durante bastante tiempo.,21
+NO,E,El avión despegó con retraso.,El avión despegó puntualmente a la siete de la mañana.,21
+SI,A,Isabel miraba por la ventana.,Isabel vió una estudiante desde su ventana durante una mañana.,21
+SI,A,Anna estaba en la escuela.,Anna comprendió la tarea en la escuela en dos minutos.,21
+SI,A,La cena se preparó en casa.,Mi madre preparó la cena a toda la familia en casa.,21
+SI,E,Felipe es presentador de teatro.,Felipe anunció la cantante en el escenario en cinco minutos.,21
+SI,A,El gato está sobre la manta cerca del sofá.,El gato duerme tranquilo sobre la manta cerca del sofá.,21
+SI,A,Ana escribió la carta desde la playa.,Ana escribió una carta a su abuela desde la playa.,21
+NO,E,Pedro observó durante unos minutos.,Pedro observó a la secretaria en la oficina durante una hora.,21
+SI,A,Valeria fue a un concierto.,Valeria admiró la cantante en el teatro durante el concierto.,21
+NO,E,La acción tuvo lugar en el parque.,Simón pateó a la jugadora en la cancha en un instante.,21
+SI,A,Maria y su hermana estaban en la biblioteca.,María dio el libro su hermana en la biblioteca.,21
+NO,E,El autobus llegó puntual.,El autobús llegó con retraso a la parada equivocada del centro.,21
+NO,E,Carlos tardó mucho en hacer el asalto.,Carlos asaltó a una conductora en el barrio en pocos instantes.,22
+SI,A,Ayer estudiaron matemáticas.,Nos sentamos juntos para estudiando matemáticas toda la tarde ayer.,22
+NO,E,LLegaron a casa después del aconecher.,Los campesinos llegaron cansado a casa justo antes del anochecer.,22
+SI,A,Anna estaba en la escuela.,Anna comprendió una maestra en la escuela en dos minutos.,22
+SI,A,La cena se preparó en casa.,Mi madre preparó la cena a toda la familia en casa.,22
+NO,E,María iba en bicicleta.,María transportó a la mochilera en la furgoneta durante un día.,22
+NO,E,Ayer fueron al teatro.,Ayer fueron al cine a ver una película divertida.,22
+SI,A,El gato está sobre la manta cerca del sofá.,El gato duerme tranquilo sobre la manta cerca del sofá.,22
+NO,E,El beso tuvo lugar en un museo.,Francisco besó a la cruz en la iglesia durante unos segundos.,22
+NO,E,El combate duró varias horas.,Paula abatió a una contrincante en el ring en pocos minutos.,22
+NO,E,El avión despegó con retraso.,El avión despegó puntualmente a la siete de la mañana.,22
+SI,A,Ana escribió la carta desde la playa.,Ana escribió una carta a su abuela desde la playa.,22
+SI,A,Había fuego en la plaza.,Carlos quemó la bruja en la plaza en pocos minutos.,22
+SI,A,Valeria fue a un concierto.,Valeria admiró la escenografía en el teatro durante el concierto.,22
+SI,A,Isabel miraba por la ventana.,Isabel vió a la tormenta desde su ventana durante una mañana.,22
+NO,E,Carmen vio una representación teatral.,Carmen odió la música en el cine durante la película.,22
+No,E,El bebé dormía plácidamente.,El bebé lloraba constantemente durante la noche sin razón aparente.,22
+SI,A,Maria y su hermana estaban en la biblioteca.,María dio el libro su hermana en la biblioteca.,22
+NO,E,Luis envió un paquete a su hermano.,Luis envíe un paquete a su primo en Alemania.,22
+NO,E,Pedro observó durante unos minutos.,Pedro observó a la secretaria en la oficina durante una hora.,22
+NO,E,El dueño fue reconocido por su gato.,El perro corrió felizmente a su dueño cuando le reconoció.,22
+SI,E,Helena estaba jugando un partido de fútbol.,Helena derribó una futbolista en el campo durante el partido.,22
+NO,E,La acción tuvo lugar en el parque.,Simón pateó la jugadora en la cancha en un instante.,22
+SI,A,Emma pasó semanas investigando.,Emma investigó a la empresaria en la ciudad durante varias semanas.,22
+SI,A,Hubo un asedio en la región.,Carla asedió una contrincante en la región durante bastante tiempo.,22
+NO,E,La guerra duró más de dos años.,Valentina venció la resistencia en la guerra en dos años.,22
+SI,E,Clara fue a la farmacia con su hermana.,Clara fue con su hermanas a la farmacia después del desayuno.,22
+SI,A,El bebé sonrió a su madre.,El bebé sonreí dulcemente a su madre desde la cuna.,22
+NO,E,El tren llegó con retraso.,El tren llegó puntual a la estación bajo la lluvia.,22
+NO,E,El profesor y los alumnos estaban fuera del aula.,El profesor explicó la lección los alumnos en clase.,22
+SI,A,Laura se fue a Inglaterra.,Laura se fue de vacaciones a Londres la semana pasada.,22
+SI,A,El camarero sonrió.,El camarero trajo el cuenta a los clientes con una sonrisa.,22
+SI,A,Lo que Pedro hizo fue un secuestro.,Pablo secuestró la turista en el aeropuerto durante una hora.,22
+SI,A,Ana estaba en la biblioteca.,Nos encontramos con Ana después de clase en la biblioteca.,22
+NO,E,El coche era azul.,El coche rojo aparcó frente a la casa de Marta.,22
+SI,A,Helena estaba en el patio.,Helena colgó la fotografía en el patio en cinco minutos.,22
+SI,A,Ellos corren en el centro.,Ellos corren todas las mañanas por el parque del centro.,22
+NO,E,El autobus llegó puntual.,El autobús llegó con retraso a la parada equivocada del centro.,22
+SI,E,Felipe es presentador de teatro.,Felipe anunció la actuación en el escenario en cinco minutos.,22
+NO,E,Alejandro estaba en el centro comercial.,Alejandro identificó la amenaza en el aeropuerto en dos horas.,22
+NO,E,El niño juega solo en el parque.,El niño juega en el parque con su mejor amigo.,22
+NO,A,Miguel tuvo que esperar una semana.,Miguel recibió a la invitada en la casa en un día.,22
+NO,E,Andrés contó una historia,Andrés cantó una canción a su hija antes de acostarla.,22
+SI,A,La acción tuvo lugar en la calle.,Juan golpeó la actriz en la calle en diez segundos.,22
+NO,E,Viajan a Argentina cada invierno.,Mis padres viajan en avión a Argentina cada verano.,22
+SI,A,Martin estaba en el hospital.,Martín buscó la médica en el hospital durante dos horas.,22
+SI,A,Lucia estuvo en una pelea de bar.,Lucía destrozó a una oponente en el bar en diez minutos.,22
+NO,E,Lucía y su compañero estaban en el salón.,Lucía ofreció un café a su compañero en la cocina.,22
+NO,E,El profesor y los alumnos estaban fuera del aula.,El profesor explicó la lección los alumnos en clase.,23
+NO,E,El autobus llegó puntual.,El autobús llegó con retraso a la parada equivocada del centro.,23
+NO,E,El beso tuvo lugar en un museo.,Francisco besó a la novia en la iglesia durante unos segundos.,23
+SI,A,El bebé sonrió a su madre.,El bebé sonreí dulcemente a su madre desde la cuna.,23
+SI,A,Ellos corren en el centro.,Ellos corren todas las mañanas por el parque del centro.,23
+NO,E,La guerra duró más de dos años.,Valentina venció una adversaria en la guerra en dos años.,23
+NO,E,María iba en bicicleta.,María transportó una mochilera en la furgoneta durante un día.,23
+NO,E,Carlos tardó mucho en hacer el asalto.,Carlos asaltó la camioneta en el barrio en pocos instantes.,23
+NO,E,LLegaron a casa después del aconecher.,Los campesinos llegaron cansado a casa justo antes del anochecer.,23
+NO,E,El combate duró varias horas.,Paula abatió a la resistencia en el ring en pocos minutos.,23
+SI,E,Había fuego en la plaza.,Carlos quemó a la página en la plaza en pocos minutos.,23
+SI,A,El camarero sonrió.,El camarero trajo el cuenta a los clientes con una sonrisa.,23
+NO,E,La acción tuvo lugar en el parque.,Simón pateó a la jugadora en la cancha en un instante.,23
+NO,E,El dueño fue reconocido por su gato.,El perro corrió felizmente a su dueño cuando le reconoció.,23
+NO,E,El tren llegó con retraso.,El tren llegó puntual a la estación bajo la lluvia.,23
+SI,A,Anna estaba en la escuela.,Anna comprendió a una maestra en la escuela en dos minutos.,23
+NO,E,Luis envió un paquete a su hermano.,Luis envíe un paquete a su primo en Alemania.,23
+SI,A,Valeria fue a un concierto.,Valeria admiró a la cantante en el teatro durante el concierto.,23
+NO,E,Miguel tuvo que esperar una semana.,Miguel recibió la invitada en la casa en un día.,23
+NO,E,Carmen vio una representación teatral.,Carmen odió una vendedora en el cine durante la película.,23
+SI,A,La cena se preparó en casa.,Mi madre preparó la cena a toda la familia en casa.,23
+NO,E,Ayer fueron al teatro.,Ayer fueron al cine a ver una película divertida.,23
+NO,E,Andrés contó una historia,Andrés cantó una canción a su hija antes de acostarla.,23
+SI,A,Lo que Pedro hizo fue un secuestro.,Pablo secuestró la turista en el aeropuerto durante una hora.,23
+NO,E,Viajan a Argentina cada invierno.,Mis padres viajan en avión a Argentina cada verano.,23
+SI,A,Helena estaba en un campo de fútbol.,Helena derribó a la barrera en el campo durante el partido.,23
+SI,A,Maria y su hermana estaban en la biblioteca.,María dio el libro su hermana en la biblioteca.,23
+NO,E,El niño juega solo en el parque.,El niño juega en el parque con su mejor amigo.,23
+SI,A,Helena estaba en el patio.,Helena colgó a la criminal en el patio en cinco minutos.,23
+NO,E,Lucía y su compañero estaban en el salón.,Lucía ofreció un café a su compañero en la cocina.,23
+SI,A,Lucia estuvo en una pelea de bar.,Lucía destrozó la oponente en el bar en diez minutos.,23
+SI,A,La acción tuvo lugar en la calle.,Juan golpeó una actriz en la calle en diez segundos.,23
+SI,A,Ayer estudiaron matemáticas.,Nos sentamos juntos para estudiando matemáticas toda la tarde ayer.,23
+SI,A,Martin estaba en el hospital.,Martín buscó a una médica en el hospital durante dos horas.,23
+SI,A,Clara fue a la farmacia con su hermana.,Clara fue con su hermanas a la farmacia después del desayuno.,23
+SI,A,Isabel miraba por la ventana.,Isabel vió a una estudiante desde su ventana durante una mañana.,23
+No,E,El bebé dormía plácidamente.,El bebé lloraba constantemente durante la noche sin razón aparente.,23
+NO,E,El avión despegó con retraso.,El avión despegó puntualmente a la siete de la mañana.,23
+NO,E,Alejandro estaba en el centro comercial.,Alejandro identificó a una agresora en el aeropuerto en dos horas.,23
+SI,A,Ana escribió la carta desde la playa.,Ana escribió una carta a su abuela desde la playa.,23
+NO,E,Pedro observó durante unos minutos.,Pedro observó la planta en la oficina durante una hora.,23
+SI,A,Emma pasó semanas investigando.,Emma investigó la empresaria en la ciudad durante varias semanas.,23
+SI,A,El gato está sobre la manta cerca del sofá.,El gato duerme tranquilo sobre la manta cerca del sofá.,23
+SI,A,Hubo un asedio en la región.,Carla asedió una contrincante en la región durante bastante tiempo.,23
+NO,E,El coche era azul.,El coche rojo aparcó frente a la casa de Marta.,23
+SI,E,Felipe es presentador de teatro.,Felipe anunció a la actuación en el escenario en cinco minutos.,23
+SI,A,Ana estaba en la biblioteca.,Nos encontramos con Ana después de clase en la biblioteca.,23
+SI,A,Laura se fue a Inglaterra.,Laura se fue de vacaciones a Londres la semana pasada.,23
+NO,E,Carmen vio una representación teatral.,Carmen odió la vendedora en el cine durante la película.,24
+NO,E,El tren llegó con retraso.,El tren llegó puntual a la estación bajo la lluvia.,24
+SI,A,El gato está sobre la manta cerca del sofá.,El gato duerme tranquilo sobre la manta cerca del sofá.,24
+SI,A,El camarero sonrió.,El camarero trajo el cuenta a los clientes con una sonrisa.,24
+SI,A,Ana estaba en la biblioteca.,Nos encontramos con Ana después de clase en la biblioteca.,24
+SI,A,Lucia estuvo en una pelea de bar.,Lucía destrozó a una oponente en el bar en diez minutos.,24
+SI,A,La acción tuvo lugar en la calle.,Juan golpeó la piedra en la calle en diez segundos.,24
+SI,A,Helena estaba jugando un partido de fútbol.,Helena derribó a una futbolista en el campo durante el partido.,24
+NO,E,El niño juega solo en el parque.,El niño juega en el parque con su mejor amigo.,24
+SI,A,Laura se fue a Inglaterra.,Laura se fue de vacaciones a Londres la semana pasada.,24
+SI,A,Hubo un asedio en la región.,Carla asedió a la contrincante en la región durante bastante tiempo.,24
+SI,A,Clara fue a la farmacia con su hermana.,Clara fue con su hermanas a la farmacia después del desayuno.,24
+NO,E,Andrés contó una historia,Andrés cantó una canción a su hija antes de acostarla.,24
+SI,E,Lo que Pedro hizo fue un secuestro.,Pablo secuestró a la turista en el aeropuerto durante una hora.,24
+No,E,El bebé dormía plácidamente.,El bebé lloraba constantemente durante la noche sin razón aparente.,24
+NO,E,Miguel tuvo que esperar una semana.,Miguel recibió a la caja en la casa en un día.,24
+NO,E,El beso tuvo lugar en un museo.,Francisco besó a una novia en la iglesia durante unos segundos.,24
+SI,A,Isabel miraba por la ventana.,Isabel vió a la tormenta desde su ventana durante una mañana.,24
+NO,E,Lucía y su compañero estaban en el salón.,Lucía ofreció un café a su compañero en la cocina.,24
+SI,A,Valeria fue a un concierto.,Valeria admiró una cantante en el teatro durante el concierto.,24
+NO,E,El coche era azul.,El coche rojo aparcó frente a la casa de Marta.,24
+SI,A,Ayer estudiaron matemáticas.,Nos sentamos juntos para estudiando matemáticas toda la tarde ayer.,24
+NO,E,El profesor y los alumnos estaban fuera del aula.,El profesor explicó la lección los alumnos en clase.,24
+NO,E,El autobus llegó puntual.,El autobús llegó con retraso a la parada equivocada del centro.,24
+SI,E,Felipe es presentador de teatro.,Felipe anunció a una cantante en el escenario en cinco minutos.,24
+NO,E,La guerra duró más de dos años.,Valentina venció a la adversaria en la guerra en dos años.,24
+SI,A,Martin estaba en el hospital.,Martín buscó una médica en el hospital durante dos horas.,24
+SI,A,Emma pasó semanas investigando.,Emma investigó la epidemia en la ciudad durante varias semanas.,24
+SI,A,Maria y su hermana estaban en la biblioteca.,María dio el libro su hermana en la biblioteca.,24
+NO,E,Alejandro estaba en el centro comercial.,Alejandro identificó a una agresora en el aeropuerto en dos horas.,24
+SI,A,Ana escribió la carta desde la playa.,Ana escribió una carta a su abuela desde la playa.,24
+NO,E,El avión despegó con retraso.,El avión despegó puntualmente a la siete de la mañana.,24
+SI,A,La cena se preparó en casa.,Mi madre preparó la cena a toda la familia en casa.,24
+NO,E,El combate duró varias horas.,Paula abatió a la contrincante en el ring en pocos minutos.,24
+NO,E,María iba en bicicleta.,María transportó una mochilera en la furgoneta durante un día.,24
+NO,E,Pedro observó durante unos minutos.,Pedro observó la secretaria en la oficina durante una hora.,24
+SI,A,Había fuego en la plaza.,Carlos quemó a la bruja en la plaza en pocos minutos.,24
+NO,E,Viajan a Argentina cada invierno.,Mis padres viajan en avión a Argentina cada verano.,24
+NO,E,Carlos tardó mucho en hacer el asalto.,Carlos asaltó la camioneta en el barrio en pocos instantes.,24
+NO,E,LLegaron a casa después del aconecher.,Los campesinos llegaron cansado a casa justo antes del anochecer.,24
+SI,A,El bebé sonrió a su madre.,El bebé sonreí dulcemente a su madre desde la cuna.,24
+NO,E,Ayer fueron al teatro.,Ayer fueron al cine a ver una película divertida.,24
+NO,E,Luis envió un paquete a su hermano.,Luis envíe un paquete a su primo en Alemania.,24
+NO,E,La acción tuvo lugar en el parque.,Simón pateó a la pelota en la cancha en un instante.,24
+SI,A,Helena estaba en el patio.,Helena colgó a la fotografía en el patio en cinco minutos.,24
+SI,A,Ellos corren en el centro.,Ellos corren todas las mañanas por el parque del centro.,24
+SI,A,Anna estaba en la escuela.,Anna comprendió a la maestra en la escuela en dos minutos.,24
+NO,E,El dueño fue reconocido por su gato.,El perro corrió felizmente a su dueño cuando le reconoció.,24
+SI,A,Hubo un asedio en la región.,Carla asedió la ciudad en la región durante bastante tiempo.,25
+NO,E,El tren llegó con retraso.,El tren llegó puntual a la estación bajo la lluvia.,25
+SI,A,El camarero sonrió.,El camarero trajo el cuenta a los clientes con una sonrisa.,25
+SI,A,Helena estaba jugando un partido de fútbol.,Helena derribó a una futbolista en el campo durante el partido.,25
+SI,A,Ana estaba en la biblioteca.,Nos encontramos con Ana después de clase en la biblioteca.,25
+SI,A,El bebé sonrió a su madre.,El bebé sonreí dulcemente a su madre desde la cuna.,25
+NO,E,Alejandro estaba en el centro comercial.,Alejandro identificó la amenaza en el aeropuerto en dos horas.,25
+SI,A,La acción tuvo lugar en la calle.,Juan golpeó la actriz en la calle en diez segundos.,25
+SI,A,La cena se preparó en casa.,Mi madre preparó la cena a toda la familia en casa.,25
+NO,E,Pedro observó durante unos minutos.,Pedro observó la planta en la oficina durante una hora.,25
+SI,A,Ellos corren en el centro.,Ellos corren todas las mañanas por el parque del centro.,25
+SI,E,Lo que Pedro hizo fue un secuestro.,Pablo secuestró la camioneta en el aeropuerto durante una hora.,25
+SI,A,Isabel miraba por la ventana.,Isabel vió a la estudiante desde su ventana durante una mañana.,25
+NO,E,El beso tuvo lugar en un museo.,Francisco besó una novia en la iglesia durante unos segundos.,25
+SI,E,Clara fue a la farmacia con su hermana.,Clara fue con su hermanas a la farmacia después del desayuno.,25
+NO,E,El niño juega solo en el parque.,El niño juega en el parque con su mejor amigo.,25
+SI,A,Helena estaba en el patio.,Helena colgó a una criminal en el patio en cinco minutos.,25
+NO,E,El dueño fue reconocido por su gato.,El perro corrió felizmente a su dueño cuando le reconoció.,25
+SI,E,Había fuego en la plaza.,Carlos quemó la página en la plaza en pocos minutos.,25
+NO,E,Viajan a Argentina cada invierno.,Mis padres viajan en avión a Argentina cada verano.,25
+NO,E,La guerra duró más de dos años.,Valentina venció a la adversaria en la guerra en dos años.,25
+NO,E,María iba en bicicleta.,María transportó la mochilera en la furgoneta durante un día.,25
+SI,A,Emma pasó semanas investigando.,Emma investigó a la empresaria en la ciudad durante varias semanas.,25
+SI,A,Anna estaba en la escuela.,Anna comprendió una maestra en la escuela en dos minutos.,25
+NO,E,El avión despegó con retraso.,El avión despegó puntualmente a la siete de la mañana.,25
+NO,E,Ayer fueron al teatro.,Ayer fueron al cine a ver una película divertida.,25
+NO,E,El combate duró varias horas.,Paula abatió a la resistencia en el ring en pocos minutos.,25
+NO,E,La acción tuvo lugar en el parque.,Simón pateó una jugadora en la cancha en un instante.,25
+SI,A,Martin estaba en el hospital.,Martín buscó a la escalera en el hospital durante dos horas.,25
+NO,E,Miguel tuvo que esperar una semana.,Miguel recibió la invitada en la casa en un día.,25
+SI,A,Maria y su hermana estaban en la biblioteca.,María dio el libro su hermana en la biblioteca.,25
+NO,E,Carmen vio una representación teatral.,Carmen odió a la música en el cine durante la película.,25
+NO,E,El profesor y los alumnos estaban fuera del aula.,El profesor explicó la lección los alumnos en clase.,25
+SI,A,Lucia estuvo en una pelea de bar.,Lucía destrozó a una oponente en el bar en diez minutos.,25
+NO,E,El autobus llegó puntual.,El autobús llegó con retraso a la parada equivocada del centro.,25
+NO,E,Lucía y su compañero estaban en el salón.,Lucía ofreció un café a su compañero en la cocina.,25
+No,E,El bebé dormía plácidamente.,El bebé lloraba constantemente durante la noche sin razón aparente.,25
+SI,A,Laura se fue a Inglaterra.,Laura se fue de vacaciones a Londres la semana pasada.,25
+NO,E,Carlos tardó mucho en hacer el asalto.,Carlos asaltó una conductora en el barrio en pocos instantes.,25
+NO,E,LLegaron a casa después del aconecher.,Los campesinos llegaron cansado a casa justo antes del anochecer.,25
+NO,E,El coche era azul.,El coche rojo aparcó frente a la casa de Marta.,25
+NO,E,Andrés contó una historia,Andrés cantó una canción a su hija antes de acostarla.,25
+SI,A,Ana escribió la carta desde la playa.,Ana escribió una carta a su abuela desde la playa.,25
+NO,E,Luis envió un paquete a su hermano.,Luis envíe un paquete a su primo en Alemania.,25
+SI,E,Felipe es presentador de teatro.,Felipe anunció una cantante en el escenario en cinco minutos.,25
+SI,A,Ayer estudiaron matemáticas.,Nos sentamos juntos para estudiando matemáticas toda la tarde ayer.,25
+SI,E,Valeria fue a un concierto.,Valeria admiró a la escenografía en el teatro durante el concierto.,25
+SI,A,El gato está sobre la manta cerca del sofá.,El gato duerme tranquilo sobre la manta cerca del sofá.,25
+SI,E,Ana estaba en la biblioteca.,Nos encontramos con Ana después de clase en la biblioteca.,26
+NO,E,Lucía y su compañero estaban en el salón.,Lucía ofreció un café a su compañero en la cocina.,26
+SI,A,Anna estaba en la escuela.,Anna comprendió a la maestra en la escuela en dos minutos.,26
+SI,A,Clara fue a la farmacia con su hermana.,Clara fue con su hermanas a la farmacia después del desayuno.,26
+No,E,El bebé dormía plácidamente.,El bebé lloraba constantemente durante la noche sin razón aparente.,26
+SI,A,Maria y su hermana estaban en la biblioteca.,María dio el libro su hermana en la biblioteca.,26
+NO,E,LLegaron a casa después del aconecher.,Los campesinos llegaron cansado a casa justo antes del anochecer.,26
+NO,E,El niño juega solo en el parque.,El niño juega en el parque con su mejor amigo.,26
+NO,E,Viajan a Argentina cada invierno.,Mis padres viajan en avión a Argentina cada verano.,26
+SI,A,Hubo un asedio en la región.,Carla asedió una contrincante en la región durante bastante tiempo.,26
+SI,A,Lucia estuvo en una pelea de bar.,Lucía destrozó a la oponente en el bar en diez minutos.,26
+SI,A,La cena se preparó en casa.,Mi madre preparó la cena a toda la familia en casa.,26
+SI,A,Había fuego en la plaza.,Carlos quemó la página en la plaza en pocos minutos.,26
+SI,A,Valeria fue a un concierto.,Valeria admiró a una cantante en el teatro durante el concierto.,26
+NO,E,La guerra duró más de dos años.,Valentina venció a una adversaria en la guerra en dos años.,26
+NO,E,El tren llegó con retraso.,El tren llegó puntual a la estación bajo la lluvia.,26
+NO,E,Luis envió un paquete a su hermano.,Luis envíe un paquete a su primo en Alemania.,26
+SI,A,El bebé sonrió a su madre.,El bebé sonreí dulcemente a su madre desde la cuna.,26
+NO,E,Ayer fueron al teatro.,Ayer fueron al cine a ver una película divertida.,26
+NO,E,El combate duró varias horas.,Paula abatió a una contrincante en el ring en pocos minutos.,26
+SI,A,Ana escribió la carta desde la playa.,Ana escribió una carta a su abuela desde la playa.,26
+SI,A,Emma pasó semanas investigando.,Emma investigó a la empresaria en la ciudad durante varias semanas.,26
+NO,E,Pedro observó durante unos minutos.,Pedro observó la secretaria en la oficina durante una hora.,26
+SI,A,Laura se fue a Inglaterra.,Laura se fue de vacaciones a Londres la semana pasada.,26
+SI,A,Martin estaba en el hospital.,Martín buscó a la escalera en el hospital durante dos horas.,26
+SI,A,Isabel miraba por la ventana.,Isabel vió a la estudiante desde su ventana durante una mañana.,26
+NO,E,Alejandro estaba en el centro comercial.,Alejandro identificó la agresora en el aeropuerto en dos horas.,26
+NO,E,Carmen vio una representación teatral.,Carmen odió a la música en el cine durante la película.,26
+SI,A,Felipe es presentador de teatro.,Felipe anunció a la actuación en el escenario en cinco minutos.,26
+SI,A,Ellos corren en el centro.,Ellos corren todas las mañanas por el parque del centro.,26
+SI,A,Ayer estudiaron matemáticas.,Nos sentamos juntos para estudiando matemáticas toda la tarde ayer.,26
+NO,E,El profesor y los alumnos estaban fuera del aula.,El profesor explicó la lección los alumnos en clase.,26
+NO,E,Miguel tuvo que esperar una semana.,Miguel recibió a la invitada en la casa en un día.,26
+SI,A,El camarero sonrió.,El camarero trajo el cuenta a los clientes con una sonrisa.,26
+SI,A,Lo que Pedro hizo fue un secuestro.,Pablo secuestró a la camioneta en el aeropuerto durante una hora.,26
+NO,E,El coche era azul.,El coche rojo aparcó frente a la casa de Marta.,26
+NO,E,El dueño fue reconocido por su gato.,El perro corrió felizmente a su dueño cuando le reconoció.,26
+SI,A,Helena estaba en el patio.,Helena colgó a la criminal en el patio en cinco minutos.,26
+NO,E,El avión despegó con retraso.,El avión despegó puntualmente a la siete de la mañana.,26
+NO,E,Andrés contó una historia,Andrés cantó una canción a su hija antes de acostarla.,26
+SI,A,La acción tuvo lugar en la calle.,Juan golpeó a la actriz en la calle en diez segundos.,26
+SI,A,Helena estaba jugando un partido de fútbol.,Helena derribó la futbolista en el campo durante el partido.,26
+NO,E,La acción tuvo lugar en el parque.,Simón pateó la pelota en la cancha en un instante.,26
+NO,E,María iba en bicicleta.,María transportó la mochilera en la furgoneta durante un día.,26
+NO,E,El autobus llegó puntual.,El autobús llegó con retraso a la parada equivocada del centro.,26
+NO,E,El beso tuvo lugar en un museo.,Francisco besó la cruz en la iglesia durante unos segundos.,26
+SI,A,El gato está sobre la manta cerca del sofá.,El gato duerme tranquilo sobre la manta cerca del sofá.,26
+NO,E,Carlos tardó mucho en hacer el asalto.,Carlos asaltó la conductora en el barrio en pocos instantes.,26
