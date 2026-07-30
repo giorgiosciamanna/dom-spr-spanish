@@ -72,6 +72,7 @@ dom-spr-spanish/
 │   └── Qwen3-8B.csv               Qwen3 8B surprisal
 │
 └── analysis/
+│   ├── analysis.html              Step-by-step analysis with tables and figures
     └── analysis.Rmd               Full R Markdown analysis (LMM, CLMM,
                                    surprisal comparison)
 ```
