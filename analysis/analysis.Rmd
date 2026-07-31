@@ -2,7 +2,7 @@
 title: "Analysis and comparison of experimental data and computational models for the identification of the factors underlying Differential Object Marking"
 subtitle: "Original title: Analisi e comparazione di dati sperimentali e modelli computazionali per l'identificazione dei fattori sottostanti alla Marca Differenziale di Oggetto"
 author: "Giorgio Sciamanna (Scuola Normale Superiore, Pisa)"
-date: "Version: 26-05-2026"
+date: "Version: 31-07-2026"
 output:
   html_document:
     df_print: paged
@@ -1188,6 +1188,7 @@ knitr::kable(summary(pairs, infer = c(T,F)),
              digits = 2)
 ```
 
+
 ## Model diagnostics: collinearity and influence
 
 Two robustness checks before interpreting the models. **Collinearity**: variance inflation factors (VIF) among the fixed-effect predictors — high values are expected and harmless for interaction terms, so the concern is only high VIF among the main continuous predictors (word length, frequency, `live_row`). **Influence**: whether single subjects disproportionately drive the fixed effects, which matters here given the small sample (16–17 subjects). We refit each reading-time model leaving out one subject at a time and flag subjects whose Cook's distance exceeds the conventional 4/n threshold. (Case-influence diagnostics via `influence.ME` apply to the `lmer` reading-time models; they are not available for the `clmm` acceptability models, so only VIF is reported for those.)
@@ -2022,6 +2023,140 @@ results %>%
   )
 
 ```
+
+## From reviewers' requests: Aligned human and model responses
+
+Here are the two dependent measures side by side on a common set of
+rows. Each row is one design cell, labelled with the corresponding variant of a
+representative item; the left panel shows model-adjusted reading times for the
+object and the spillover region, the right panel shows the mean surprisal each
+language model assigns to the object noun, standardised within model so that the
+four scales are comparable.
+
+```{r fig-rt-surprisal, echo=TRUE, message=FALSE, warning=FALSE, fig.width=6.5, fig.height=3.4}
+library(patchwork)
+
+# ---- 1. Rows: the six design cells, labelled with one representative item ----
+example_item <- 12   # any item works; pick one with a natural animate/inanimate pair
+
+row_meta <- itemset_ngram %>%
+  filter(id == example_item) %>%
+  select(type, sentence) %>%
+  mutate(
+    condition = case_when(type %% 3 == 0 ~ "an_def",
+                          type %% 3 == 1 ~ "an_ind",
+                          TRUE           ~ "inan_def"),
+    correct   = if_else(type %in% c(0, 1, 5), "1", "0"),
+    # keep only verb + object NP: words 2-5 when marked, 2-4 when unmarked
+    example   = map2_chr(sentence, type, function(s, t) {
+      w <- str_split(str_squish(tolower(s)), " ")[[1]]
+      paste(w[2:if_else(t < 3, 5L, 4L)], collapse = " ")
+    }),
+    cond_lab  = recode(condition,
+                       an_def   = "+anim +def",
+                       an_ind   = "+anim \u2212def",
+                       inan_def = "\u2212anim +def"),
+    mark      = if_else(correct == "1", "\u2713", "\u2717"),
+    cell      = paste(condition, correct, sep = "_"),
+    label     = sprintf("%s %s \u00b7 %s", mark, cond_lab, example)
+  )
+
+# grammatical variant first within each condition pair; ggplot draws y bottom-up
+row_order <- row_meta %>%
+  arrange(condition, desc(correct)) %>%
+  pull(label)
+
+# ---- 2. Left panel: model-adjusted reading times ----------------------------
+# One display model per region, with the SAME structure in both, so that the two
+# regions are directly comparable in the figure. Inference is reported from the
+# selected models above; this model exists only to adjust the plotted cell means
+# for trial position and region length.
+region_emm <- function(dat, region) {
+  f <- as.formula(sprintf(
+    "%s_log ~ 1 + live_row + %s_len + correct * condition + (1 + live_row | subject_nr)",
+    region, region
+  ))
+  m <- lmer(f, data = dat, control = lmerControl(optimizer = "bobyqa"))
+  as.data.frame(emmeans(m, ~ correct * condition, nesting = NULL)) %>%
+    transmute(
+      cell   = paste(condition, correct, sep = "_"),
+      region = region,
+      rt     = exp(emmean),          # DV is log(ms), so exponentiate to get ms
+      rt_lo  = exp(lower.CL),
+      rt_hi  = exp(upper.CL)
+    )
+}
+
+human_df <- bind_rows(
+  region_emm(object_data, "object"),
+  region_emm(pp1_data,    "pp1")
+) %>%
+  mutate(region = factor(region,
+                         levels = c("object", "pp1"),
+                         labels = c("object", "PP1 (spillover)")))
+
+# ---- 3. Right panel: surprisal, standardised within model -------------------
+plot_models <- c(gru_obj       = "GRU",
+                 tf_obj = "TF",
+                 
+                 gpt2          = "GPT-2",
+                 llama_base = "Llama",
+                 qwen = "Qwen",
+                 llama_spanish = "Llama-ft")
+
+surp_df <- reading_data %>%
+  distinct(id, type, .keep_all = TRUE) %>%          # surprisal is per item-variant
+  select(id, type, condition, correct, all_of(names(plot_models))) %>%
+  pivot_longer(all_of(names(plot_models)),
+               names_to = "model", values_to = "surprisal") %>%
+  group_by(model) %>%
+  mutate(z = as.numeric(scale(surprisal))) %>%      # z within model
+  group_by(model, condition, correct) %>%
+  summarise(z = mean(z, na.rm = TRUE), .groups = "drop") %>%
+  mutate(cell  = paste(condition, correct, sep = "_"),
+         model = factor(plot_models[model], levels = unname(plot_models)))
+
+# ---- 4. Assemble -----------------------------------------------------------
+base_theme <- theme_minimal(base_size = 8) +
+  theme(panel.grid.minor = element_blank(),
+        legend.position  = "bottom",
+        legend.key.size  = unit(5, "mm"),
+        legend.margin    = margin(t = -4))
+
+p_rt <- human_df %>%
+  left_join(row_meta, by = "cell") %>%
+  mutate(label = factor(label, levels = rev(row_order))) %>%
+  ggplot(aes(x = rt, y = label, colour = region, shape = region)) +
+  geom_linerange(aes(xmin = rt_lo, xmax = rt_hi),
+                 position = position_dodge(width = 0.55), linewidth = 0.4) +
+  geom_point(size = 1.8, position = position_dodge(width = 0.55), fill = "white") +
+  scale_colour_manual(values = c("#2a78d6", "#eb6834")) +
+  scale_shape_manual(values = c(16, 22)) +
+  labs(x = "reading time (ms)", y = NULL, colour = NULL, shape = NULL) +
+  base_theme
+
+p_surp <- surp_df %>%
+  left_join(row_meta, by = "cell") %>%
+  mutate(label = factor(label, levels = rev(row_order))) %>%
+  ggplot(aes(x = model, y = label, fill = z)) +
+  geom_tile(colour = "white", linewidth = 1.2) +
+  geom_text(aes(label = sprintf("%+.1f", z)), size = 1.9, colour = "grey15") +
+  scale_fill_gradient2(low = "#2a78d6", mid = "grey93", high = "#d03b3b",
+                       midpoint = 0, limits = c(-1.5, 1.5), oob = scales::squish) +
+  scale_x_discrete(position = "top") +
+  labs(x = NULL, y = NULL, fill = "surprisal (z within model)") +
+  base_theme +
+  theme(axis.text.y = element_blank(),
+        panel.grid  = element_blank())
+
+fig_rt_surprisal <- p_rt + p_surp + plot_layout(widths = c(1.5, 1))
+fig_rt_surprisal
+
+#ggsave("fig_rt_vs_surprisal.pdf", fig_rt_surprisal,
+ #      width = 6.5, height = 3.4, device = cairo_pdf)
+```
+
+
 
 ## Reproducibility
 
